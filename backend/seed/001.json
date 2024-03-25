@@ -1,0 +1,17 @@
+[
+  {
+    "model" : "api.CustomUser",
+    "fields": {
+
+      "is_superuser": true,
+      "username": "omar",
+      "first_name": "omar",
+      "last_name": "martin",
+      "is_staff": true,
+      "is_active": true,
+      "email": "omar@gmail.com",
+      "password": "12345678",
+      "avatar": ""
+    }
+    }
+]
