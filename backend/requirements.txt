@@ -1,0 +1,7 @@
+djangorestframework
+django-cors-headers
+dj-rest-auth
+python-dotenv
+bcrypt
+psycopg2-binary
+psycopg
