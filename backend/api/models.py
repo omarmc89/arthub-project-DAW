@@ -6,27 +6,27 @@ import uuid
 class CustomUser(AbstractUser):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     email = models.EmailField(unique=True)
-    password = models.CharField()
-    avatar = models.CharField(blank=True)
+    password = models.CharField(max_length=50)
+    avatar = models.CharField(blank=True, max_length=50)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username', 'password']
 
 class Role(models.Model):
-    name = models.CharField()
+    name = models.CharField(max_length=50)
 
 
 class Artist(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4)
-    nickname = models.CharField()
+    nickname = models.CharField(max_length=50)
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='artists')
 
 
 class Artwork(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4)
-    title = models.CharField()
+    title = models.CharField(max_length=50)
     description = models.TextField()
-    image_url = models.CharField()
+    image_url = models.CharField(max_length=200)
     price = models.FloatField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -35,7 +35,7 @@ class Artwork(models.Model):
 
 class Painting(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4)
-    style = models.CharField()
+    style = models.CharField(max_length=50)
     width = models.IntegerField()
     height = models.IntegerField()
     artwork = models.ForeignKey(Artwork, on_delete=models.CASCADE, related_name="paintings")
@@ -45,7 +45,7 @@ class Painting(models.Model):
 
 class Photo(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4)
-    style = models.CharField()
+    style = models.CharField(max_length=50)
     artwork = models.ForeignKey(Artwork, on_delete=models.CASCADE, related_name='photos')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

@@ -1,33 +1,33 @@
 <template>
-    <nav class="sticky flex flex-col items-center justify-between flex-wrap p-6 w-full z-10">
-        <div class="flex items-center flex-no-shrink mb-4">
-            <a class="no-underline" href="#">
-                <span class="title text-2xl pl-2">ArtHUB</span>
-            </a>
-        </div>
-    
-        <div class="block lg:hidden">
-            <button id="nav-toggle" class="flex items-center px-3 py-2 border rounded text-grey border-grey-dark hover:text-white hover:border-white">
-                <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
-            </button>
-        </div>
-    
-        <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block pt-6 lg:pt-0" id="nav-content">
-            <ul class="flex flex-row gap-x-6 lg:flex justify-end flex-1 items-center">
-                <li v-if="!authenticated" class="app-link homeBtn p-2" style="float: right">
-                    <NuxtLink to="/">Home</NuxtLink>
-                </li>
-                <li v-if="!authenticated" class="app-link registerBtn" style="float: right">
-                    <NuxtLink to="/register">Register</NuxtLink>
-                </li>
-                <li v-if="!authenticated" class="app-link loginBtn" style="float: right">
-                    <NuxtLink to="/login">Login</NuxtLink>
-                </li>
-                <li v-if="authenticated" class="app-link loginBtn" style="float: right">
-                    <nuxt-link @click="logout">Logout</nuxt-link>
-                </li>
-            </ul>
-        </div>
+    <nav class="flex flex-col items-center justify-between w-full px-4 z-10">
+        <section class="flex flex-col w-full h-auto">
+            <article class="flex justify-end w-full" >
+                <ul class="flex flex-row gap-x-4 items-center justify-end">
+                    <li v-if="!authenticated" class="app-link registerBtn hover:underline" style="float: right">
+                        <NuxtLink to="/register">Register</NuxtLink>
+                    </li>
+                    <li v-if="!authenticated" class="app-link loginBtn hover:underline" style="float: right">
+                        <NuxtLink to="/login">Login</NuxtLink>
+                    </li>
+                    <li v-if="authenticated" class="app-link loginBtn hover:underline" style="float: right">
+                        <nuxt-link @click="logout">Logout</nuxt-link>
+                    </li>
+                </ul>
+            </article>
+            <article class="flex items-center justify-center w-full h-auto py-8">
+                <a class="no-underline" href="#">
+                    <span class="title text-center text-2xl pl-2 ">ArtHUB</span>
+                </a>
+            </article>
+
+            <article class="w-full flex-grow items-center justify-center" id="nav-content">
+                <ul class="flex flex-row gap-x-6 items-center justify-center">
+                    <li class="app-link homeBtn p-2" style="float: right">
+                        <NuxtLink to="/">Home</NuxtLink>
+                    </li>
+                </ul>
+            </article>
+        </section>
     </nav>
 </template>
 
@@ -70,7 +70,7 @@ const userLogout = () => {
 }
 
 .router-link-active {
-  @apply border-b-4 bg-slate-400 p-2 rounded-lg;
+  @apply border-b-4 bg-slate-400 p-2 rounded-lg pointer-events-none;
 }
 
 </style>

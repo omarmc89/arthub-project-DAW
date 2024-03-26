@@ -7,12 +7,12 @@
     "module": true,
     "resourceType": "script"
   },
-  "/Users/omarmartin/Documents/DAW/arthub-project/frontendV3/node_modules/nuxt/dist/app/entry.js": {
+  "/home/omar.martin/arthub/arthub-project-DAW/frontendV3/node_modules/nuxt/dist/app/entry.js": {
     "resourceType": "script",
     "module": true,
     "prefetch": true,
     "preload": true,
     "isEntry": true,
-    "file": "/Users/omarmartin/Documents/DAW/arthub-project/frontendV3/node_modules/nuxt/dist/app/entry.js"
+    "file": "/home/omar.martin/arthub/arthub-project-DAW/frontendV3/node_modules/nuxt/dist/app/entry.js"
   }
 }
