@@ -13,4 +13,8 @@ export default defineNuxtConfig({
           autoprefixer: {},
         },
       },
+      sourcemap: {
+        server: true,
+        client: true
+      }
 })

@@ -7,7 +7,7 @@
       </select>
       <div class="flex flex-col items-center justify-center">
         <input v-model="username" type="text" placeholder="Username" required>
-        <input v-model="first" type="text" placeholder="First Name" required>
+        <input v-model="first_name" type="text" placeholder="First Name" required>
         <input v-model="last_name" type="text" placeholder="Last Name" required>
         <input v-model="email" type="email" placeholder="Email" required>
         <input type="password" v-model="password" placeholder="Password" required>
@@ -21,7 +21,7 @@
       
       <button @click.prevent="register">Register</button>
   
-  
+      <div v-if="errorOnFetch" class="text-xl text-red uppercase">{{ errorOnFetch.data.error }}</div>
       <!-- Campos adicionales para el cliente -->
       <div v-if="selectedUserType === 'client'">
         <label for="clientField1">Client Field 1:</label>
@@ -33,37 +33,47 @@
   <script setup>
 import { ref } from 'vue';
 
-const username = ref('');
-const first_name = ref('');
-const last_name = ref('');
-const email = ref('');
-const password = ref('');
-const avatar = ref('');
-const nickname = ref('');
+let username = ref('');
+let first_name = ref('');
+let last_name = ref('');
+let email = ref('');
+let password = ref('');
+let avatar = ref('');
+let nickname = ref('');
+let errorOnFetch = ref('')
 const selectedUserType = ref('artist');
 
 const toggleFields = () => {
   // Implementa la lógica para mostrar u ocultar campos según el valor seleccionado
 };
-
 const register = async() => {
-  const { data, pending } = await useFetch('http://localhost:8000/api/v1/artists/', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': 'Token f3b557760eda960a094698122c6eb9489c2487f3'
-    },
-    body: JSON.stringify({
-      username,
-      email,
-      first_name,
-      last_name,
-      password,
-      avatar,
-      nickname,
-    })
-  })
-}
+  try {
+    errorOnFetch.value = ''
+    const { data, pending, error } = await useFetch('http://localhost:8000/api/v1/artists/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Token f3b557760eda960a094698122c6eb9489c2487f3'
+      },
+      body: JSON.stringify({
+        username: username.value,
+        email: email.value,
+        first_name: first_name.value,
+        last_name: last_name.value,
+        password: password.value,
+        avatar: avatar.value,
+        nickname: nickname.value,
+      })
+    });
+    if (error) {
+      errorOnFetch.value = error.value;
+      error = ''
+    }
+  } catch (anotherError) {
+    // Capturar errores de la solicitud y manejarlos según sea necesario
+    errorOnFetch.value = anotherError
+  }
+  }
 </script>
   
   <style scoped>

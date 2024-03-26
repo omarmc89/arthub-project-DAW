@@ -1,4 +1,4 @@
-
+from django.db import IntegrityError
 from rest_framework import viewsets
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
@@ -56,7 +56,22 @@ class ArtistViewSet(viewsets.ModelViewSet):
         user['avatar'] = self.request.data.get('avatar')
         artist['nickname'] = self.request.data.get('nickname')
 
-        print(user, artist)
+        user_data_response = CustomUserSerializer(data=user)
+
+        try:
+            user = CustomUser.objects.create_user(**user)
+        except IntegrityError:
+            return Response({'error': 'User already exists'},status=status.HTTP_400_BAD_REQUEST)
+
+        artist = Artist(**artist)
+        artist.user = user
+        artist.save()
+
+        artist_data_response = self.serializer_class(data=artist)
+
+        return Response({'message': 'User and artist created successfully'},
+                        status=status.HTTP_201_CREATED)
+
 
 class PaintingViewSet(viewsets.ModelViewSet):
     queryset = Painting.objects.all()
