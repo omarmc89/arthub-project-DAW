@@ -14,25 +14,38 @@
                     </li>
                 </ul>
             </article>
-            <article class="flex items-center justify-center w-full h-auto py-8">
+            <article class="flex text-slate-900 items-center justify-center w-full h-auto py-8">
                 <a class="no-underline" href="#">
                     <span class="title text-center text-2xl pl-2 ">ArtHUB</span>
                 </a>
             </article>
 
             <article class="w-full flex-grow items-center justify-center" id="nav-content">
-                <ul class="flex flex-row gap-x-6 items-center justify-center">
-                    <li class="app-link homeBtn p-2" style="float: right">
-                        <NuxtLink to="/">Home</NuxtLink>
-                    </li>
-                </ul>
+                <section class="flex w-full flex-row gap-x-6 items-center justify-around">
+                    <NuxtLink class="app-link text-center w-full p-2" style="float: right" to="/">
+                        Home
+                    </NuxtLink>
+                    <NuxtLink class="app-link text-center w-full p-2" style="float: right" to="/artworks">
+                        Artworks
+                    </NuxtLink>
+                    <NuxtLink class="app-link text-center w-full p-2" style="float: right" to="/artists">
+                        Artists
+                    </NuxtLink>
+                    <NuxtLink v-if="userLogged" class="app-link text-center w-full p-2" style="float: right" to="/dashboard">
+                        Dashboard
+                    </NuxtLink>
+                </section>
             </article>
+            <div v-if="userLogged">
+                <pre> {{ userLogged }} </pre>
+            </div>
         </section>
     </nav>
 </template>
 
 
 <script setup>
+
 import { storeToRefs } from 'pinia'; // import storeToRefs helper hook from pinia
 import { useAuthStore } from '~/store/auth'; // import the auth store we just created
 import { ref } from 'vue';
@@ -42,7 +55,7 @@ const router = useRouter();
 
 const { logout } = useAuthStore(); // use authenticateUser action from  auth store
 const { authenticated } = storeToRefs(useAuthStore()); // make authenticated state reactive with storeToRefs
-
+const { userLogged } = storeToRefs(useAuthStore()); // make userLogged state reactive with storeToRefs
 
 const isNavOpen = ref(false);
 
@@ -53,6 +66,7 @@ const userLogout = () => {
   logout();
   router.push('/login');
 };
+
 </script>
 
 <style scoped>
@@ -69,8 +83,16 @@ const userLogout = () => {
     text-transform: uppercase;
 }
 
+.app-link {
+    font-family: 'system-ui';
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: uppercase;
+    color: #000;
+}
+
 .router-link-active {
-  @apply border-b-4 bg-slate-400 p-2 rounded-lg pointer-events-none;
+  @apply border-b-4 border-slate-900;
 }
 
 </style>

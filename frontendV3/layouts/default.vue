@@ -4,9 +4,11 @@
     </header>
     <div class="background">
     </div>
-        <main>
-            <slot></slot>
-        </main>
-        <footer> OmarMartin </footer>
+    <UContainer>
+      <slot />
+    </UContainer>
+
+    <UNotifications />
+    <footer> OmarMartin </footer>
 </template>
 

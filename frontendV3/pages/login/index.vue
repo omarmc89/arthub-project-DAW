@@ -21,14 +21,14 @@ const user = ref({
     email: '',
     password: '',
 })
-
+const toast = useToast();
 const router = useRouter();
 
 const login = async () => {
-    await authenticateUser(user.value)
+    const { data, error } = await authenticateUser(user.value)
     if (authenticated) {
-        console.log('authenticated')
-        router.push('/')
+        toast.add({ title: 'Login correct! Redirecting to Home...',
+        timeout: 2000, callback:() => router.push('/dashboard') })
     }
 }
 

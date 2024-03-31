@@ -1,8 +1,10 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
     modules: [
-        '@nuxtjs/tailwindcss',
+        // '@nuxtjs/tailwindcss',
         '@pinia/nuxt',
+        '@nuxt/ui',
+        '@pinia-plugin-persistedstate/nuxt',
     ],
     tailwindcss: {
         cssPath: '~/assets/css/input.css'
@@ -16,5 +18,8 @@ export default defineNuxtConfig({
       sourcemap: {
         server: true,
         client: true
+      },
+      colorMode: {
+        preference: 'light'
       }
 })

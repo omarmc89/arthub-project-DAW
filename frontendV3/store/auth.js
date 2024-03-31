@@ -9,12 +9,14 @@ export const useAuthStore = defineStore('auth', {
     state: () => ({
         authenticated: false,
         loading: false,
-        userLogged: null,
+        userEmailLogged: '',
+        userLogged : '',
+        sessionToken : ''
     }),
 
     actions: {
         async authenticateUser({ email, password }) {
-            const { data, pending } = await useFetch('http://localhost:8000/api/v1/auth/login/', {
+            const { data, error, pending } = await useFetch('http://localhost:8000/api/v1/auth/login/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -31,8 +33,28 @@ export const useAuthStore = defineStore('auth', {
                 const token = useCookie('token')
                 token.value = data.value.key
                 this.authenticated = true
-                this.userLogged = email
-                console.log(data)
+                this.userEmailLogged = email
+                this.sessionToken = data.value.key
+                localStorage.setItem('token', data.value.key)
+            }
+            this.getUserID()
+
+            return { data: data.value, error: error.value }
+        },
+
+        async getUserID() {
+            const { data } = await useFetch ('http://localhost:8000/api/v1/auth/user/', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Token ${localStorage.getItem('token')}`
+            }
+        })
+
+            if (data.value) {
+                const userLogin = {...data.value}
+                this.userLogged = userLogin
+                localStorage.setItem('userId', data.value.pk)
             }
         },
 
@@ -40,6 +62,11 @@ export const useAuthStore = defineStore('auth', {
             const token = useCookie('token')
             this.authenticated = false
             token.value = null
+            this.userEmailLogged = null
+            this.userLogged = null
+            localStorage.removeItem('token')
+            localStorage.removeItem('userId')
         }
-    }
+    },
+    persist: true,
 })

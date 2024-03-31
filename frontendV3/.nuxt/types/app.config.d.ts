@@ -1,14 +1,40 @@
 
 import type { CustomAppConfig } from 'nuxt/schema'
 import type { Defu } from 'defu'
-
+import cfg0 from "/Users/omarmartin/Documents/DAW/arthub-project-DAW/frontendV3/app.config"
 
 declare const inlineConfig = {
   "nuxt": {
     "buildId": "dev"
+  },
+  "ui": {
+    "primary": "green",
+    "gray": "cool",
+    "colors": [
+      "red",
+      "orange",
+      "amber",
+      "yellow",
+      "lime",
+      "green",
+      "emerald",
+      "teal",
+      "cyan",
+      "sky",
+      "blue",
+      "indigo",
+      "violet",
+      "purple",
+      "fuchsia",
+      "pink",
+      "rose",
+      "shark",
+      "primary"
+    ],
+    "strategy": "merge"
   }
 }
-type ResolvedAppConfig = Defu<typeof inlineConfig, []>
+type ResolvedAppConfig = Defu<typeof inlineConfig, [typeof cfg0]>
 type IsAny<T> = 0 extends 1 & T ? true : false
 
 type MergedAppConfig<Resolved extends Record<string, unknown>, Custom extends Record<string, unknown>> = {

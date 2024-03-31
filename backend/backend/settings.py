@@ -121,12 +121,11 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
-    ],
+    # 'DEFAULT_PERMISSION_CLASSES': [
+    #     'rest_framework.permissions.IsAuthenticated',
+    # ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
     ],
 }
 
@@ -174,3 +173,8 @@ PASSWORD_HASHERS = [
 
 LOGIN_REDIRECT_URL = '/'
 APPEND_SLASH = False
+
+# REST_AUTH = {
+#     'JWT_SERIALIZER': 'dj_rest_auth.serializers.JWTSerializer',
+#     'USE_JWT': False,
+# }

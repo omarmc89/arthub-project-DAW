@@ -2,7 +2,14 @@ import dj_rest_auth
 from dj_rest_auth import urls
 from django.urls import path, include
 from rest_framework import routers
-from .views import *
+
+from .viewsets.CreateArtworkViewSet import CreateArtworkViewSet
+from .viewsets.CustomUserViewSet import CustomUserViewSet
+from .viewsets.ArtistViewSet import ArtistViewSet
+from .viewsets.ArtworkViewSet import ArtworkViewSet
+from .viewsets.PhotoViewSet import PhotoViewSet
+from .viewsets.PaintingViewSet import PaintingViewSet
+from .viewsets.SearchViewSet import SearchUserViewSet, SearchArtistViewSet
 
 router = routers.DefaultRouter()
 router.register(r'users', CustomUserViewSet, basename="users")
@@ -13,15 +20,9 @@ router.register(r'photos', PhotoViewSet, basename="photos")
 
 
 urlpatterns = [
-    # path('v1/user', views.UserViewSet),
-    # path('v1/artwork', views.ArtworkViewSet),
-    # path('v1/artworks/', views.ArtworksApiOverview, name='artworks'),
-    # path('v1/users/', views.UsersApiOverview, name='users'),
-    # path('v1/artworks/create/', views.add_artwork, name='add-artworks'),
-    # path('v1/users/create/', views.add_user, name='add-users'),
-    # path('v1/artists/create/', views.add_artist, name='add-artist'),
     path('', include(router.urls)),
     path('auth/', include(dj_rest_auth.urls)),
-    # path('login/', LoginView.as_view(), name='auth_login'),
-    # path('logout/', LogoutView.as_view(), name='auth_logout')
+    path('search/user/', SearchUserViewSet.as_view(), name='search-user'),
+    path('search/artist/', SearchArtistViewSet.as_view(), name='search-artist'),
+    path('create/artwork/', CreateArtworkViewSet.as_view(), name='create-artwork')
 ]

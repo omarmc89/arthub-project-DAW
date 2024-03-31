@@ -2,10 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+:root{
+    --text-color : #232C33
+}
+
 body{
     min-height: 100vh;
     height: 100vw;
     position: relative;
+    color: #232C33;
 }
 
 .background{

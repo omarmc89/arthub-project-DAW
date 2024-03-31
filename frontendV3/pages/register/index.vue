@@ -22,9 +22,11 @@
       <button @click.prevent="register">Register</button>
   
       <div v-if="errorOnFetch" class="text-xl text-red uppercase">{{ errorOnFetch.data.error }}</div>
+      <div v-if="pending">Loading...</div>
+      <div v-if="dataFetch">Data: {{ dataFetch.value }}</div>
       <!-- Campos adicionales para el cliente -->
       <div v-if="selectedUserType === 'client'">
-        <label for="clientField1">Client Field 1:</label>
+        <label for="clientField1">Client Field 1:</label> 
         <input type="text" id="clientField1" name="clientField1">
       </div>
     </section>
@@ -41,37 +43,39 @@ let password = ref('');
 let avatar = ref('');
 let nickname = ref('');
 let errorOnFetch = ref('')
+const dataFetch = ref(null);
 const selectedUserType = ref('artist');
+
+const toast = useToast();
+const router = useRouter();
 
 const toggleFields = () => {
   // Implementa la lógica para mostrar u ocultar campos según el valor seleccionado
 };
 const register = async() => {
-  try {
-    errorOnFetch.value = ''
-    const { data, pending, error } = await useFetch('http://localhost:8000/api/v1/artists/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Token f3b557760eda960a094698122c6eb9489c2487f3'
-      },
-      body: JSON.stringify({
-        username: username.value,
-        email: email.value,
-        first_name: first_name.value,
-        last_name: last_name.value,
-        password: password.value,
-        avatar: avatar.value,
-        nickname: nickname.value,
-      })
-    });
-    if (error) {
-      errorOnFetch.value = error.value;
-      error = ''
-    }
-  } catch (anotherError) {
-    // Capturar errores de la solicitud y manejarlos según sea necesario
-    errorOnFetch.value = anotherError
+  const { data, pending, error } = await useFetch('http://localhost:8000/api/v1/artists/', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+      // 'Authorization': 'Token f3b557760eda960a094698122c6eb9489c2487f3'
+    },
+    body: JSON.stringify({
+      username: username.value,
+      email: email.value,
+      first_name: first_name.value,
+      last_name: last_name.value,
+      password: password.value,
+      avatar: avatar.value,
+      nickname: nickname.value,
+    })
+  });
+  if (error) {
+    errorOnFetch.value = error.value;
+  }
+  if (data) {
+    dataFetch.value = data.value;
+    console.log(dataFetch.value);
+    toast.add({ title: 'Artist created! Redirecting to Home...', timeout: 2000, callback:() => router.push('/login') })
   }
   }
 </script>
