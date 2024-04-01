@@ -5,7 +5,15 @@ export default defineNuxtConfig({
         '@pinia/nuxt',
         '@nuxt/ui',
         '@pinia-plugin-persistedstate/nuxt',
+        'nuxt-icon',
     ],
+    ui: {
+      global: true,
+      icons: ['heroicons', 'carbon']
+    },
+    pinia: {
+      storesDirs: ['./stores/**'],
+    },
     tailwindcss: {
         cssPath: '~/assets/css/input.css'
     },
@@ -21,5 +29,10 @@ export default defineNuxtConfig({
       },
       colorMode: {
         preference: 'light'
+      },
+      devtools: {
+        timeline: {
+          enabled: true
+        }
       }
 })

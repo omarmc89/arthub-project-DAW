@@ -1,6 +1,6 @@
 <template>
     <header>
-        <AppHeader />
+        <AppHeaderWithoutNavbar />
     </header>
     <div class="background">
     </div>
@@ -9,8 +9,6 @@
     </UContainer>
 
     <UNotifications />
-    <footer>
-      <AppFooter />
-    </footer>
+    <footer> OmarMartin </footer>
 </template>
 

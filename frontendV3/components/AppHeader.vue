@@ -36,9 +36,6 @@
                     </NuxtLink>
                 </section>
             </article>
-            <div v-if="userLogged">
-                <pre> {{ userLogged }} </pre>
-            </div>
         </section>
     </nav>
 </template>
@@ -56,6 +53,8 @@ const router = useRouter();
 const { logout } = useAuthStore(); // use authenticateUser action from  auth store
 const { authenticated } = storeToRefs(useAuthStore()); // make authenticated state reactive with storeToRefs
 const { userLogged } = storeToRefs(useAuthStore()); // make userLogged state reactive with storeToRefs
+const route = useRoute();
+const path = ref(route.path);
 
 const isNavOpen = ref(false);
 

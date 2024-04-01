@@ -1,8 +1,13 @@
 <template>
-    <h1>Dashboard</h1>
-    <USelect v-model="type" placeholder="Select type of artwork" :options="options" />
-    <UContainer class="w-6/12">
+    <UContainer class="w-6/12 my-8">
+        <div class="form-label my-4 ">
+            <label to="type" class="">
+                Select type of artwork
+            </label>
+            <USelect v-model="type" placeholder="Painting or Photo" :options="options" />
+        </div>
         <UForm :state="artwork" class="artwork-form space-y-4 text-slate-900" @submit="createArtwork">
+
             <UFormGroup label="Title" name="title" class="form-label">
             <UInput v-model="artwork.title" />
             </UFormGroup>
@@ -35,7 +40,6 @@
                 Submit
             </UButton>
         </UForm>
-        <!-- <pre> {{ artistData }}</pre> -->
         <p v-if="dataFetch">Artwork created</p>
         <p v-if="errorFetch">Error creating artwork</p>
     </UContainer>
@@ -44,7 +48,9 @@
 <script setup>
 import { useUserLoggedData } from '@/composables/useUserLoggedData'
 import { useCreateArtwork } from '@/composables/useCreateArtwork';
+import { useAuthStore } from '~/store/auth';
 
+const authStore = useAuthStore();
 
 const options = [{
     name: 'Painting',
@@ -60,6 +66,7 @@ const type = ref('')
 const dataFetch = ref('')
 const errorFetch = ref('')
 const pendingFetch = ref(false)
+let artistData = {}
 
 const artwork = ref({
     title: '',
@@ -71,7 +78,11 @@ const artwork = ref({
     height: '',
 })
 
-let artistData = await useUserLoggedData()
+onMounted( async () => {
+    artistData = await useUserLoggedData()
+})
+
+
 
 const createArtwork = async () => {
     const fetchingData = {

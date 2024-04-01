@@ -2,6 +2,7 @@
 /// <reference types="@pinia/nuxt" />
 /// <reference types="@nuxt/ui" />
 /// <reference types="@pinia-plugin-persistedstate/nuxt" />
+/// <reference types="nuxt-icon" />
 /// <reference types="@nuxt/devtools" />
 /// <reference types="@nuxt/telemetry" />
 /// <reference types="nuxt" />

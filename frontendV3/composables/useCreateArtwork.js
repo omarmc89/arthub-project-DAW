@@ -1,8 +1,9 @@
 import { useAuthStore } from '~/store/auth'
 
-const { sessionToken} = useAuthStore();
+
 
 export const useCreateArtwork = async (fetchData) => {
+    const { sessionToken} = useAuthStore();
 
     const { data, error, pending } = await useFetch('http://localhost:8000/api/v1/create/artwork/', {
         method: 'POST',
