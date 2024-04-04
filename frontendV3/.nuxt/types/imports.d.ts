@@ -126,6 +126,7 @@ declare global {
   const useLazyFetch: typeof import('../../node_modules/nuxt/dist/app/composables/fetch')['useLazyFetch']
   const useLink: typeof import('../vue-router-stub')['useLink']
   const useListArtworks: typeof import('../../composables/useListArtworks')['default']
+  const useListUserArtworks: typeof import('../../composables/useListUserArtworks')['default']
   const useLoadingIndicator: typeof import('../../node_modules/nuxt/dist/app/composables/loading-indicator')['useLoadingIndicator']
   const useModal: typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useModal')['useModal']
   const useModel: typeof import('../../node_modules/vue')['useModel']
@@ -303,6 +304,7 @@ declare module 'vue' {
     readonly useLazyFetch: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/fetch')['useLazyFetch']>
     readonly useLink: UnwrapRef<typeof import('../vue-router-stub')['useLink']>
     readonly useListArtworks: UnwrapRef<typeof import('../../composables/useListArtworks')['default']>
+    readonly useListUserArtworks: UnwrapRef<typeof import('../../composables/useListUserArtworks')['default']>
     readonly useLoadingIndicator: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/loading-indicator')['useLoadingIndicator']>
     readonly useModal: UnwrapRef<typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useModal')['useModal']>
     readonly useModel: UnwrapRef<typeof import('../../node_modules/vue')['useModel']>
@@ -473,6 +475,7 @@ declare module '@vue/runtime-core' {
     readonly useLazyFetch: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/fetch')['useLazyFetch']>
     readonly useLink: UnwrapRef<typeof import('../vue-router-stub')['useLink']>
     readonly useListArtworks: UnwrapRef<typeof import('../../composables/useListArtworks')['default']>
+    readonly useListUserArtworks: UnwrapRef<typeof import('../../composables/useListUserArtworks')['default']>
     readonly useLoadingIndicator: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/loading-indicator')['useLoadingIndicator']>
     readonly useModal: UnwrapRef<typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useModal')['useModal']>
     readonly useModel: UnwrapRef<typeof import('../../node_modules/vue')['useModel']>

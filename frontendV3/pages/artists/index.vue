@@ -2,5 +2,9 @@
     <h1>Artists</h1>
 </template>
 
-<script setup>
+<script setup lang="ts">
+definePageMeta({
+  middleware: ["auth"]
+  // or middleware: 'auth'
+})
 </script>

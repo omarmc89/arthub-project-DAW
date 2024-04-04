@@ -1,5 +1,5 @@
 <template>
-    <nav class="flex flex-col items-center justify-between w-full px-4 z-10">
+    <nav class="flex flex-col items-center justify-between w-full px-4 z-10 mb-24">
         <section class="flex flex-col w-full h-auto">
             <article class="flex justify-end w-full" >
                 <ul class="flex flex-row gap-x-4 items-center justify-end">
@@ -10,7 +10,7 @@
                         <NuxtLink to="/login">Login</NuxtLink>
                     </li>
                     <li v-if="authenticated" class="app-link loginBtn hover:underline" style="float: right">
-                        <nuxt-link @click="logout">Logout</nuxt-link>
+                        <nuxt-link @click="userLogout">Logout</nuxt-link>
                     </li>
                 </ul>
             </article>

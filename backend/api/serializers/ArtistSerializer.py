@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from api.serializers.ArtworkSerializer import ArtworkSerializer
+# from api.serializers.ArtworkSerializer import ArtworkSerializer
 from api.serializers.CustomUserSerializer import CustomUserSerializer
 
 from django.contrib.auth.hashers import make_password
@@ -10,10 +10,10 @@ from rest_framework.response import Response
 
 
 class ArtistSerializer(serializers.ModelSerializer):
-    artworks = ArtworkSerializer(many=True, read_only=True)
+    # artworks = ArtworkSerializer(many=True, read_only=True)
     user = CustomUserSerializer(read_only=True)
 
     class Meta:
         model = Artist
-        fields = ['id', 'nickname', 'user_id', 'artworks', 'user']
+        fields = ['id', 'nickname', 'user_id', 'user']
         depth = 1

@@ -10,6 +10,7 @@ from .viewsets.ArtworkViewSet import ArtworkViewSet
 from .viewsets.PhotoViewSet import PhotoViewSet
 from .viewsets.PaintingViewSet import PaintingViewSet
 from .viewsets.SearchViewSet import SearchUserViewSet, SearchArtistViewSet
+from .viewsets.ArtworksByUserViewSet import ArtworksByUserViewSet
 
 router = routers.DefaultRouter()
 router.register(r'users', CustomUserViewSet, basename="users")
@@ -24,5 +25,7 @@ urlpatterns = [
     path('auth/', include(dj_rest_auth.urls)),
     path('search/user/', SearchUserViewSet.as_view(), name='search-user'),
     path('search/artist/', SearchArtistViewSet.as_view(), name='search-artist'),
-    path('create/artwork/', CreateArtworkViewSet.as_view(), name='create-artwork')
+    path('search/artworkbyuser/', ArtworksByUserViewSet.as_view(), name='create-artwork'),
+    path('create/artwork/', CreateArtworkViewSet.as_view(), name='user-artworks'),
+
 ]

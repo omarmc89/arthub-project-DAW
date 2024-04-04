@@ -14,11 +14,9 @@ class CreateArtworkViewSet(generics.CreateAPIView):
 
     def post(self, request, *args, **kwargs):
         data = request.data
-        print(data)
         type = data['fetchData'].pop('type')
         artistId = data['fetchData'].pop('artistId')
         artist = Artist.objects.get(id=artistId)
-        print(artist)
         artwork_data = data['fetchData']
         artwork = {
             'title': artwork_data['title'],

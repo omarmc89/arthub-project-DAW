@@ -2,8 +2,8 @@
     <header>
         <AppHeader />
     </header>
-    <div class="background">
-    </div>
+    <div class="background"/>
+    <NuxtLoadingIndicator />
     <UContainer>
       <slot />
     </UContainer>
