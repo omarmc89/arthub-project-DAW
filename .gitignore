@@ -1,2 +1,3 @@
 frontendV3/node_modules
 backend/venv
+__pycache__/
