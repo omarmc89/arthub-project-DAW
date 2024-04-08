@@ -84,12 +84,11 @@ definePageMeta({
 })
 import { useUserLoggedData } from '@/composables/useUserLoggedData'
 import { useCreateArtwork } from '@/composables/useCreateArtwork';
-import useListUserArtworks from '@/composables/useListUserArtworks';
 import { useAuthStore } from '~/store/auth';
 import UserArtworksList from '~/components/UserArtworksList.vue';
 
-
 const authStore = useAuthStore();
+const toast = useToast();
 
 const type = ref('')
 const dataFetch = ref('')
@@ -151,16 +150,15 @@ const createArtwork = async () => {
             errorFetch.value = ''
             dataFetch.value = data
             pendingFetch.value = false
-            toast.add({ title: 'Congratulations! Artwork created!',
-            timeout: 2000, callback:() =>  })
+            await refresh()
+            artoworkCreatedOk()
         }
 }
 
 async function fetchArtworks(artistId) {
-    const { data, error, loading } = await useListUserArtworks(artistId)
-    if (loading) {
-        userArtworksLoading.value = true
-    }
+    const { data, error, pending, refresh } = await useFetch(`http://localhost:8000/api/v1/search/artworkbyuser/?id=${artistId}`, {
+        watch: [artworkCreated.value]
+    })
     if (data) {
         userArtworksLoading.value = false
         userArtworks.value = data.value
@@ -172,7 +170,9 @@ function handleFormVisibility(){
 }
 
 function artoworkCreatedOk() {
-    artworkCreated = !artworkCreated
+    toast.add({ title: 'Congratulations! Artwork created!',
+            timeout: 1500})
+    artworkCreated.value = !artworkCreated.value
 }
 
 </script>
