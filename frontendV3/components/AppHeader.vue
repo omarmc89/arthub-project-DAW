@@ -85,7 +85,7 @@ const userLogout = () => {
 .app-link {
     font-family: 'system-ui';
     font-weight: 700;
-    font-size: 1rem;
+    font-size: 1.5rem;
     text-transform: uppercase;
     color: #000;
 }

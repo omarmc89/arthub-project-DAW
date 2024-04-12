@@ -1,1 +1,1 @@
-export { default } from "file:///Users/omarmartin/Documents/DAW/arthub-project-DAW/frontendV3/node_modules/@nuxt/vite-builder/dist/runtime/client.manifest.mjs"
+export { default } from "file:///home/omar.martin/arthub/arthub-project-DAW/frontendV3/node_modules/@nuxt/vite-builder/dist/runtime/client.manifest.mjs"

@@ -13,7 +13,6 @@ class SearchUserViewSet(generics.ListAPIView):
     def get(self, request, *args, **kwargs):
         try:
             params = {key: value for key, value in request.query_params.items()}
-            print(params)
             user = CustomUser.objects.get(**params)
             user_serialized = CustomUserSerializer(user)
             return Response(user_serialized.data, status=status.HTTP_200_OK)
