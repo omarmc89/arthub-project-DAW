@@ -1,2 +1,5 @@
-frontendV3/node_modules
-backend/venv
+frontendV3/node_modules/
+backend/venv/
+node_modules/
+_pycache_/
+.DS_Store/
