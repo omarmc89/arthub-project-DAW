@@ -157,6 +157,7 @@ declare global {
   const useToast: typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useToast')['useToast']
   const useTransitionState: typeof import('../../node_modules/vue')['useTransitionState']
   const useUI: typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useUI')['useUI']
+  const useUpdateArtwork: typeof import('../../composables/useUpdateArtwork')['useUpdateArtwork']
   const useUserLoggedData: typeof import('../../composables/useUserLoggedData')['useUserLoggedData']
   const watch: typeof import('../../node_modules/vue')['watch']
   const watchEffect: typeof import('../../node_modules/vue')['watchEffect']
@@ -335,6 +336,7 @@ declare module 'vue' {
     readonly useToast: UnwrapRef<typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useToast')['useToast']>
     readonly useTransitionState: UnwrapRef<typeof import('../../node_modules/vue')['useTransitionState']>
     readonly useUI: UnwrapRef<typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useUI')['useUI']>
+    readonly useUpdateArtwork: UnwrapRef<typeof import('../../composables/useUpdateArtwork')['useUpdateArtwork']>
     readonly useUserLoggedData: UnwrapRef<typeof import('../../composables/useUserLoggedData')['useUserLoggedData']>
     readonly watch: UnwrapRef<typeof import('../../node_modules/vue')['watch']>
     readonly watchEffect: UnwrapRef<typeof import('../../node_modules/vue')['watchEffect']>
@@ -506,6 +508,7 @@ declare module '@vue/runtime-core' {
     readonly useToast: UnwrapRef<typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useToast')['useToast']>
     readonly useTransitionState: UnwrapRef<typeof import('../../node_modules/vue')['useTransitionState']>
     readonly useUI: UnwrapRef<typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useUI')['useUI']>
+    readonly useUpdateArtwork: UnwrapRef<typeof import('../../composables/useUpdateArtwork')['useUpdateArtwork']>
     readonly useUserLoggedData: UnwrapRef<typeof import('../../composables/useUserLoggedData')['useUserLoggedData']>
     readonly watch: UnwrapRef<typeof import('../../node_modules/vue')['watch']>
     readonly watchEffect: UnwrapRef<typeof import('../../node_modules/vue')['watchEffect']>

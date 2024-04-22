@@ -1,14 +1,9 @@
 <template>
   <UContainer class="w-6/12 my-8">
-    <UButton @click="handleFormVisibility" label="Click if you want upload an artowork!" icon="i-heroicons-pencil-square" color="purple" block></UButton>
-    <div class="form-label my-4 ">
-        <!-- <label to="type" class="">
-            Select type of artwork
-        </label> -->
-    </div>
-    <section class="form-wrapper" v-if="!hiddenForm">
+    <UButton @click="handleFormVisibility" label="Click if you want upload an artowork!" icon="i-heroicons-pencil-square" color="black" block></UButton>
+    <section class="form-wrapper mt-8" v-if="!hiddenForm">
       <form class="artwork-form space-y-4 text-slate-900" @submit.prevent="createArtwork">
-        <USelect color="violet" variant="outline" size="xl" icon="i-carbon-fetch-upload-cloud" v-model="type" placeholder="Select if you want to upload a photo or painting" :padded="true" :options="options" />
+        <USelect class="text-red-400" color="violet" variant="outline" size="xl" icon="i-carbon-fetch-upload-cloud" v-model="type" placeholder="Select if you want to upload a photo or painting" :padded="true" :options="options" />
         <section class="form-label my-4 flex flex-row gap-8">
           <div>
             <div class="form-label">
@@ -48,7 +43,7 @@
             </div>
           </div>
         </section>
-        <button type="submit" :disabled="pendingFetch" class="btn btn-primary">
+        <button type="submit" :disabled="pendingFetch" class="btn">
           <span v-if="pendingFetch">Submitting...</span>
           <span v-else>Submit</span>
         </button>
@@ -57,29 +52,10 @@
         <p v-if="dataFetch" class="text-lg text-center text-lime-500">Artwork created!</p>
         <p v-if="errorFetch" class="text-lg text-center text-red-600">Error creating artwork</p>
   </UContainer>
-    <!-- <div v-if="loadingArtistData" class="flex flex-col justify-center items-center space-x-4">
-        <h1 class="artworks-title text-bold text-xl mb-10">Hi, {{ userLogged.first_name }} We are loading your profile...</h1>
-    </div> -->
-    <div v-if="userArtworksLoading" class="flex flex-col justify-center items-center space-x-4">
-        <h1 class="artworks-title text-bold text-xl mb-10">Loading your artworks...</h1>
-        <div class="container">
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-        </div>
-    </div>
-
-    <UserArtworksList :userArtworks="userArtworks" />
+    <section class="flex flex-row items-center justify-around">
+      <ArtworkSkeleton v-if ="userArtworksLoading"  />
+      <UserArtworksList v-if="!userArtworksLoading" :userArtworks="userArtworks" />
+    </section>
 
 </template>
 
@@ -95,8 +71,8 @@ import UserArtworksList from '~/components/UserArtworksList.vue';
 
 const authStore = useAuthStore();
 const toast = useToast();
-const { userLogged } = storeToRefs(useAuthStore());
-const type = ref('')
+const { userLogged, artistId } = storeToRefs(useAuthStore());
+const type = ref('Painting')
 const dataFetch = ref('')
 const errorFetch = ref('')
 const pendingFetch = ref(false)
@@ -107,6 +83,12 @@ const hiddenForm = ref(true)
 const artworkCreated = ref(1)
 const loadingArtistData = ref(true)
 let artistData = {}
+const allFetched = ref(false)
+const test = ref(true)
+const id = artistId.value
+
+const route = useRoute()
+console.log(route.path)
 
 const options = [{
     name: 'Painting',
@@ -128,29 +110,34 @@ const artwork = ref({
     height: '',
 })
 
+onBeforeMount(async() => {
+    chargeAllData()
+});
+
 onMounted(async () => {
-  try {
-    loadingArtistData.value = true
-    userArtworksLoading.value = true
-    artistData = await useUserLoggedData();
-    if (artistData) {
-        fetchArtworks(artistData.id)
-        loadingArtistData.value = false
-    }
-  } catch (error) {
-    console.error('Error fetching user artworks:', error);
-  }
+    chargeAllData()
 });
 
 function handleFormVisibility(){
     hiddenForm.value = !hiddenForm.value
 }
 
+async function chargeAllData() {
+  try {
+    loadingArtistData.value = true
+    userArtworksLoading.value = true
+    fetchArtworks(id)
+    loadingArtistData.value = false
+  } catch (error) {
+    console.error('Error fetching user artworks:', error);
+  }
+}
+
 const createArtwork = async () => {
     const fetchingData = {
         ...artwork.value,
         type: type.value,
-        artistId: artistData.id
+        artistId: artistId.value
     }
         pendingFetch.value = true
         const { data, error } = await useCreateArtwork(fetchingData)
@@ -178,15 +165,14 @@ function artoworkCreatedOk() {
 watch(artworkCreated, (newValue, oldValue) => {
   // Realizar el fetch de datos cuando se crea un nuevo artwork
   if (newValue > oldValue) {
-    fetchArtworks(artistData.id)
+    fetchArtworks(id)
   }
 })
 
-async function fetchArtworks(artistId) {
-    const { data, error } = await useFetch(`http://localhost:8000/api/v1/search/artworkbyuser/?id=${artistId}`, {
+
+async function fetchArtworks(idArtist) {
+    const { data, error } = await useFetch(`http://localhost:8000/api/v1/search/artworkbyuser/?id=${idArtist}`, {
         watch: [artworkCreated],
-        lazy: false,
-        server: false
     })
     if (data) {
         userArtworksLoading.value = false
@@ -217,6 +203,18 @@ async function fetchArtworks(artistId) {
     width: 100%;
     max-width: 1000px; /* Ancho máximo del formulario */
   }
+  .form-label label{
+    font-size: 1.5rem;
+    font-family: 'Garute';
+}
+
+.form-label input{
+    font-size: 1.2rem;
+    font-family: 'Afacad';
+    font-weight: 500;
+    color: #818cf8;
+    text-transform: uppercase;
+}
 
   .form-control {
     width: 100%;
@@ -231,186 +229,14 @@ async function fetchArtworks(artistId) {
     padding: 10px 20px;
     border: none;
     border-radius: 20px; /* Cantos redondos */
-    background-color: #007bff;
-    color: #fff;
+    background-color: #232c33;
+    color: #e1e9ec;
     cursor: pointer;
   }
 
   .btn:hover {
-    background-color: #0056b3;
+    background-color: #e1e9ec;
+    color: #232c33;
   }
 
-  @keyframes rotate {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-
-  .particle {
-    position: absolute;
-    top: 0%;
-    left: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    width: 100%;
-
-    &:nth-child(1) {
-      --uib-delay: 0;
-      transform: rotate(8deg);
-    }
-    &:nth-child(2) {
-      --uib-delay: -0.4;
-      transform: rotate(36deg);
-    }
-
-    &:nth-child(3) {
-      --uib-delay: -0.9;
-      transform: rotate(72deg);
-    }
-    &:nth-child(4) {
-      --uib-delay: -0.5;
-      transform: rotate(90deg);
-    }
-    &:nth-child(5) {
-      --uib-delay: -0.3;
-      transform: rotate(144deg);
-    }
-    &:nth-child(6) {
-      --uib-delay: -0.2;
-      transform: rotate(180deg);
-    }
-    &:nth-child(7) {
-      --uib-delay: -0.6;
-      transform: rotate(216deg);
-    }
-    &:nth-child(8) {
-      --uib-delay: -0.7;
-      transform: rotate(252deg);
-    }
-    &:nth-child(9) {
-      --uib-delay: -0.1;
-      transform: rotate(300deg);
-    }
-    &:nth-child(10) {
-      --uib-delay: -0.8;
-      transform: rotate(324deg);
-    }
-    &:nth-child(11) {
-      --uib-delay: -1.2;
-      transform: rotate(335deg);
-    }
-    &:nth-child(12) {
-      --uib-delay: -0.5;
-      transform: rotate(290deg);
-    }
-    &:nth-child(13) {
-      --uib-delay: -0.2;
-      transform: rotate(240deg);
-    }
-  }
-
-  .particle::before {
-    content: '';
-    position: absolute;
-    height: 17.5%;
-    width: 17.5%;
-    border-radius: 50%;
-    background-color: var(--uib-color);
-    flex-shrink: 0;
-    transition: background-color 0.3s ease;
-    --uib-d: calc(var(--uib-delay) * var(--uib-speed));
-    animation: orbit var(--uib-speed) linear var(--uib-d) infinite;
-  }
-
-  @keyframes orbit {
-    0% {
-      transform: translate(calc(var(--uib-size) * 0.5)) scale(0.73684);
-      opacity: 0.65;
-    }
-    5% {
-      transform: translate(calc(var(--uib-size) * 0.4)) scale(0.684208);
-      opacity: 0.58;
-    }
-    10% {
-      transform: translate(calc(var(--uib-size) * 0.3)) scale(0.631576);
-      opacity: 0.51;
-    }
-    15% {
-      transform: translate(calc(var(--uib-size) * 0.2)) scale(0.578944);
-      opacity: 0.44;
-    }
-    20% {
-      transform: translate(calc(var(--uib-size) * 0.1)) scale(0.526312);
-      opacity: 0.37;
-    }
-    25% {
-      transform: translate(0%) scale(0.47368);
-      opacity: 0.3;
-    }
-    30% {
-      transform: translate(calc(var(--uib-size) * -0.1)) scale(0.526312);
-      opacity: 0.37;
-    }
-    35% {
-      transform: translate(calc(var(--uib-size) * -0.2)) scale(0.578944);
-      opacity: 0.44;
-    }
-    40% {
-      transform: translate(calc(var(--uib-size) * -0.3)) scale(0.631576);
-      opacity: 0.51;
-    }
-    45% {
-      transform: translate(calc(var(--uib-size) * -0.4)) scale(0.684208);
-      opacity: 0.58;
-    }
-    50% {
-      transform: translate(calc(var(--uib-size) * -0.5)) scale(0.73684);
-      opacity: 0.65;
-    }
-    55% {
-      transform: translate(calc(var(--uib-size) * -0.4)) scale(0.789472);
-      opacity: 0.72;
-    }
-    60% {
-      transform: translate(calc(var(--uib-size) * -0.3)) scale(0.842104);
-      opacity: 0.79;
-    }
-    65% {
-      transform: translate(calc(var(--uib-size) * -0.2)) scale(0.894736);
-      opacity: 0.86;
-    }
-    70% {
-      transform: translate(calc(var(--uib-size) * -0.1)) scale(0.947368);
-      opacity: 0.93;
-    }
-    75% {
-      transform: translate(0%) scale(1);
-      opacity: 1;
-    }
-    80% {
-      transform: translate(calc(var(--uib-size) * 0.1)) scale(0.947368);
-      opacity: 0.93;
-    }
-    85% {
-      transform: translate(calc(var(--uib-size) * 0.2)) scale(0.894736);
-      opacity: 0.86;
-    }
-    90% {
-      transform: translate(calc(var(--uib-size) * 0.3)) scale(0.842104);
-      opacity: 0.79;
-    }
-    95% {
-      transform: translate(calc(var(--uib-size) * 0.4)) scale(0.789472);
-      opacity: 0.72;
-    }
-    100% {
-      transform: translate(calc(var(--uib-size) * 0.5)) scale(0.73684);
-      opacity: 0.65;
-    }
-  }
 </style>

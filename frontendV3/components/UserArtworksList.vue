@@ -5,33 +5,25 @@
           <h5>{{ userArtwork.title }}</h5>
         </div>
         <div class="user-artwork-card-image-container">
-          <img :src="userArtwork.image_url" :alt="userArtwork.title" />
+          <img :src="userArtwork.image_url" :alt="userArtwork.title"/>
         </div>
         <div class="user-artwork-card-buttons">
-          <UButton @click="navigateTo('artworks/' + userArtwork.id)" variant="ghost" size="xl" icon="i-carbon-pending" color="violet" class="button"></UButton>
+          <UButton @click="artworkRedirect(userArtwork.id)" variant="ghost" size="xl" icon="i-carbon-pending" color="violet" class="button"></UButton>
           <!-- <NuxtLink :to="'artworks/' + userArtwork.id" class="button" as="button"></NuxtLink> -->
           <UButton @click="setDeleteArtworkId(userArtwork.id)" variant="outline" size="xl" icon="i-carbon-trash-can" color="red" class="button"></UButton>
         </div>
       </article>
 
-      <!-- <UModal v-model="deleteModal">
-      <div class="p-4">
-        <section class="h-48 flex flex-col">
-          Are you sure?
-          <UButton @click="deleteArtwork(deleteArtworkId)">Borrar</UButton>
-        </section>
-      </div>
-    </UModal> -->
     <UModal v-model="deleteModal">
-      <UCard :ui="{ ring: '', divide: 'divide-y divide-gray-100 dark:divide-gray-100'}">
+      <UCard class="flex flex-col w-full items-center justify-center" :ui="{ ring: '', divide: 'divide-y divide-gray-100 dark:divide-gray-100'}">
         <template #header>
-          <h3 class="h-8 text-white">Confirmation</h3>
+          <h3 class="h-8 text-xl font-bold drop-shadow-lg text-slate-900">Confirmation</h3>
         </template>
 
-        <p class="h-32 text-white">Are you sure to delete Artwork?</p>
-        <UButton @click="deleteArtwork(deleteArtworkId)">Borrar</UButton>
+        <p class="h-32 text-slate-800 text-center">Are you sure to delete Artwork?</p>
+        <button class="w-full bg-red-400 text-slate-200 text-center rounded-xl h-12 text-xl font-bold hover:text-slate-900 hover:bg-red-600" @click="deleteArtwork(deleteArtworkId)">Borrar</button>
         <template #footer>
-          <small class="h-8 text-white">Delete is not reversible</small>
+          <small class="h-8 text-xl text-red-400">Delete is not reversible</small>
         </template>
       </UCard>
     </UModal>
@@ -43,6 +35,10 @@
 defineProps({
   userArtworks : Object,
 })
+const route = useRoute()
+const params = route.params
+
+const toast = useToast();
 
 const deleteModal = ref(false);
 const deleteArtworkId = ref('');
@@ -57,10 +53,23 @@ async function deleteArtwork(artworkId) {
     await useFetch(`http://localhost:8000/api/v1/artworks/${artworkId}/`, {
       method: 'DELETE'
     } )
+    deleteModal.value = false
+    toast.add({ title: 'Artwork deleted', timeout: 1500, color:"red", callback:window.location.reload()})
   } catch (error) {
     console.error('Error deleting or creating artwork:', error);
   }
 }
+
+function artworkRedirect(artworkId) {
+
+  if (route.path === '/dashboard') {
+    navigateTo('dashboard/' + artworkId)
+  } else {
+    navigateTo('/artworks' + artworkId)
+  }
+
+}
+
 
 </script>
 
@@ -74,8 +83,10 @@ async function deleteArtwork(artworkId) {
 
 .artworks-deck {
   display: grid;
+  width: 100%;
+  height: 100%;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  grid-auto-rows: 350px;
+  grid-auto-rows: auto;
   align-items: center;
   place-content: center;
   gap: 10px;
@@ -96,7 +107,6 @@ async function deleteArtwork(artworkId) {
 .user-artwork-card {
   height: 100%;
   border-bottom: 1px solid #b9bbbe;
-  
 
   .user-artwork-card-title {
     width: 100%;
@@ -130,24 +140,7 @@ async function deleteArtwork(artworkId) {
     display: flex;
     justify-content: space-around;
     align-items: center;
-
-    /* .button {
-      text-align: center;
-      border: 2px solid  #b9bbbe;
-      background-color: #dfe1e5;
-      border-radius:10px;
-      font-size: 20px;
-      cursor: pointer;
-      box-shadow: 2px 2px 10px 0 #15151533;
-    } */
-
-    /* button:hover {
-      background-color: #b9bbbe;
-      color: white;
-      box-shadow:none;
-    } */
   }
-
 }
 
 </style>

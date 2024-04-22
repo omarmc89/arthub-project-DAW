@@ -1,5 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  
     modules: [
         // '@nuxtjs/tailwindcss',
         '@pinia/nuxt',
@@ -22,17 +23,24 @@ export default defineNuxtConfig({
           tailwindcss: {},
           autoprefixer: {},
         },
-      },
-      sourcemap: {
-        server: true,
-        client: true
-      },
-      colorMode: {
-        preference: 'light'
-      },
-      devtools: {
-        timeline: {
-          enabled: true
-        }
+    },
+    sourcemap: {
+      server: true,
+      client: true
+    },
+    colorMode: {
+      preference: 'light'
+    },
+    devtools: {
+      timeline: {
+        enabled: true
       }
+    },
+    app: {
+      head: {
+        link: [
+          { rel: "icon", type: "image/png", href: "/favicon.ico" }
+        ]
+    }
+  }
 })

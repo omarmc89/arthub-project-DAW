@@ -11,7 +11,8 @@ export const useAuthStore = defineStore('auth', {
         loading: false,
         userEmailLogged: '',
         userLogged : '',
-        sessionToken : ''
+        sessionToken : '',
+        artistId: ''
     }),
 
     actions: {
@@ -41,7 +42,7 @@ export const useAuthStore = defineStore('auth', {
 
             return { data: data.value, error: error.value }
         },
-
+    
         async getUserID() {
             const { data } = await useFetch ('http://localhost:8000/api/v1/auth/user/', {
                 method: 'GET',
@@ -55,6 +56,23 @@ export const useAuthStore = defineStore('auth', {
                 const userLogin = {...data.value}
                 this.userLogged = userLogin
                 localStorage.setItem('userId', data.value.pk)
+                this.getArtistId()
+            }
+        },
+        
+        async getArtistId() {
+            const { data } = await useFetch (`http://localhost:8000/api/v1/search/artist/?user_id=${this.userLogged.pk}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Token ${localStorage.getItem('token')}`
+            }
+        })
+
+            if (data.value) {
+                const artistData = data.value
+                this.artistId = artistData.id
+                localStorage.setItem('artistID', data.value.id)
             }
         },
 
@@ -64,6 +82,8 @@ export const useAuthStore = defineStore('auth', {
             token.value = null
             this.userEmailLogged = null
             this.userLogged = null
+            this.sessionToken = null
+            this.artistId = null
             localStorage.removeItem('token')
             localStorage.removeItem('userId')
         }

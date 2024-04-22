@@ -1,37 +1,40 @@
 <template>
-    <nav class="flex flex-col items-center justify-between w-full px-4 z-10 mb-24">
+    <nav class="flex flex-col items-center justify-between w-full px-4 z-10 mt-2">
         <section class="flex flex-col w-full h-auto">
             <article class="flex justify-end w-full" >
                 <ul class="flex flex-row gap-x-4 items-center justify-end">
-                    <li v-if="!authenticated" class="app-link registerBtn hover:underline" style="float: right">
+                    <li v-if="!authenticated" class="app-link p-1 py-2 hover:bg-green-300 hover:rounded-lg">
                         <NuxtLink to="/register">Register</NuxtLink>
                     </li>
-                    <li v-if="!authenticated" class="app-link loginBtn hover:underline" style="float: right">
+                    <li v-if="!authenticated" class="app-link p-1 py-2 hover:bg-green-300 hover:rounded-lg">
                         <NuxtLink to="/login">Login</NuxtLink>
                     </li>
-                    <li v-if="authenticated" class="app-link loginBtn hover:underline" style="float: right">
-                        <nuxt-link @click="userLogout">Logout</nuxt-link>
+                    <li v-if="authenticated" class="app-link p-1 py-2 hover:bg-sky-300 hover:rounded-lg">
+                        <NuxtLink to="/profile">Profile</NuxtLink>
+                    </li>
+                    <li v-if="authenticated" class="app-link p-1 py-2 hover:bg-sky-300 hover:rounded-lg hover:pointer">
+                        <NuxtLink @click="userLogout">Logout</NuxtLink>
                     </li>
                 </ul>
             </article>
-            <article class="flex text-slate-900 items-center justify-center w-full h-auto py-8">
+            <article class="flex text-slate-900 items-center justify-center w-full h-auto py-16">
                 <a class="no-underline" href="#">
-                    <span class="title text-center text-2xl pl-2 ">ArtHUB</span>
+                    <span class="title items-center text-center text-2xl">ArtHUB</span>
                 </a>
             </article>
 
             <article class="w-full flex-grow items-center justify-center" id="nav-content">
-                <section class="flex w-full flex-row gap-x-6 items-center justify-around">
-                    <NuxtLink class="app-link text-center w-full p-2" style="float: right" to="/">
+                <section class="nav-links flex w-full flex-row gap-x-6 items-center justify-around">
+                    <NuxtLink id="app-link-1" class="app-link text-center w-full p-1" to="/">
                         Home
                     </NuxtLink>
-                    <NuxtLink class="app-link text-center w-full p-2" style="float: right" to="/artworks">
+                    <NuxtLink class="app-link text-center w-full p-1" to="/artworks">
                         Artworks
                     </NuxtLink>
-                    <NuxtLink class="app-link text-center w-full p-2" style="float: right" to="/artists">
+                    <NuxtLink class="app-link text-center w-full p-1" to="/artists">
                         Artists
                     </NuxtLink>
-                    <NuxtLink v-if="userLogged" class="app-link text-center w-full p-2" style="float: right" to="/dashboard">
+                    <NuxtLink v-if="userLogged" class="app-link text-center w-full p-1" to="/dashboard">
                         Dashboard
                     </NuxtLink>
                 </section>
@@ -77,7 +80,7 @@ const userLogout = () => {
 .title{
     font-family: 'Afacad';
     font-weight: 900;
-    font-size: 4.5rem;
+    font-size: 5.5rem;
     letter-spacing: 1rem;
     text-transform: uppercase;
 }
@@ -90,8 +93,33 @@ const userLogout = () => {
     color: #000;
 }
 
+.nav-links .app-link:first-child:hover{
+  /* Estilos para el primer app-link */
+  background-color: #a78bfa !important;
+  border-radius: 10px;
+}
+.nav-links .app-link:nth-child(2):hover{
+  /* Estilos para el primer app-link */
+  background-color: #f472b6 !important;
+  border-radius: 10px;
+
+}
+.nav-links .app-link:nth-child(3):hover{
+  /* Estilos para el primer app-link */
+  background-color: #2dd4bf !important;
+  border-radius: 10px;
+
+}
+.nav-links .app-link:nth-child(4):hover{
+  /* Estilos para el primer app-link */
+  background-color: #facc15 !important;
+  border-radius: 10px;
+
+}
+
 .router-link-active {
   @apply border-b-4 border-slate-900;
+  @apply pointer-events-none;
 }
 
 </style>

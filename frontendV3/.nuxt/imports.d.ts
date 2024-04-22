@@ -29,6 +29,7 @@ export { injectHead, useHead, useSeoMeta, useHeadSafe, useServerHead, useServerS
 export { useCreateArtwork } from '../composables/useCreateArtwork';
 export { default as useListArtworks } from '../composables/useListArtworks';
 export { default as useListUserArtworks } from '../composables/useListUserArtworks';
+export { useUpdateArtwork } from '../composables/useUpdateArtwork';
 export { useUserLoggedData } from '../composables/useUserLoggedData';
 export { defineShortcuts } from '../node_modules/@nuxt/ui/dist/runtime/composables/defineShortcuts';
 export { useProvideButtonGroup, useInjectButtonGroup } from '../node_modules/@nuxt/ui/dist/runtime/composables/useButtonGroup';

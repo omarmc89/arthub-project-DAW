@@ -78,6 +78,9 @@
       "public": [
         "../public"
       ],
+      "public/*": [
+        "../public/*"
+      ],
       "pinia": [
         "../node_modules/pinia/dist/pinia"
       ],

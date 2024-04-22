@@ -41,6 +41,6 @@ if (import.meta.hot) {
   })
 }
 
-import cfg0 from "/home/omar.martin/arthub/arthub-project-DAW/frontendV3/app.config.ts"
+import cfg0 from "/Users/omarmartin/Documents/DAW/arthub-project-DAW/frontendV3/app.config.ts"
 
 export default /*@__PURE__*/ defuFn(cfg0, inlineConfig)

@@ -1,15 +1,15 @@
 <template>
-    <nav class="flex flex-col items-center justify-between w-full px-4 z-10">
+    <nav class="flex flex-col items-center justify-between w-full px-4 z-10 mt-2">
         <section class="flex flex-col w-full h-auto">
-            <article class="flex text-slate-900 items-center justify-center w-full h-auto py-8">
+            <article class="flex text-slate-900 items-center justify-center w-full h-auto py-16">
                 <a class="no-underline" href="#">
-                    <span class="title text-center text-2xl pl-2 ">ArtHUB</span>
+                    <span class="title text-center text-2xl py-16 ">ArtHUB</span>
                 </a>
             </article>
 
             <article class="w-full flex-grow items-center justify-center" id="nav-content">
                 <section class="flex w-full flex-row gap-x-6 items-center justify-around">
-                    <NuxtLink class="app-link text-center w-full p-2" style="float: right" to="/">
+                    <NuxtLink class="app-link text-center text-slate-200 p-2 bg-slate-900 rounded-lg hover:bg-slate-200 hover:text-slate-900 " style="float: right" to="/">
                        Back to homepage
                     </NuxtLink>
                 </section>
@@ -38,7 +38,7 @@ const router = useRouter();
 .title{
     font-family: 'Afacad';
     font-weight: 900;
-    font-size: 4.5rem;
+    font-size: 5.5rem;
     letter-spacing: 1rem;
     text-transform: uppercase;
 }
@@ -48,7 +48,6 @@ const router = useRouter();
     font-weight: 700;
     font-size: 1rem;
     text-transform: uppercase;
-    color: #000;
 }
 /* 
 .router-link-active {

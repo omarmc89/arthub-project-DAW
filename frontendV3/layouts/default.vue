@@ -4,7 +4,7 @@
     </header>
     <div class="background"/>
     <NuxtLoadingIndicator />
-    <UContainer>
+    <UContainer class="min-h-screen mt-12 py-0">
       <slot />
     </UContainer>
 
@@ -13,4 +13,10 @@
       <AppFooter />
     </footer>
 </template>
+
+<style scoped>
+body {
+  min-height: 100vh;
+}
+</style>
 

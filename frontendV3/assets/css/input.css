@@ -6,11 +6,20 @@
     --text-color : #232C33
 }
 
-body{
+html{
     min-height: 100vh;
-    width: 100%;
+    min-width: 100vw;
+}
+#__nuxt {
+    @apply h-full w-full;
+  }
+body {
+    min-height: 100vh;
+    min-width: 100vw;
     position: relative;
     color: #232C33;
+    display:flex;
+    flex-direction: column;
 }
 
 .background{
@@ -24,3 +33,4 @@ body{
     top: 0;
     z-index: -1;
 }
+
