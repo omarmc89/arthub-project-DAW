@@ -1,30 +1,29 @@
 <template>
-    <ArtworkShowSkeleton v-if="pendingFetch" />
-    <div v-if="!pendingFetch">
-        <section class="flex flex-row gap-8 text-center items-center justify-center">
-            <h1 class="title drop-shadow-xl">{{ artwork.title }}</h1>
-            
-        </section>
-        <section class="flex flex-row">
-            <article class="w-1/2">     
-                <div class="image-container h-full flex items-center justify-center">
-                    <img :src="artwork.image_url" :alt="artwork.title" class="max-w-full max-h-full"> 
-                </div>
-            </article>
-            <article class="w-1/2">
-                    <div class="details-container flex flex-col items-center justify-around h-full space-y-4 text-slate-900">
-                        <h1 class="title drop-shadow-xl"> 🧑🏽‍💻 {{ user.username }}</h1>
-                        <p class="info">{{ artwork.description }}</p>
-                        <p class="info uppercase">{{ artworkDetails.style }}</p>
-                        <p class="info">{{ artwork.price }} € </p>
-                        <div v-if="!isPhoto">
-                            <p class="info">Width: {{ artworkDetails.width }}</p>
-                            <p class="info">Height: {{ artworkDetails.height }}</p>
-                        </div>
+        <ArtworkShowSkeleton v-if="pendingFetch" />
+        <div class="flex flex-col h-100" v-if="!pendingFetch">
+            <section class="flex flex-row gap-8 text-center items-center justify-center h-2/6">
+                <h1 class="title drop-shadow-xl">{{ artwork.title }}</h1>              
+            </section>
+            <section class="flex flex-row gap-8 h-4/6">
+                <article class="w-1/2">     
+                    <div class="image-container h-full flex items-center justify-center">
+                        <img :src="artwork.image_url" :alt="artwork.title" class="max-w-full max-h-full"> 
                     </div>
-            </article>
-        </section>
-    </div>
+                </article>
+                <article class="w-1/2">
+                        <div class="details-container flex flex-col items-center justify-around h-full space-y-4 text-slate-900">
+                            <h1 class="title drop-shadow-xl"> 🧑🏽‍💻 {{ user.username }}</h1>
+                            <p class="info border-2 bg-slate-800 bg-opacity-30 rounded-xl">{{ artwork.description }}</p>
+                            <p class="info uppercase">{{ artworkDetails.style }}</p>
+                            <p class="info">{{ artwork.price }} € </p>
+                            <div v-if="!isPhoto">
+                                <p class="info">Width: {{ artworkDetails.width }}</p>
+                                <p class="info">Height: {{ artworkDetails.height }}</p>
+                            </div>
+                        </div>
+                </article>
+            </section>
+        </div>
 </template>
 
 <script setup>
@@ -36,6 +35,7 @@ const id = ref(params.id)
 
 const isPhoto = ref(true)
 const pendingFetch = ref(true)
+const fetchData = ref({})
 
 const artworkDetails = ref({
     style: '',
@@ -69,7 +69,8 @@ onMounted( async () => {
     const { data, error } = await useFetch(`http://localhost:8000/api/v1/artworkDetails/?id=${artworkId}`, {
     })
     if (data) {
-        artwork.value = data.value.artwork
+        fetchData.value = data.value
+        artwork.value = fetchData.value.artwork
         artist.value = artwork.value.artist
         artworkDetails.value = data.value.photo ? data.value.photo : data.value.painting
         isPhoto.value = data.value.photo !== undefined ? true : false
@@ -92,12 +93,14 @@ onMounted( async () => {
     font-weight: 800;
     text-align: center;
     margin-bottom: 1rem;
+    text-align: center;
 }
 
 .info {
     font-family: 'Afacad';
     font-size: 2.5rem;
     font-weight: 500;
+    text-align: center;
 }
 /* 
 .image-container {

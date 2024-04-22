@@ -74,7 +74,7 @@ const appConfig0 = defineAppConfig({
   ui: {
     colors: ["shark"],
     container: {
-      base: "flex flex-col items-center justify-center w-full"
+      base: "flex flex-col items-center justify-stretch w-full h-full"
     },
     formGroup: {
       label: {
@@ -84,7 +84,7 @@ const appConfig0 = defineAppConfig({
       }
     },
     skeleton: {
-      base: "animate-pulse",
+      base: "animate-pulse flex-grow",
       background: "bg-gray-400",
       rounded: "rounded-xl"
     },

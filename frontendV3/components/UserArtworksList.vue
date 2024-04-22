@@ -10,11 +10,11 @@
         <div class="user-artwork-card-buttons">
           <UButton @click="artworkRedirect(userArtwork.id)" variant="ghost" size="xl" icon="i-carbon-pending" color="violet" class="button"></UButton>
           <!-- <NuxtLink :to="'artworks/' + userArtwork.id" class="button" as="button"></NuxtLink> -->
-          <UButton @click="setDeleteArtworkId(userArtwork.id)" variant="outline" size="xl" icon="i-carbon-trash-can" color="red" class="button"></UButton>
+          <UButton @click="$emit('artworkId', userArtwork.id)" variant="outline" size="xl" icon="i-carbon-trash-can" color="red" class="button"></UButton>
         </div>
       </article>
 
-    <UModal v-model="deleteModal">
+    <!-- <UModal v-model="deleteModal">
       <UCard class="flex flex-col w-full items-center justify-center" :ui="{ ring: '', divide: 'divide-y divide-gray-100 dark:divide-gray-100'}">
         <template #header>
           <h3 class="h-8 text-xl font-bold drop-shadow-lg text-slate-900">Confirmation</h3>
@@ -26,7 +26,7 @@
           <small class="h-8 text-xl text-red-400">Delete is not reversible</small>
         </template>
       </UCard>
-    </UModal>
+    </UModal> -->
     </section>
 </template>
 
@@ -40,25 +40,33 @@ const params = route.params
 
 const toast = useToast();
 
-const deleteModal = ref(false);
-const deleteArtworkId = ref('');
+// const emit = defineEmits(['deleteArtwork', userArtwork.value.id])
+// function emitArtworkid() {
+//   $emit('deleteArtwork', userArtwork.value.id);
+// }
 
-function setDeleteArtworkId(artworkId) {
-  deleteArtworkId.value = artworkId;
-  deleteModal.value = true;
-}
+// const deleteModal = ref(false);
+// const deleteArtworkId = ref('');
 
-async function deleteArtwork(artworkId) {
-  try {
-    await useFetch(`http://localhost:8000/api/v1/artworks/${artworkId}/`, {
-      method: 'DELETE'
-    } )
-    deleteModal.value = false
-    toast.add({ title: 'Artwork deleted', timeout: 1500, color:"red", callback:window.location.reload()})
-  } catch (error) {
-    console.error('Error deleting or creating artwork:', error);
-  }
-}
+// const { emit } = defineEmits();
+
+
+// function setDeleteArtworkId(artworkId) {
+//   deleteArtworkId.value = artworkId;
+//   deleteModal.value = true;
+// }
+
+// async function deleteArtwork(artworkId) {
+//   try {
+//     await useFetch(`http://localhost:8000/api/v1/artworks/${artworkId}/`, {
+//       method: 'DELETE'
+//     } )
+//     deleteModal.value = false
+//     toast.add({ title: 'Artwork deleted', timeout: 1500, color:"red", callback:window.location.reload()})
+//   } catch (error) {
+//     console.error('Error deleting or creating artwork:', error);
+//   }
+// }
 
 function artworkRedirect(artworkId) {
 

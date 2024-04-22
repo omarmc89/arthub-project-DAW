@@ -54,8 +54,21 @@
   </UContainer>
     <section class="flex flex-row items-center justify-around">
       <ArtworkSkeleton v-if ="userArtworksLoading"  />
-      <UserArtworksList v-if="!userArtworksLoading" :userArtworks="userArtworks" />
+      <UserArtworksList v-if="!userArtworksLoading" :userArtworks="userArtworks" @artworkId="setDeleteArtworkId" />
     </section>
+    <UModal v-model="deleteModal">
+      <UCard class="flex flex-col w-full items-center justify-center" :ui="{ ring: '', divide: 'divide-y divide-gray-100 dark:divide-gray-100'}">
+        <template #header>
+          <h3 class="h-8 text-xl font-bold drop-shadow-lg text-slate-900">Confirmation</h3>
+        </template>
+
+        <p class="h-32 text-slate-800 text-center">Are you sure to delete Artwork?</p>
+        <button class="w-full bg-red-400 text-slate-200 text-center rounded-xl h-12 text-xl font-bold hover:text-slate-900 hover:bg-red-600" @click="deleteArtwork(deleteArtworkId)">Borrar</button>
+        <template #footer>
+          <small class="h-8 text-xl text-red-400">Delete is not reversible</small>
+        </template>
+      </UCard>
+    </UModal>
 
 </template>
 
@@ -82,10 +95,13 @@ const userArtworksLoading = ref(false)
 const hiddenForm = ref(true)
 const artworkCreated = ref(1)
 const loadingArtistData = ref(true)
+const deleteModal = ref(false);
+const deleteArtworkId = ref('');
 let artistData = {}
 const allFetched = ref(false)
 const test = ref(true)
 const id = artistId.value
+
 
 const route = useRoute()
 console.log(route.path)
@@ -136,7 +152,7 @@ async function chargeAllData() {
 const createArtwork = async () => {
     const fetchingData = {
         ...artwork.value,
-        type: type.value,
+        type: type.value.toLowerCase(),
         artistId: artistId.value
     }
         pendingFetch.value = true
@@ -157,9 +173,12 @@ const createArtwork = async () => {
 function artoworkCreatedOk() {
     toast.add({ title: 'Congratulations! Artwork created!',
             timeout: 1500})
+    resetForm()
     dataFetch.value = false
     errorFetch.value = false
+    hiddenForm.value = true
     artworkCreated.value += 1
+    useScrollToTop() 
 }
 
 watch(artworkCreated, (newValue, oldValue) => {
@@ -168,7 +187,6 @@ watch(artworkCreated, (newValue, oldValue) => {
     fetchArtworks(id)
   }
 })
-
 
 async function fetchArtworks(idArtist) {
     const { data, error } = await useFetch(`http://localhost:8000/api/v1/search/artworkbyuser/?id=${idArtist}`, {
@@ -180,6 +198,37 @@ async function fetchArtworks(idArtist) {
     }
 }
 
+async function deleteArtwork(artworkId) {
+  try {
+    await useFetch(`http://localhost:8000/api/v1/artworks/${artworkId}/`, {
+      method: 'DELETE'
+    } )
+    artworkCreated.value += 1
+    deleteModal.value = false
+    userArtworksLoading.value = true
+    useScrollToTop()
+    toast.add({ title: 'Artwork deleted', timeout: 1500, color:"red"})
+
+  } catch (error) {
+    console.error('Error deleting or creating artwork:', error);
+  }
+}
+
+function setDeleteArtworkId(artworkId) {
+  console.log('Artwork ID:', artworkId);
+  deleteArtworkId.value = artworkId;
+  deleteModal.value = true;
+}
+
+function resetForm() {
+  artwork.value.title= ''
+  artwork.value.description= ''
+  artwork.value.image_url= ''
+  artwork.value.price= ''
+  artwork.value.style= ''
+  artwork.value.width= ''
+  artwork.value.height= ''
+}
 </script>
 
 <style scoped>
