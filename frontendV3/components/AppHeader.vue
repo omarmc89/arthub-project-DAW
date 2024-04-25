@@ -3,29 +3,36 @@
         <section class="flex flex-col w-full h-auto">
             <article class="flex justify-end w-full" >
                 <ul class="flex flex-row gap-x-4 items-center justify-end">
-                    <li v-if="!authenticated" class="app-link p-1 py-2 hover:bg-green-300 hover:rounded-lg">
+                    <li v-if="!authenticated" class="app-link-top  p-1 hover:bg-green-300 hover:rounded-lg">
                         <NuxtLink to="/register">Register</NuxtLink>
                     </li>
-                    <li v-if="!authenticated" class="app-link p-1 py-2 hover:bg-green-300 hover:rounded-lg">
+                    <li v-if="!authenticated" class="app-link-top p-1 hover:bg-green-300 hover:rounded-lg">
                         <NuxtLink to="/login">Login</NuxtLink>
                     </li>
-                    <li v-if="authenticated" class="app-link p-1 py-2 hover:bg-sky-300 hover:rounded-lg">
+                    <li v-if="authenticated" class="app-link-top p-1 hover:bg-sky-300 hover:rounded-lg">
                         <NuxtLink to="/profile">Profile</NuxtLink>
                     </li>
-                    <li v-if="authenticated" class="app-link p-1 py-2 hover:bg-sky-300 hover:rounded-lg hover:pointer">
-                        <NuxtLink @click="userLogout">Logout</NuxtLink>
+                    <li v-if="authenticated" class="app-link-top p-1 hover:bg-sky-300 hover:rounded-lg hover:cursor-pointer">
+                        <NuxtLink type="button" @click="userLogout">Logout</NuxtLink>
                     </li>
                 </ul>
             </article>
-            <article class="flex text-slate-900 items-center justify-center w-full h-auto py-16">
+            <article class="flex text-slate-900 items-center justify-center w-full h-auto py-8">
                 <a class="no-underline" href="#">
-                    <span class="title items-center text-center text-2xl">ArtHUB</span>
+                    <p class="title flex flex-row gap-0 items-center text-center text-2xl py-2">
+                        <span class="letter hover:-translate-y-2 hover:scale-125 hover:text-purple-400 hover:lowercase">A</span>
+                        <span class="letter hover:-translate-y-2 hover:scale-125 hover:text-pink-400 hover:lowercase">r</span>
+                        <span class="letter hover:-translate-y-2 hover:scale-125 hover:text-green-400 hover:lowercase">t</span>
+                        <span class="letter hover:-translate-y-2 hover:scale-125 hover:text-shark-400 hover:lowercase">H</span>
+                        <span class="letter hover:-translate-y-2 hover:scale-125 hover:text-cyan-400 hover:lowercase">U</span>
+                        <span class="letter hover:-translate-y-2 hover:scale-125 hover:text-orange-400 hover:lowercase">B</span>
+                    </p>
                 </a>
             </article>
 
             <article class="w-full flex-grow items-center justify-center" id="nav-content">
                 <section class="nav-links flex w-full flex-row gap-x-6 items-center justify-around">
-                    <NuxtLink id="app-link-1" class="app-link text-center w-full p-1" to="/">
+                    <NuxtLink id="app-link" class="app-link text-center w-full p-1" to="/">
                         Home
                     </NuxtLink>
                     <NuxtLink class="app-link text-center w-full p-1" to="/artworks">
@@ -85,12 +92,27 @@ const userLogout = () => {
     text-transform: uppercase;
 }
 
-.app-link {
-    font-family: 'system-ui';
+.app-link,
+.app-link-top {
     font-weight: 700;
     font-size: 1.5rem;
     text-transform: uppercase;
     color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all ease-in-out 0.5s;
+}
+
+.app-link-top{
+    transition: all ease-in-out 0.2s;
+}
+
+.app-link:hover{
+    font-family: 'Afacad';
+    letter-spacing: 1rem;
+    font-weight: 500;
+    font-stretch: expanded;
 }
 
 .nav-links .app-link:first-child:hover{

@@ -125,6 +125,7 @@ declare global {
   const useLazyAsyncData: typeof import('../../node_modules/nuxt/dist/app/composables/asyncData')['useLazyAsyncData']
   const useLazyFetch: typeof import('../../node_modules/nuxt/dist/app/composables/fetch')['useLazyFetch']
   const useLink: typeof import('../vue-router-stub')['useLink']
+  const useListArtists: typeof import('../../composables/useListArtists')['default']
   const useListArtworks: typeof import('../../composables/useListArtworks')['default']
   const useListUserArtworks: typeof import('../../composables/useListUserArtworks')['default']
   const useLoadingIndicator: typeof import('../../node_modules/nuxt/dist/app/composables/loading-indicator')['useLoadingIndicator']
@@ -305,6 +306,7 @@ declare module 'vue' {
     readonly useLazyAsyncData: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/asyncData')['useLazyAsyncData']>
     readonly useLazyFetch: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/fetch')['useLazyFetch']>
     readonly useLink: UnwrapRef<typeof import('../vue-router-stub')['useLink']>
+    readonly useListArtists: UnwrapRef<typeof import('../../composables/useListArtists')['default']>
     readonly useListArtworks: UnwrapRef<typeof import('../../composables/useListArtworks')['default']>
     readonly useListUserArtworks: UnwrapRef<typeof import('../../composables/useListUserArtworks')['default']>
     readonly useLoadingIndicator: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/loading-indicator')['useLoadingIndicator']>
@@ -478,6 +480,7 @@ declare module '@vue/runtime-core' {
     readonly useLazyAsyncData: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/asyncData')['useLazyAsyncData']>
     readonly useLazyFetch: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/fetch')['useLazyFetch']>
     readonly useLink: UnwrapRef<typeof import('../vue-router-stub')['useLink']>
+    readonly useListArtists: UnwrapRef<typeof import('../../composables/useListArtists')['default']>
     readonly useListArtworks: UnwrapRef<typeof import('../../composables/useListArtworks')['default']>
     readonly useListUserArtworks: UnwrapRef<typeof import('../../composables/useListUserArtworks')['default']>
     readonly useLoadingIndicator: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/loading-indicator')['useLoadingIndicator']>
