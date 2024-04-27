@@ -17,7 +17,7 @@ export const useAuthStore = defineStore('auth', {
 
     actions: {
         async authenticateUser({ email, password }) {
-            const { data, error, pending } = await useFetch('http://localhost:8000/api/v1/auth/login/', {
+            const { data, error, pending } = await useFetch('https://arthub-api-polished-breeze-902.fly.dev/api/v1/auth/login/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -44,7 +44,7 @@ export const useAuthStore = defineStore('auth', {
         },
     
         async getUserID() {
-            const { data } = await useFetch ('http://localhost:8000/api/v1/auth/user/', {
+            const { data } = await useFetch ('https://arthub-api-polished-breeze-902.fly.dev/api/v1/auth/user/', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -61,7 +61,7 @@ export const useAuthStore = defineStore('auth', {
         },
         
         async getArtistId() {
-            const { data } = await useFetch (`http://localhost:8000/api/v1/search/artist/?user_id=${this.userLogged.pk}`, {
+            const { data } = await useFetch (`https://arthub-api-polished-breeze-902.fly.dev/api/v1/search/artist/?user_id=${this.userLogged.pk}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',

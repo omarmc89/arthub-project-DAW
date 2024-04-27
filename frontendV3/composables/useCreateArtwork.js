@@ -3,9 +3,10 @@ import { useAuthStore } from '~/store/auth'
 
 
 export const useCreateArtwork = async (fetchData) => {
+    const runtimeConfig = useRuntimeConfig()
     const { sessionToken} = useAuthStore();
 
-    const { data, error, pending } = await useFetch('http://localhost:8000/api/v1/create/artwork/', {
+    const { data, error, pending } = await useFetch(runtimeConfig.public.baseUrl + 'create/artwork/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

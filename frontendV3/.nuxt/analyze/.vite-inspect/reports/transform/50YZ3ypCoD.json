@@ -1,0 +1,225 @@
+{
+  "resolvedId": "/Users/omarmartin/Documents/DAW/arthub-project-DAW/frontendV3/node_modules/@nuxt/ui/dist/runtime/components/overlays/Slideovers.client.vue?nuxt_component=client,async&nuxt_component_name=USlideovers",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "<template>\n  <component\n    :is=\"slideoverState.component\"\n    v-if=\"slideoverState\"\n    v-bind=\"slideoverState.props\"\n    v-model=\"isOpen\"\n  />\n</template>\n\n<script lang=\"ts\" setup>\nimport { inject } from 'vue'\nimport { useSlideover, slidOverInjectionKey } from '../../composables/useSlideover'\n\nconst slideoverState = inject(slidOverInjectionKey)\n\nconst { isOpen } = useSlideover()\n</script>\n",
+      "start": 1714082880771,
+      "end": 1714082881317,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1714082881317,
+      "end": 1714082881317,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1714082881317,
+      "end": 1714082881317,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1714082881317,
+      "end": 1714082881317,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1714082881317,
+      "end": 1714082881317,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1714082881317,
+      "end": 1714082881317,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1714082881317,
+      "end": 1714082881317,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1714082881317,
+      "end": 1714082881317,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "result": "import _sfc_main from \"/Users/omarmartin/Documents/DAW/arthub-project-DAW/frontendV3/node_modules/@nuxt/ui/dist/runtime/components/overlays/Slideovers.client.vue?vue&type=script&setup=true&lang.ts\";\nexport * from \"/Users/omarmartin/Documents/DAW/arthub-project-DAW/frontendV3/node_modules/@nuxt/ui/dist/runtime/components/overlays/Slideovers.client.vue?vue&type=script&setup=true&lang.ts\";\nexport default _sfc_main;\n",
+      "start": 1714082881317,
+      "end": 1714082881338,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1714082881338,
+      "end": 1714082881338,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1714082881338,
+      "end": 1714082881338,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1714082881338,
+      "end": 1714082881338,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1714082881338,
+      "end": 1714082881338,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "result": "import { defineAsyncComponent } from \"vue\"\nimport { createClientOnly } from \"#app/components/client-only\"\nexport default defineAsyncComponent(() => import(\"/Users/omarmartin/Documents/DAW/arthub-project-DAW/frontendV3/node_modules/@nuxt/ui/dist/runtime/components/overlays/Slideovers.client.vue\").then(r => createClientOnly(r.default)))",
+      "start": 1714082881338,
+      "end": 1714082881338,
+      "order": "normal",
+      "sourcemaps": null
+    },
+    {
+      "name": "replace",
+      "start": 1714082881338,
+      "end": 1714082881338,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1714082881338,
+      "end": 1714082881338,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1714082881338,
+      "end": 1714082881338,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1714082881338,
+      "end": 1714082881338,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1714082881338,
+      "end": 1714082881338,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1714082881338,
+      "end": 1714082881338,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1714082881338,
+      "end": 1714082881338,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1714082881338,
+      "end": 1714082881338,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1714082881338,
+      "end": 1714082881338,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1714082881338,
+      "end": 1714082881338,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1714082881338,
+      "end": 1714082881338,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1714082881338,
+      "end": 1714082881338,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1714082881338,
+      "end": 1714082881338,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1714082881338,
+      "end": 1714082881338,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1714082881338,
+      "end": 1714082881338,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1714082881338,
+      "end": 1714082881338,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1714082881338,
+      "end": 1714082881338,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1714082881338,
+      "end": 1714082881339,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "result": "import { __vitePreload } from \"\u0000vite/preload-helper.js\";import { defineAsyncComponent } from \"vue\"\nimport { createClientOnly } from \"#app/components/client-only\"\nexport default defineAsyncComponent(() => __vitePreload(() => import(\"/Users/omarmartin/Documents/DAW/arthub-project-DAW/frontendV3/node_modules/@nuxt/ui/dist/runtime/components/overlays/Slideovers.client.vue\"),__VITE_IS_MODERN__?\"__VITE_PRELOAD__\":void 0,import.meta.url).then(r => createClientOnly(r.default)))",
+      "start": 1714082881339,
+      "end": 1714082881339,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": "wDAAA,MAAM,CAAC,CAAC,CAAC,oBAAoB,CAAC,CAAC,CAAC,IAAI,CAAC,CAAC,GAAG,CAAC;AAC1C,MAAM,CAAC,CAAC,CAAC,gBAAgB,CAAC,CAAC,CAAC,IAAI,CAAC,CAAC,CAAC,GAAG,CAAC,UAAU,CAAC,MAAM,CAAC,IAAI,CAAC;AAC9D,MAAM,CAAC,OAAO,CAAC,oBAAoB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,qBAAC,MAAM,CAAC,CAAC,CAAC,KAAK,CAAC,UAAU,CAAC,SAAS,CAAC,GAAG,CAAC,MAAM,CAAC,OAAO,CAAC,GAAG,CAAC,UAAU,CAAC,YAAY,CAAC,CAAC,IAAI,CAAC,EAAE,CAAC,IAAI,CAAC,OAAO,CAAC,UAAU,CAAC,QAAQ,CAAC,UAAU,CAAC,MAAM,CAAC,GAAG,CAAC,+DAAC,CAAC,IAAI,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,gBAAgB,CAAC,CAAC,CAAC,OAAO,CAAC,CAAC"
+      }
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1714082881339,
+      "end": 1714082881339,
+      "order": "normal"
+    }
+  ]
+}

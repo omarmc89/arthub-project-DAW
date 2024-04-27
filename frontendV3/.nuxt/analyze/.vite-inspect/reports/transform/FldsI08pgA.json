@@ -1,0 +1,252 @@
+{
+  "resolvedId": "/Users/omarmartin/Documents/DAW/arthub-project-DAW/frontendV3/components/UserArtworksList.vue?vue&type=style&index=0&lang.css",
+  "transforms": [
+    {
+      "name": "vite:vue",
+      "result": "\n\n.artworks-title {\n  font-size: 30px;\n  font-weight: bold;\n  color: #151515af;\n}\n\n.artworks-deck {\n  display: grid;\n  width: 100%;\n  height: 100%;\n  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));\n  grid-auto-rows: auto;\n  align-items: center;\n  place-content: center;\n  gap: 10px;\n  padding: 20px;\n}\n\n.alert {\n  width:100%;\n  background-color: rgba(249, 95, 95, 0.621);\n  font-size: 15px;\n  font-weight: bold;\n  display:flex;\n  justify-content: space-between;\n  padding: 5px 15px;\n  color: #151515af;\n}\n\n.user-artwork-card {\n  height: 100%;\n  border-bottom: 1px solid #b9bbbe;\n\n  .user-artwork-card-title {\n    width: 100%;\n    text-align: center;\n    height: 10%;\n    display:flex;\n    align-items: center;\n    justify-content:center;\n    font-weight: bold;\n    letter-spacing: 2px;\n    color: #151515af\n  }\n\n  .user-artwork-card-image-container {\n    width: 100%;\n    height: 75%;\n    img {\n      width: 100%;\n      height: 100%;\n      object-fit: cover;\n      object-position: center;\n      border-radius: 10px;\n      box-shadow: 0 0 10px 0 rgb(93, 93, 93);\n      border: 1px solid #5556589d;\n    }\n  }\n\n  .user-artwork-card-buttons {\n    /* width: 100%; */\n    height: 15%;\n    display: flex;\n    justify-content: space-around;\n    align-items: center;\n  }\n}\n\n",
+      "start": 1714082882862,
+      "end": 1714082882862,
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          "/Users/omarmartin/Documents/DAW/arthub-project-DAW/frontendV3/components/UserArtworksList.vue"
+        ],
+        "names": [],
+        "mappings": "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",
+        "file": "/Users/omarmartin/Documents/DAW/arthub-project-DAW/frontendV3/components/UserArtworksList.vue",
+        "sourceRoot": "",
+        "sourcesContent": [
+          "<template>\n    <section class=\"artworks-deck flex justify-center items-center\" :userArtworks=\"userArtworks\">\n      <article v-for=\"userArtwork in userArtworks\" :key=\"userArtwork.id\" class=\"user-artwork-card\" >\n        <div class=\"user-artwork-card-title\">\n          <h5>{{ userArtwork.title }}</h5>\n        </div>\n        <div class=\"user-artwork-card-image-container\">\n          <img :src=\"userArtwork.image_url\" :alt=\"userArtwork.title\"/>\n        </div>\n        <div class=\"user-artwork-card-buttons\">\n          <UButton @click=\"artworkRedirect(userArtwork.id)\" variant=\"ghost\" size=\"xl\" icon=\"i-carbon-pending\" color=\"violet\" class=\"button\"></UButton>\n          <!-- <NuxtLink :to=\"'artworks/' + userArtwork.id\" class=\"button\" as=\"button\"></NuxtLink> -->\n          <UButton @click=\"$emit('artworkId', userArtwork.id)\" variant=\"outline\" size=\"xl\" icon=\"i-carbon-trash-can\" color=\"red\" class=\"button\"></UButton>\n        </div>\n      </article>\n\n    <!-- <UModal v-model=\"deleteModal\">\n      <UCard class=\"flex flex-col w-full items-center justify-center\" :ui=\"{ ring: '', divide: 'divide-y divide-gray-100 dark:divide-gray-100'}\">\n        <template #header>\n          <h3 class=\"h-8 text-xl font-bold drop-shadow-lg text-slate-900\">Confirmation</h3>\n        </template>\n\n        <p class=\"h-32 text-slate-800 text-center\">Are you sure to delete Artwork?</p>\n        <button class=\"w-full bg-red-400 text-slate-200 text-center rounded-xl h-12 text-xl font-bold hover:text-slate-900 hover:bg-red-600\" @click=\"deleteArtwork(deleteArtworkId)\">Borrar</button>\n        <template #footer>\n          <small class=\"h-8 text-xl text-red-400\">Delete is not reversible</small>\n        </template>\n      </UCard>\n    </UModal> -->\n    </section>\n</template>\n\n<script setup>\n\ndefineProps({\n  userArtworks : Object,\n})\nconst route = useRoute()\nconst params = route.params\n\nconst toast = useToast();\n\n// const emit = defineEmits(['deleteArtwork', userArtwork.value.id])\n// function emitArtworkid() {\n//   $emit('deleteArtwork', userArtwork.value.id);\n// }\n\n// const deleteModal = ref(false);\n// const deleteArtworkId = ref('');\n\n// const { emit } = defineEmits();\n\n\n// function setDeleteArtworkId(artworkId) {\n//   deleteArtworkId.value = artworkId;\n//   deleteModal.value = true;\n// }\n\n// async function deleteArtwork(artworkId) {\n//   try {\n//     await useFetch(`http://localhost:8000/api/v1/artworks/${artworkId}/`, {\n//       method: 'DELETE'\n//     } )\n//     deleteModal.value = false\n//     toast.add({ title: 'Artwork deleted', timeout: 1500, color:\"red\", callback:window.location.reload()})\n//   } catch (error) {\n//     console.error('Error deleting or creating artwork:', error);\n//   }\n// }\n\nfunction artworkRedirect(artworkId) {\n\n  if (route.path === '/dashboard') {\n    navigateTo('dashboard/' + artworkId)\n  } else {\n    navigateTo('/artworks' + artworkId)\n  }\n\n}\n\n\n</script>\n\n<style>\n\n.artworks-title {\n  font-size: 30px;\n  font-weight: bold;\n  color: #151515af;\n}\n\n.artworks-deck {\n  display: grid;\n  width: 100%;\n  height: 100%;\n  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));\n  grid-auto-rows: auto;\n  align-items: center;\n  place-content: center;\n  gap: 10px;\n  padding: 20px;\n}\n\n.alert {\n  width:100%;\n  background-color: rgba(249, 95, 95, 0.621);\n  font-size: 15px;\n  font-weight: bold;\n  display:flex;\n  justify-content: space-between;\n  padding: 5px 15px;\n  color: #151515af;\n}\n\n.user-artwork-card {\n  height: 100%;\n  border-bottom: 1px solid #b9bbbe;\n\n  .user-artwork-card-title {\n    width: 100%;\n    text-align: center;\n    height: 10%;\n    display:flex;\n    align-items: center;\n    justify-content:center;\n    font-weight: bold;\n    letter-spacing: 2px;\n    color: #151515af\n  }\n\n  .user-artwork-card-image-container {\n    width: 100%;\n    height: 75%;\n    img {\n      width: 100%;\n      height: 100%;\n      object-fit: cover;\n      object-position: center;\n      border-radius: 10px;\n      box-shadow: 0 0 10px 0 rgb(93, 93, 93);\n      border: 1px solid #5556589d;\n    }\n  }\n\n  .user-artwork-card-buttons {\n    /* width: 100%; */\n    height: 15%;\n    display: flex;\n    justify-content: space-around;\n    align-items: center;\n  }\n}\n\n</style>"
+        ]
+      }
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1714082882863,
+      "end": 1714082882863,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1714082882863,
+      "end": 1714082882863,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1714082882863,
+      "end": 1714082882863,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "result": ".artworks-title{color:#151515af;font-size:30px;font-weight:700}.artworks-deck{align-items:center;display:grid;gap:10px;grid-auto-rows:auto;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));height:100%;padding:20px;place-content:center;width:100%}.alert{background-color:rgba(249,95,95,.621);color:#151515af;display:flex;font-size:15px;font-weight:700;justify-content:space-between;padding:5px 15px;width:100%}.user-artwork-card{border-bottom:1px solid #b9bbbe;height:100%}.user-artwork-card .user-artwork-card-title{align-items:center;color:#151515af;display:flex;font-weight:700;height:10%;justify-content:center;letter-spacing:2px;text-align:center;width:100%}.user-artwork-card .user-artwork-card-image-container{height:75%;width:100%}.user-artwork-card .user-artwork-card-image-container img{border:1px solid #5556589d;border-radius:10px;box-shadow:0 0 10px 0 #5d5d5d;height:100%;-o-object-fit:cover;object-fit:cover;-o-object-position:center;object-position:center;width:100%}.user-artwork-card .user-artwork-card-buttons{align-items:center;display:flex;height:15%;justify-content:space-around}",
+      "start": 1714082882863,
+      "end": 1714082882880,
+      "order": "normal",
+      "sourcemaps": {
+        "file": "/Users/omarmartin/Documents/DAW/arthub-project-DAW/frontendV3/components/UserArtworksList.vue",
+        "mappings": "AAEA,gBAGE,eAAgB,CAFhB,cAAe,CACf,eAEF,CAEA,eAME,kBAAmB,CALnB,YAAa,CAOb,QAAS,CAHT,mBAAoB,CADpB,yDAA4D,CAD5D,WAAY,CAMZ,YAAa,CAFb,oBAAqB,CALrB,UAQF,CAEA,OAEE,qCAA0C,CAM1C,eAAgB,CAHhB,YAAY,CAFZ,cAAe,CACf,eAAiB,CAEjB,6BAA8B,CAC9B,gBAAiB,CANjB,UAQF,CAEA,mBAEE,+BAAgC,CADhC,WAoCF,CAjCE,4CAKE,kBAAmB,CAInB,eAAe,CALf,YAAY,CAGZ,eAAiB,CAJjB,UAAW,CAGX,sBAAsB,CAEtB,kBAAmB,CANnB,iBAAkB,CADlB,UASF,CAEA,sDAEE,UAAW,CADX,UAWF,CATE,0DAOE,0BAA2B,CAF3B,kBAAmB,CACnB,6BAAsC,CAJtC,WAAY,CACZ,mBAAiB,CAAjB,gBAAiB,CACjB,yBAAuB,CAAvB,sBAAuB,CAHvB,UAOF,CAGF,8CAKE,kBAAmB,CAFnB,YAAa,CADb,UAAW,CAEX,4BAEF",
+        "names": [],
+        "sources": [
+          "/Users/omarmartin/Documents/DAW/arthub-project-DAW/frontendV3/components/UserArtworksList.vue"
+        ],
+        "sourcesContent": [
+          "\n\n.artworks-title {\n  font-size: 30px;\n  font-weight: bold;\n  color: #151515af;\n}\n\n.artworks-deck {\n  display: grid;\n  width: 100%;\n  height: 100%;\n  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));\n  grid-auto-rows: auto;\n  align-items: center;\n  place-content: center;\n  gap: 10px;\n  padding: 20px;\n}\n\n.alert {\n  width:100%;\n  background-color: rgba(249, 95, 95, 0.621);\n  font-size: 15px;\n  font-weight: bold;\n  display:flex;\n  justify-content: space-between;\n  padding: 5px 15px;\n  color: #151515af;\n}\n\n.user-artwork-card {\n  height: 100%;\n  border-bottom: 1px solid #b9bbbe;\n\n  .user-artwork-card-title {\n    width: 100%;\n    text-align: center;\n    height: 10%;\n    display:flex;\n    align-items: center;\n    justify-content:center;\n    font-weight: bold;\n    letter-spacing: 2px;\n    color: #151515af\n  }\n\n  .user-artwork-card-image-container {\n    width: 100%;\n    height: 75%;\n    img {\n      width: 100%;\n      height: 100%;\n      object-fit: cover;\n      object-position: center;\n      border-radius: 10px;\n      box-shadow: 0 0 10px 0 rgb(93, 93, 93);\n      border: 1px solid #5556589d;\n    }\n  }\n\n  .user-artwork-card-buttons {\n    /* width: 100%; */\n    height: 15%;\n    display: flex;\n    justify-content: space-around;\n    align-items: center;\n  }\n}\n\n"
+        ],
+        "version": 3
+      }
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1714082882880,
+      "end": 1714082882880,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1714082882880,
+      "end": 1714082882880,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1714082882880,
+      "end": 1714082882880,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "result": ".artworks-title{color:#151515af;font-size:30px;font-weight:700}.artworks-deck{align-items:center;display:grid;gap:10px;grid-auto-rows:auto;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));height:100%;padding:20px;place-content:center;width:100%}.alert{background-color:rgba(249,95,95,.621);color:#151515af;display:flex;font-size:15px;font-weight:700;justify-content:space-between;padding:5px 15px;width:100%}.user-artwork-card{border-bottom:1px solid #b9bbbe;height:100%}.user-artwork-card .user-artwork-card-title{align-items:center;color:#151515af;display:flex;font-weight:700;height:10%;justify-content:center;letter-spacing:2px;text-align:center;width:100%}.user-artwork-card .user-artwork-card-image-container{height:75%;width:100%}.user-artwork-card .user-artwork-card-image-container img{border:1px solid #5556589d;border-radius:10px;box-shadow:0 0 10px 0 #5d5d5d;height:100%;-o-object-fit:cover;object-fit:cover;-o-object-position:center;object-position:center;width:100%}.user-artwork-card .user-artwork-card-buttons{align-items:center;display:flex;height:15%;justify-content:space-around}",
+      "start": 1714082882880,
+      "end": 1714082882880,
+      "order": "normal",
+      "sourcemaps": {
+        "file": "/Users/omarmartin/Documents/DAW/arthub-project-DAW/frontendV3/components/UserArtworksList.vue",
+        "mappings": "AAAA,gBAAgB,eAAe,CAAC,cAAc,CAAC,eAAe,CAAC,eAAe,kBAAkB,CAAC,YAAY,CAAC,QAAQ,CAAC,mBAAmB,CAAC,yDAAyD,CAAC,WAAW,CAAC,YAAY,CAAC,oBAAoB,CAAC,UAAU,CAAC,OAAO,qCAAqC,CAAC,eAAe,CAAC,YAAY,CAAC,cAAc,CAAC,eAAe,CAAC,6BAA6B,CAAC,gBAAgB,CAAC,UAAU,CAAC,mBAAmB,+BAA+B,CAAC,WAAW,CAAC,4CAA4C,kBAAkB,CAAC,eAAe,CAAC,YAAY,CAAC,eAAe,CAAC,UAAU,CAAC,sBAAsB,CAAC,kBAAkB,CAAC,iBAAiB,CAAC,UAAU,CAAC,sDAAsD,UAAU,CAAC,UAAU,CAAC,0DAA0D,0BAA0B,CAAC,kBAAkB,CAAC,6BAA6B,CAAC,WAAW,CAAC,mBAAmB,CAAC,gBAAgB,CAAC,yBAAyB,CAAC,sBAAsB,CAAC,UAAU,CAAC,8CAA8C,kBAAkB,CAAC,YAAY,CAAC,UAAU,CAAC,4BAA4B",
+        "names": [],
+        "sources": [
+          "/Users/omarmartin/Documents/DAW/arthub-project-DAW/frontendV3/components/UserArtworksList.vue"
+        ],
+        "sourcesContent": [
+          null
+        ],
+        "version": 3
+      }
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1714082882880,
+      "end": 1714082882880,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1714082882880,
+      "end": 1714082882880,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1714082882880,
+      "end": 1714082882880,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1714082882880,
+      "end": 1714082882880,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1714082882880,
+      "end": 1714082882880,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1714082882880,
+      "end": 1714082882880,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1714082882880,
+      "end": 1714082882880,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1714082882880,
+      "end": 1714082882880,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "result": "",
+      "start": 1714082882880,
+      "end": 1714082882880,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1714082882880,
+      "end": 1714082882880,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1714082882880,
+      "end": 1714082882880,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1714082882880,
+      "end": 1714082882880,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1714082882880,
+      "end": 1714082882880,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1714082882880,
+      "end": 1714082882880,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1714082882880,
+      "end": 1714082882880,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1714082882881,
+      "end": 1714082882881,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1714082882881,
+      "end": 1714082882881,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1714082882881,
+      "end": 1714082882881,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1714082882881,
+      "end": 1714082882881,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1714082882881,
+      "end": 1714082882881,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1714082882881,
+      "end": 1714082882881,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1714082882881,
+      "end": 1714082882881,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1714082882881,
+      "end": 1714082882881,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1714082882881,
+      "end": 1714082882881,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1714082882881,
+      "end": 1714082882881,
+      "order": "normal"
+    }
+  ]
+}

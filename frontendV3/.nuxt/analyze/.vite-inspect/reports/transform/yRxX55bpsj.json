@@ -1,0 +1,231 @@
+{
+  "resolvedId": "/Users/omarmartin/Documents/DAW/arthub-project-DAW/frontendV3/pages/index.vue?macro=true",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "<template>\n    <section class=\"main-banner flex flex-col items-center justify-center\">\n        <h1 class=\"title flex flex-col items-center m-0 p-0\">\n            <span>\n                Welcome to your\n                <span class=\"letter-a text-purple-600 drop-shadow-lg uppercase\">a</span>\n                <span class=\"letter-r text-pink-400 drop-shadow-lg uppercase\">r</span>\n                <span class=\"letter-t text-teal-400 drop-shadow-lg uppercase\">t</span>\n                community\n            </span>\n            <span>Discover <span class=\"bg-yellow-400 rounded-xl p-2 drop-shadow-lg\">brilliant</span> artists and their works</span>\n        </h1>\n    </section>\n    <section class=\"sample-artworks flex flex-col items-center justify-center mt-12\">\n        <p class=\"description animate-bounce mb-8 text-center\">Check out some of our collection!</p>\n        <ArtworkCarousel/>\n    </section>\n</template>\n\n<style scoped>\n\n@font-face {\n    font-family: 'SourGummy';\n    src: url('~/assets/fonts/SourGummy.ttf') format('truetype-variations');\n}\n@font-face {\n    font-family: 'Unique';\n    src: url('~/assets/fonts/Unique.ttf') format('truetype-variations');\n}\n@font-face {\n    font-family: 'Humane';\n    src: url('~/assets/fonts/Humane.ttf') format('truetype-variations');\n}\n@font-face {\n    font-family: 'Garute';\n    src: url('~/assets/fonts/Garute.ttf') format('truetype-variations');\n}\n\n.main-banner {\n    font-family: 'Garute';\n    font-size: 4rem;\n    padding:0;\n    margin:0;\n    font-weight: 800;\n    text-align: center;\n}\n\n.description {\n    font-family: 'SourGummy';\n    font-size: 3rem;\n    font-weight: 900;\n    letter-spacing: 0.4rem;\n    font-weight: 600;\n}\n\n.sample-artworks {\n    font-size: 2rem;\n}\n\n\n</style>",
+      "start": 1714082882113,
+      "end": 1714082882202,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1714082882202,
+      "end": 1714082882202,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1714082882202,
+      "end": 1714082882202,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1714082882202,
+      "end": 1714082882202,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1714082882202,
+      "end": 1714082882202,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1714082882202,
+      "end": 1714082882202,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1714082882202,
+      "end": 1714082882202,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1714082882202,
+      "end": 1714082882202,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "result": "const _sfc_main = {}\nimport { createElementVNode as _createElementVNode, createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, createVNode as _createVNode, createStaticVNode as _createStaticVNode, Fragment as _Fragment, openBlock as _openBlock, createElementBlock as _createElementBlock, pushScopeId as _pushScopeId, popScopeId as _popScopeId } from \"vue\"\n\nconst _withScopeId = n => (_pushScopeId(\"data-v-b6ae57ab\"),n=n(),_popScopeId(),n)\nconst _hoisted_1 = /*#__PURE__*/_createStaticVNode(\"<section class=\\\"main-banner flex flex-col items-center justify-center\\\" data-v-b6ae57ab><h1 class=\\\"title flex flex-col items-center m-0 p-0\\\" data-v-b6ae57ab><span data-v-b6ae57ab> Welcome to your <span class=\\\"letter-a text-purple-600 drop-shadow-lg uppercase\\\" data-v-b6ae57ab>a</span><span class=\\\"letter-r text-pink-400 drop-shadow-lg uppercase\\\" data-v-b6ae57ab>r</span><span class=\\\"letter-t text-teal-400 drop-shadow-lg uppercase\\\" data-v-b6ae57ab>t</span> community </span><span data-v-b6ae57ab>Discover <span class=\\\"bg-yellow-400 rounded-xl p-2 drop-shadow-lg\\\" data-v-b6ae57ab>brilliant</span> artists and their works</span></h1></section>\", 1)\nconst _hoisted_2 = { class: \"sample-artworks flex flex-col items-center justify-center mt-12\" }\nconst _hoisted_3 = /*#__PURE__*/ _withScopeId(() => /*#__PURE__*/_createElementVNode(\"p\", { class: \"description animate-bounce mb-8 text-center\" }, \"Check out some of our collection!\", -1))\n\nfunction _sfc_render(_ctx, _cache) {\n  const _component_ArtworkCarousel = _resolveComponent(\"ArtworkCarousel\")\n\n  return (_openBlock(), _createElementBlock(_Fragment, null, [\n    _hoisted_1,\n    _createElementVNode(\"section\", _hoisted_2, [\n      _hoisted_3,\n      _createVNode(_component_ArtworkCarousel)\n    ])\n  ], 64))\n}\n\nimport \"/Users/omarmartin/Documents/DAW/arthub-project-DAW/frontendV3/pages/index.vue?vue&type=style&index=0&scoped=b6ae57ab&lang.css\"\n\nimport _export_sfc from '\u0000plugin-vue:export-helper'\nexport default /*#__PURE__*/_export_sfc(_sfc_main, [['render',_sfc_render],['__scopeId',\"data-v-b6ae57ab\"]])",
+      "start": 1714082882202,
+      "end": 1714082882203,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          "/Users/omarmartin/Documents/DAW/arthub-project-DAW/frontendV3/pages/index.vue"
+        ],
+        "names": [],
+        "mappings": ";;;gCAAA;qBAaa,KAAK,EAAC,iEAAiE;iEAC5E,oBAA4F,OAAzF,KAAK,EAAC,6CAA6C,IAAC,mCAAiC;;;;;wBAdhG;IACI,UAWU;IACV,oBAGU,WAHV,UAGU;MAFN,UAA4F;MAC5F,aAAkB",
+        "sourcesContent": [
+          "<template>\n    <section class=\"main-banner flex flex-col items-center justify-center\">\n        <h1 class=\"title flex flex-col items-center m-0 p-0\">\n            <span>\n                Welcome to your\n                <span class=\"letter-a text-purple-600 drop-shadow-lg uppercase\">a</span>\n                <span class=\"letter-r text-pink-400 drop-shadow-lg uppercase\">r</span>\n                <span class=\"letter-t text-teal-400 drop-shadow-lg uppercase\">t</span>\n                community\n            </span>\n            <span>Discover <span class=\"bg-yellow-400 rounded-xl p-2 drop-shadow-lg\">brilliant</span> artists and their works</span>\n        </h1>\n    </section>\n    <section class=\"sample-artworks flex flex-col items-center justify-center mt-12\">\n        <p class=\"description animate-bounce mb-8 text-center\">Check out some of our collection!</p>\n        <ArtworkCarousel/>\n    </section>\n</template>\n\n<style scoped>\n\n@font-face {\n    font-family: 'SourGummy';\n    src: url('~/assets/fonts/SourGummy.ttf') format('truetype-variations');\n}\n@font-face {\n    font-family: 'Unique';\n    src: url('~/assets/fonts/Unique.ttf') format('truetype-variations');\n}\n@font-face {\n    font-family: 'Humane';\n    src: url('~/assets/fonts/Humane.ttf') format('truetype-variations');\n}\n@font-face {\n    font-family: 'Garute';\n    src: url('~/assets/fonts/Garute.ttf') format('truetype-variations');\n}\n\n.main-banner {\n    font-family: 'Garute';\n    font-size: 4rem;\n    padding:0;\n    margin:0;\n    font-weight: 800;\n    text-align: center;\n}\n\n.description {\n    font-family: 'SourGummy';\n    font-size: 3rem;\n    font-weight: 900;\n    letter-spacing: 0.4rem;\n    font-weight: 600;\n}\n\n.sample-artworks {\n    font-size: 2rem;\n}\n\n\n</style>"
+        ]
+      }
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1714082882203,
+      "end": 1714082882203,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1714082882203,
+      "end": 1714082882203,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1714082882203,
+      "end": 1714082882203,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1714082882203,
+      "end": 1714082882203,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1714082882203,
+      "end": 1714082882203,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1714082882203,
+      "end": 1714082882203,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1714082882203,
+      "end": 1714082882203,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1714082882203,
+      "end": 1714082882203,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1714082882203,
+      "end": 1714082882203,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1714082882203,
+      "end": 1714082882203,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1714082882203,
+      "end": 1714082882203,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1714082882203,
+      "end": 1714082882203,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1714082882203,
+      "end": 1714082882203,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1714082882203,
+      "end": 1714082882203,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1714082882203,
+      "end": 1714082882203,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1714082882203,
+      "end": 1714082882203,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1714082882203,
+      "end": 1714082882203,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1714082882203,
+      "end": 1714082882203,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "result": "\nconst __nuxt_page_meta = null\nexport default __nuxt_page_meta\n",
+      "start": 1714082882203,
+      "end": 1714082882203,
+      "order": "post",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": "AAAA;AAAA;AAAA;"
+      }
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1714082882203,
+      "end": 1714082882203,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1714082882203,
+      "end": 1714082882203,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1714082882203,
+      "end": 1714082882203,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1714082882203,
+      "end": 1714082882203,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1714082882203,
+      "end": 1714082882203,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1714082882203,
+      "end": 1714082882203,
+      "order": "normal"
+    }
+  ]
+}

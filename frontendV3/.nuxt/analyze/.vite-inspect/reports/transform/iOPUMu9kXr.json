@@ -1,0 +1,234 @@
+{
+  "resolvedId": "/Users/omarmartin/Documents/DAW/arthub-project-DAW/frontendV3/node_modules/@nuxt/ui/dist/runtime/components/elements/Avatar.vue?nuxt_component=async&nuxt_component_name=UAvatar",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "<template>\n  <span :class=\"wrapperClass\">\n    <img\n      v-if=\"url && !error\"\n      :class=\"imgClass\"\n      :alt=\"alt\"\n      :src=\"url\"\n      v-bind=\"attrs\"\n      @error=\"onError\"\n    >\n    <span v-else-if=\"text\" :class=\"ui.text\">{{ text }}</span>\n    <UIcon v-else-if=\"icon\" :name=\"icon\" :class=\"iconClass\" />\n    <span v-else-if=\"placeholder\" :class=\"ui.placeholder\">{{ placeholder }}</span>\n\n    <span v-if=\"chipColor\" :class=\"chipClass\">\n      {{ chipText }}\n    </span>\n    <slot />\n  </span>\n</template>\n\n<script>\nimport { defineComponent, ref, computed, toRef, watch } from \"vue\";\nimport { twMerge, twJoin } from \"tailwind-merge\";\nimport UIcon from \"../elements/Icon.vue\";\nimport { useUI } from \"../../composables/useUI\";\nimport { mergeConfig } from \"../../utils\";\nimport appConfig from \"#build/app.config\";\nimport { avatar } from \"#ui/ui.config\";\nconst config = mergeConfig(appConfig.ui.strategy, appConfig.ui.avatar, avatar);\nexport default defineComponent({\n  components: {\n    UIcon\n  },\n  inheritAttrs: false,\n  props: {\n    src: {\n      type: [String, Boolean],\n      default: null\n    },\n    alt: {\n      type: String,\n      default: null\n    },\n    text: {\n      type: String,\n      default: null\n    },\n    icon: {\n      type: String,\n      default: () => config.default.icon\n    },\n    size: {\n      type: String,\n      default: () => config.default.size,\n      validator(value) {\n        return Object.keys(config.size).includes(value);\n      }\n    },\n    chipColor: {\n      type: String,\n      default: () => config.default.chipColor,\n      validator(value) {\n        return [\"gray\", ...appConfig.ui.colors].includes(value);\n      }\n    },\n    chipPosition: {\n      type: String,\n      default: () => config.default.chipPosition,\n      validator(value) {\n        return Object.keys(config.chip.position).includes(value);\n      }\n    },\n    chipText: {\n      type: [String, Number],\n      default: null\n    },\n    imgClass: {\n      type: String,\n      default: \"\"\n    },\n    class: {\n      type: [String, Object, Array],\n      default: () => \"\"\n    },\n    ui: {\n      type: Object,\n      default: () => ({})\n    }\n  },\n  setup(props) {\n    const { ui, attrs } = useUI(\"avatar\", toRef(props, \"ui\"), config);\n    const url = computed(() => {\n      if (typeof props.src === \"boolean\") {\n        return null;\n      }\n      return props.src;\n    });\n    const placeholder = computed(() => {\n      return (props.alt || \"\").split(\" \").map((word) => word.charAt(0)).join(\"\").substring(0, 2);\n    });\n    const wrapperClass = computed(() => {\n      return twMerge(twJoin(\n        ui.value.wrapper,\n        (error.value || !url.value) && ui.value.background,\n        ui.value.rounded,\n        ui.value.size[props.size]\n      ), props.class);\n    });\n    const imgClass = computed(() => {\n      return twMerge(twJoin(\n        ui.value.rounded,\n        ui.value.size[props.size]\n      ), props.imgClass);\n    });\n    const iconClass = computed(() => {\n      return twJoin(\n        ui.value.icon.base,\n        ui.value.icon.size[props.size]\n      );\n    });\n    const chipClass = computed(() => {\n      return twJoin(\n        ui.value.chip.base,\n        ui.value.chip.size[props.size],\n        ui.value.chip.position[props.chipPosition],\n        ui.value.chip.background.replaceAll(\"{color}\", props.chipColor)\n      );\n    });\n    const error = ref(false);\n    watch(() => props.src, () => {\n      if (error.value) {\n        error.value = false;\n      }\n    });\n    function onError() {\n      error.value = true;\n    }\n    return {\n      // eslint-disable-next-line vue/no-dupe-keys\n      ui,\n      attrs,\n      wrapperClass,\n      // eslint-disable-next-line vue/no-dupe-keys\n      imgClass,\n      iconClass,\n      chipClass,\n      url,\n      placeholder,\n      error,\n      onError\n    };\n  }\n});\n</script>\n",
+      "start": 1714082879918,
+      "end": 1714082879997,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1714082879997,
+      "end": 1714082879997,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1714082879997,
+      "end": 1714082879997,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1714082879997,
+      "end": 1714082879997,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1714082879997,
+      "end": 1714082879997,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1714082879997,
+      "end": 1714082879997,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1714082879997,
+      "end": 1714082879997,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1714082879997,
+      "end": 1714082879997,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "result": "\nimport { defineComponent, ref, computed, toRef, watch } from \"vue\";\nimport { twMerge, twJoin } from \"tailwind-merge\";\nimport UIcon from \"../elements/Icon.vue\";\nimport { useUI } from \"../../composables/useUI\";\nimport { mergeConfig } from \"../../utils\";\nimport appConfig from \"#build/app.config\";\nimport { avatar } from \"#ui/ui.config\";\nconst config = mergeConfig(appConfig.ui.strategy, appConfig.ui.avatar, avatar);\nconst _sfc_main = defineComponent({\n  components: {\n    UIcon\n  },\n  inheritAttrs: false,\n  props: {\n    src: {\n      type: [String, Boolean],\n      default: null\n    },\n    alt: {\n      type: String,\n      default: null\n    },\n    text: {\n      type: String,\n      default: null\n    },\n    icon: {\n      type: String,\n      default: () => config.default.icon\n    },\n    size: {\n      type: String,\n      default: () => config.default.size,\n      validator(value) {\n        return Object.keys(config.size).includes(value);\n      }\n    },\n    chipColor: {\n      type: String,\n      default: () => config.default.chipColor,\n      validator(value) {\n        return [\"gray\", ...appConfig.ui.colors].includes(value);\n      }\n    },\n    chipPosition: {\n      type: String,\n      default: () => config.default.chipPosition,\n      validator(value) {\n        return Object.keys(config.chip.position).includes(value);\n      }\n    },\n    chipText: {\n      type: [String, Number],\n      default: null\n    },\n    imgClass: {\n      type: String,\n      default: \"\"\n    },\n    class: {\n      type: [String, Object, Array],\n      default: () => \"\"\n    },\n    ui: {\n      type: Object,\n      default: () => ({})\n    }\n  },\n  setup(props) {\n    const { ui, attrs } = useUI(\"avatar\", toRef(props, \"ui\"), config);\n    const url = computed(() => {\n      if (typeof props.src === \"boolean\") {\n        return null;\n      }\n      return props.src;\n    });\n    const placeholder = computed(() => {\n      return (props.alt || \"\").split(\" \").map((word) => word.charAt(0)).join(\"\").substring(0, 2);\n    });\n    const wrapperClass = computed(() => {\n      return twMerge(twJoin(\n        ui.value.wrapper,\n        (error.value || !url.value) && ui.value.background,\n        ui.value.rounded,\n        ui.value.size[props.size]\n      ), props.class);\n    });\n    const imgClass = computed(() => {\n      return twMerge(twJoin(\n        ui.value.rounded,\n        ui.value.size[props.size]\n      ), props.imgClass);\n    });\n    const iconClass = computed(() => {\n      return twJoin(\n        ui.value.icon.base,\n        ui.value.icon.size[props.size]\n      );\n    });\n    const chipClass = computed(() => {\n      return twJoin(\n        ui.value.chip.base,\n        ui.value.chip.size[props.size],\n        ui.value.chip.position[props.chipPosition],\n        ui.value.chip.background.replaceAll(\"{color}\", props.chipColor)\n      );\n    });\n    const error = ref(false);\n    watch(() => props.src, () => {\n      if (error.value) {\n        error.value = false;\n      }\n    });\n    function onError() {\n      error.value = true;\n    }\n    return {\n      // eslint-disable-next-line vue/no-dupe-keys\n      ui,\n      attrs,\n      wrapperClass,\n      // eslint-disable-next-line vue/no-dupe-keys\n      imgClass,\n      iconClass,\n      chipClass,\n      url,\n      placeholder,\n      error,\n      onError\n    };\n  }\n});\n\nimport { mergeProps as _mergeProps, openBlock as _openBlock, createElementBlock as _createElementBlock, createCommentVNode as _createCommentVNode, toDisplayString as _toDisplayString, normalizeClass as _normalizeClass, resolveComponent as _resolveComponent, createBlock as _createBlock, renderSlot as _renderSlot } from \"vue\"\n\nconst _hoisted_1 = [\"alt\", \"src\"]\n\nfunction _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {\n  const _component_UIcon = _resolveComponent(\"UIcon\")\n\n  return (_openBlock(), _createElementBlock(\"span\", {\n    class: _normalizeClass(_ctx.wrapperClass)\n  }, [\n    (_ctx.url && !_ctx.error)\n      ? (_openBlock(), _createElementBlock(\"img\", _mergeProps({\n          key: 0,\n          class: _ctx.imgClass,\n          alt: _ctx.alt,\n          src: _ctx.url\n        }, _ctx.attrs, {\n          onError: _cache[0] || (_cache[0] = (...args) => (_ctx.onError && _ctx.onError(...args)))\n        }), null, 16, _hoisted_1))\n      : (_ctx.text)\n        ? (_openBlock(), _createElementBlock(\"span\", {\n            key: 1,\n            class: _normalizeClass(_ctx.ui.text)\n          }, _toDisplayString(_ctx.text), 3))\n        : (_ctx.icon)\n          ? (_openBlock(), _createBlock(_component_UIcon, {\n              key: 2,\n              name: _ctx.icon,\n              class: _normalizeClass(_ctx.iconClass)\n            }, null, 8, [\"name\", \"class\"]))\n          : (_ctx.placeholder)\n            ? (_openBlock(), _createElementBlock(\"span\", {\n                key: 3,\n                class: _normalizeClass(_ctx.ui.placeholder)\n              }, _toDisplayString(_ctx.placeholder), 3))\n            : _createCommentVNode(\"\", true),\n    (_ctx.chipColor)\n      ? (_openBlock(), _createElementBlock(\"span\", {\n          key: 4,\n          class: _normalizeClass(_ctx.chipClass)\n        }, _toDisplayString(_ctx.chipText), 3))\n      : _createCommentVNode(\"\", true),\n    _renderSlot(_ctx.$slots, \"default\")\n  ], 2))\n}\n\n\nimport _export_sfc from '\u0000plugin-vue:export-helper'\nexport default /*#__PURE__*/_export_sfc(_sfc_main, [['render',_sfc_render]])",
+      "start": 1714082879997,
+      "end": 1714082880002,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "file": "/Users/omarmartin/Documents/DAW/arthub-project-DAW/frontendV3/node_modules/@nuxt/ui/dist/runtime/components/elements/Avatar.vue",
+        "names": [],
+        "sources": [
+          "/Users/omarmartin/Documents/DAW/arthub-project-DAW/frontendV3/node_modules/@nuxt/ui/dist/runtime/components/elements/Avatar.vue"
+        ],
+        "sourcesContent": [
+          "<template>\n  <span :class=\"wrapperClass\">\n    <img\n      v-if=\"url && !error\"\n      :class=\"imgClass\"\n      :alt=\"alt\"\n      :src=\"url\"\n      v-bind=\"attrs\"\n      @error=\"onError\"\n    >\n    <span v-else-if=\"text\" :class=\"ui.text\">{{ text }}</span>\n    <UIcon v-else-if=\"icon\" :name=\"icon\" :class=\"iconClass\" />\n    <span v-else-if=\"placeholder\" :class=\"ui.placeholder\">{{ placeholder }}</span>\n\n    <span v-if=\"chipColor\" :class=\"chipClass\">\n      {{ chipText }}\n    </span>\n    <slot />\n  </span>\n</template>\n\n<script>\nimport { defineComponent, ref, computed, toRef, watch } from \"vue\";\nimport { twMerge, twJoin } from \"tailwind-merge\";\nimport UIcon from \"../elements/Icon.vue\";\nimport { useUI } from \"../../composables/useUI\";\nimport { mergeConfig } from \"../../utils\";\nimport appConfig from \"#build/app.config\";\nimport { avatar } from \"#ui/ui.config\";\nconst config = mergeConfig(appConfig.ui.strategy, appConfig.ui.avatar, avatar);\nexport default defineComponent({\n  components: {\n    UIcon\n  },\n  inheritAttrs: false,\n  props: {\n    src: {\n      type: [String, Boolean],\n      default: null\n    },\n    alt: {\n      type: String,\n      default: null\n    },\n    text: {\n      type: String,\n      default: null\n    },\n    icon: {\n      type: String,\n      default: () => config.default.icon\n    },\n    size: {\n      type: String,\n      default: () => config.default.size,\n      validator(value) {\n        return Object.keys(config.size).includes(value);\n      }\n    },\n    chipColor: {\n      type: String,\n      default: () => config.default.chipColor,\n      validator(value) {\n        return [\"gray\", ...appConfig.ui.colors].includes(value);\n      }\n    },\n    chipPosition: {\n      type: String,\n      default: () => config.default.chipPosition,\n      validator(value) {\n        return Object.keys(config.chip.position).includes(value);\n      }\n    },\n    chipText: {\n      type: [String, Number],\n      default: null\n    },\n    imgClass: {\n      type: String,\n      default: \"\"\n    },\n    class: {\n      type: [String, Object, Array],\n      default: () => \"\"\n    },\n    ui: {\n      type: Object,\n      default: () => ({})\n    }\n  },\n  setup(props) {\n    const { ui, attrs } = useUI(\"avatar\", toRef(props, \"ui\"), config);\n    const url = computed(() => {\n      if (typeof props.src === \"boolean\") {\n        return null;\n      }\n      return props.src;\n    });\n    const placeholder = computed(() => {\n      return (props.alt || \"\").split(\" \").map((word) => word.charAt(0)).join(\"\").substring(0, 2);\n    });\n    const wrapperClass = computed(() => {\n      return twMerge(twJoin(\n        ui.value.wrapper,\n        (error.value || !url.value) && ui.value.background,\n        ui.value.rounded,\n        ui.value.size[props.size]\n      ), props.class);\n    });\n    const imgClass = computed(() => {\n      return twMerge(twJoin(\n        ui.value.rounded,\n        ui.value.size[props.size]\n      ), props.imgClass);\n    });\n    const iconClass = computed(() => {\n      return twJoin(\n        ui.value.icon.base,\n        ui.value.icon.size[props.size]\n      );\n    });\n    const chipClass = computed(() => {\n      return twJoin(\n        ui.value.chip.base,\n        ui.value.chip.size[props.size],\n        ui.value.chip.position[props.chipPosition],\n        ui.value.chip.background.replaceAll(\"{color}\", props.chipColor)\n      );\n    });\n    const error = ref(false);\n    watch(() => props.src, () => {\n      if (error.value) {\n        error.value = false;\n      }\n    });\n    function onError() {\n      error.value = true;\n    }\n    return {\n      // eslint-disable-next-line vue/no-dupe-keys\n      ui,\n      attrs,\n      wrapperClass,\n      // eslint-disable-next-line vue/no-dupe-keys\n      imgClass,\n      iconClass,\n      chipClass,\n      url,\n      placeholder,\n      error,\n      onError\n    };\n  }\n});\n</script>\n"
+        ],
+        "mappings": ";AAsBA,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,EAAE,EAAE,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC;AAClE,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,EAAE,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAChD,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACxC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,EAAE,CAAC,CAAC,CAAC,CAAC,EAAE,EAAE,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC/C,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,EAAE,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACzC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACzC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,EAAE,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACtC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC9E,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;EAC7B,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE;IACV,CAAC,CAAC,CAAC,CAAC;EACN,CAAC;EACD,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC;EACnB,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE;IACL,CAAC,CAAC,CAAC,EAAE;MACH,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;MACvB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC;IACd,CAAC;IACD,CAAC,CAAC,CAAC,EAAE;MACH,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;MACZ,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC;IACd,CAAC;IACD,CAAC,CAAC,CAAC,CAAC,EAAE;MACJ,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;MACZ,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC;IACd,CAAC;IACD,CAAC,CAAC,CAAC,CAAC,EAAE;MACJ,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;MACZ,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,EAAE,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;IACnC,CAAC;IACD,CAAC,CAAC,CAAC,CAAC,EAAE;MACJ,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;MACZ,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,EAAE,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;MAClC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE;QACf,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;MACjD;IACF,CAAC;IACD,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE;MACT,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;MACZ,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,EAAE,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;MACvC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE;QACf,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;MACzD;IACF,CAAC;IACD,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE;MACZ,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;MACZ,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,EAAE,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;MAC1C,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE;QACf,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;MAC1D;IACF,CAAC;IACD,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE;MACR,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;MACtB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC;IACd,CAAC;IACD,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE;MACR,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;MACZ,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC;IACZ,CAAC;IACD,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE;MACL,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;MAC7B,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,EAAE,CAAC,EAAE,CAAC;IAClB,CAAC;IACD,CAAC,CAAC,EAAE;MACF,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;MACZ,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,EAAE,CAAC,EAAE,CAAC,CAAC,CAAC;IACpB;EACF,CAAC;EACD,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE;IACX,CAAC,CAAC,CAAC,CAAC,EAAE,EAAE,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,EAAE,EAAE,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;IACjE,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,EAAE,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,EAAE;MACzB,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE;QAClC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC;MACb;MACA,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;IAClB,CAAC,CAAC;IACF,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,EAAE;MACjC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC;IAC5F,CAAC,CAAC;IACF,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,EAAE;MAClC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;QACnB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;QAChB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;QAClD,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;QAChB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;MAC1B,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;IACjB,CAAC,CAAC;IACF,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,EAAE;MAC9B,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;QACnB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;QAChB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;MAC1B,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;IACpB,CAAC,CAAC;IACF,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,EAAE;MAC/B,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;QACX,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;QAClB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;MAC/B,CAAC;IACH,CAAC,CAAC;IACF,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,EAAE;MAC/B,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;QACX,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;QAClB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;QAC9B,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;QAC1C,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;MAChE,CAAC;IACH,CAAC,CAAC;IACF,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,EAAE,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;IACxB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,EAAE,CAAC,EAAE;MAC3B,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE;QACf,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC;MACrB;IACF,CAAC,CAAC;IACF,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE;MACjB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,EAAE,CAAC,CAAC,CAAC,CAAC;IACpB;IACA,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE;MACL,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;MAC3C,CAAC,CAAC;MACF,CAAC,CAAC,CAAC,CAAC,CAAC;MACL,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;MACZ,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;MAC3C,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;MACR,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;MACT,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;MACT,CAAC,CAAC,CAAC;MACH,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;MACX,CAAC,CAAC,CAAC,CAAC,CAAC;MACL,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;IACR,CAAC;EACH;AACF,CAAC,CAAC;;;;mBAzJF;;;;;wBACE,oBAiBO;IAjBA,KAAK,EADd,gBACgB,iBAAY;;KAEhB,QAAG,KAAK,UAAK;uBADrB,oBAOC,OAPD,YAOC;UATL,KAAA;UAIO,KAAK,EAAE,aAAQ;UACf,GAAG,EAAE,QAAG;UACR,GAAG,EAAE,QAAG;WACD,UAAK;UACZ,OAAK,0CAAE,qCAAO;sBARrB;SAUqB,SAAI;yBAArB,oBAAyD;YAV7D,KAAA;YAU4B,KAAK,EAVjC,gBAUmC,OAAE,CAAC,IAAI;8BAAK,SAAI;WAC7B,SAAI;2BAAtB,aAA0D;cAX9D,KAAA;cAW6B,IAAI,EAAE,SAAI;cAAG,KAAK,EAX/C,gBAWiD,cAAS;;aACrC,gBAAW;6BAA5B,oBAA8E;gBAZlF,KAAA;gBAYmC,KAAK,EAZxC,gBAY0C,OAAE,CAAC,WAAW;kCAAK,gBAAW;cAZxE;KAcgB,cAAS;uBAArB,oBAEO;UAhBX,KAAA;UAc4B,KAAK,EAdjC,gBAcmC,cAAS;4BACnC,aAAQ;QAfjB;IAiBI,YAAQ"
+      }
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1714082880002,
+      "end": 1714082880002,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1714082880002,
+      "end": 1714082880002,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1714082880002,
+      "end": 1714082880002,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1714082880002,
+      "end": 1714082880002,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "result": "import { defineAsyncComponent } from \"vue\"\nexport default defineAsyncComponent(() => import(\"/Users/omarmartin/Documents/DAW/arthub-project-DAW/frontendV3/node_modules/@nuxt/ui/dist/runtime/components/elements/Avatar.vue\").then(r => r.default))",
+      "start": 1714082880002,
+      "end": 1714082880003,
+      "order": "normal",
+      "sourcemaps": null
+    },
+    {
+      "name": "replace",
+      "start": 1714082880003,
+      "end": 1714082880003,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1714082880003,
+      "end": 1714082880003,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1714082880003,
+      "end": 1714082880003,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1714082880003,
+      "end": 1714082880003,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1714082880003,
+      "end": 1714082880003,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1714082880003,
+      "end": 1714082880003,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1714082880003,
+      "end": 1714082880003,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1714082880003,
+      "end": 1714082880003,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1714082880003,
+      "end": 1714082880003,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1714082880003,
+      "end": 1714082880003,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1714082880003,
+      "end": 1714082880003,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1714082880003,
+      "end": 1714082880003,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1714082880003,
+      "end": 1714082880003,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1714082880003,
+      "end": 1714082880003,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1714082880003,
+      "end": 1714082880003,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1714082880003,
+      "end": 1714082880003,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1714082880003,
+      "end": 1714082880003,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1714082880003,
+      "end": 1714082880003,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "result": "import { __vitePreload } from \"\u0000vite/preload-helper.js\";import { defineAsyncComponent } from \"vue\"\nexport default defineAsyncComponent(() => __vitePreload(() => import(\"/Users/omarmartin/Documents/DAW/arthub-project-DAW/frontendV3/node_modules/@nuxt/ui/dist/runtime/components/elements/Avatar.vue\"),__VITE_IS_MODERN__?\"__VITE_PRELOAD__\":void 0,import.meta.url).then(r => r.default))",
+      "start": 1714082880003,
+      "end": 1714082880003,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": "wDAAA,MAAM,CAAC,CAAC,CAAC,oBAAoB,CAAC,CAAC,CAAC,IAAI,CAAC,CAAC,GAAG,CAAC;AAC1C,MAAM,CAAC,OAAO,CAAC,oBAAoB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,qBAAC,MAAM,CAAC,CAAC,CAAC,KAAK,CAAC,UAAU,CAAC,SAAS,CAAC,GAAG,CAAC,MAAM,CAAC,OAAO,CAAC,GAAG,CAAC,UAAU,CAAC,YAAY,CAAC,CAAC,IAAI,CAAC,EAAE,CAAC,IAAI,CAAC,OAAO,CAAC,UAAU,CAAC,QAAQ,CAAC,MAAM,CAAC,GAAG,CAAC,+DAAC,CAAC,IAAI,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,OAAO,CAAC"
+      }
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1714082880003,
+      "end": 1714082880003,
+      "order": "normal"
+    }
+  ]
+}

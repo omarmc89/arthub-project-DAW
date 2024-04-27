@@ -1,0 +1,294 @@
+{
+  "resolvedId": "/Users/omarmartin/Documents/DAW/arthub-project-DAW/frontendV3/pages/index.vue?vue&type=style&index=0&scoped=b6ae57ab&lang.css?inline&used",
+  "transforms": [
+    {
+      "name": "vite:vue",
+      "result": "\n\n@font-face {\n    font-family: 'SourGummy';\n    src: url('~/assets/fonts/SourGummy.ttf') format('truetype-variations');\n}\n@font-face {\n    font-family: 'Unique';\n    src: url('~/assets/fonts/Unique.ttf') format('truetype-variations');\n}\n@font-face {\n    font-family: 'Humane';\n    src: url('~/assets/fonts/Humane.ttf') format('truetype-variations');\n}\n@font-face {\n    font-family: 'Garute';\n    src: url('~/assets/fonts/Garute.ttf') format('truetype-variations');\n}\n\n.main-banner {\n    font-family: 'Garute';\n    font-size: 4rem;\n    padding:0;\n    margin:0;\n    font-weight: 800;\n    text-align: center;\n}\n\n.description {\n    font-family: 'SourGummy';\n    font-size: 3rem;\n    font-weight: 900;\n    letter-spacing: 0.4rem;\n    font-weight: 600;\n}\n\n.sample-artworks {\n    font-size: 2rem;\n}\n\n\n",
+      "start": 1714082888310,
+      "end": 1714082888310,
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          "/Users/omarmartin/Documents/DAW/arthub-project-DAW/frontendV3/pages/index.vue"
+        ],
+        "names": [],
+        "mappings": ";;AAqBA,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE;IACP,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;IACxB,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC1E;AACA,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE;IACP,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;IACrB,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACvE;AACA,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE;IACP,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;IACrB,CAAC,CA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",
+        "file": "/Users/omarmartin/Documents/DAW/arthub-project-DAW/frontendV3/pages/index.vue",
+        "sourceRoot": "",
+        "sourcesContent": [
+          "<template>\n    <section class=\"main-banner flex flex-col items-center justify-center\">\n        <h1 class=\"title flex flex-col items-center m-0 p-0\">\n            <span>\n                Welcome to your\n                <span class=\"letter-a text-purple-600 drop-shadow-lg uppercase\">a</span>\n                <span class=\"letter-r text-pink-400 drop-shadow-lg uppercase\">r</span>\n                <span class=\"letter-t text-teal-400 drop-shadow-lg uppercase\">t</span>\n                community\n            </span>\n            <span>Discover <span class=\"bg-yellow-400 rounded-xl p-2 drop-shadow-lg\">brilliant</span> artists and their works</span>\n        </h1>\n    </section>\n    <section class=\"sample-artworks flex flex-col items-center justify-center mt-12\">\n        <p class=\"description animate-bounce mb-8 text-center\">Check out some of our collection!</p>\n        <ArtworkCarousel/>\n    </section>\n</template>\n\n<style scoped>\n\n@font-face {\n    font-family: 'SourGummy';\n    src: url('~/assets/fonts/SourGummy.ttf') format('truetype-variations');\n}\n@font-face {\n    font-family: 'Unique';\n    src: url('~/assets/fonts/Unique.ttf') format('truetype-variations');\n}\n@font-face {\n    font-family: 'Humane';\n    src: url('~/assets/fonts/Humane.ttf') format('truetype-variations');\n}\n@font-face {\n    font-family: 'Garute';\n    src: url('~/assets/fonts/Garute.ttf') format('truetype-variations');\n}\n\n.main-banner {\n    font-family: 'Garute';\n    font-size: 4rem;\n    padding:0;\n    margin:0;\n    font-weight: 800;\n    text-align: center;\n}\n\n.description {\n    font-family: 'SourGummy';\n    font-size: 3rem;\n    font-weight: 900;\n    letter-spacing: 0.4rem;\n    font-weight: 600;\n}\n\n.sample-artworks {\n    font-size: 2rem;\n}\n\n\n</style>"
+        ]
+      }
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1714082888311,
+      "end": 1714082888311,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1714082888311,
+      "end": 1714082888311,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1714082888311,
+      "end": 1714082888311,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1714082888311,
+      "end": 1714082888311,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1714082888312,
+      "end": 1714082888312,
+      "order": "pre"
+    },
+    {
+      "name": "server-only-component-transform",
+      "start": 1714082888312,
+      "end": 1714082888312,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "result": "@font-face{font-family:SourGummy;src:url(__VITE_ASSET__DdqnuzMa__) format(\"truetype-variations\")}@font-face{font-family:Unique;src:url(__VITE_ASSET__01TCnBpk__) format(\"truetype-variations\")}@font-face{font-family:Humane;src:url(__VITE_ASSET__C$S3f2UQ__) format(\"truetype-variations\")}@font-face{font-family:Garute;src:url(__VITE_ASSET__YHzHUutL__) format(\"truetype-variations\")}.main-banner{font-family:Garute;font-size:4rem;font-weight:800;margin:0;padding:0;text-align:center}.description{font-family:SourGummy;font-size:3rem;font-weight:600;letter-spacing:.4rem}.sample-artworks{font-size:2rem}",
+      "start": 1714082888312,
+      "end": 1714082888715,
+      "order": "normal",
+      "sourcemaps": {
+        "file": "/Users/omarmartin/Documents/DAW/arthub-project-DAW/frontendV3/pages/index.vue",
+        "mappings": "AAEA,WACI,qBAAwB,CACxB,+DACJ,CACA,WACI,kBAAqB,CACrB,+DACJ,CACA,WACI,kBAAqB,CACrB,+DACJ,CACA,WACI,kBAAqB,CACrB,+DACJ,CAEA,aACI,kBAAqB,CACrB,cAAe,CAGf,eAAgB,CADhB,QAAQ,CADR,SAAS,CAGT,iBACJ,CAEA,aACI,qBAAwB,CACxB,cAAe,CAGf,eAAgB,CADhB,oBAEJ,CAEA,iBACI,cACJ",
+        "names": [],
+        "sources": [
+          "/Users/omarmartin/Documents/DAW/arthub-project-DAW/frontendV3/pages/index.vue"
+        ],
+        "sourcesContent": [
+          "\n\n@font-face {\n    font-family: 'SourGummy';\n    src: url('~/assets/fonts/SourGummy.ttf') format('truetype-variations');\n}\n@font-face {\n    font-family: 'Unique';\n    src: url('~/assets/fonts/Unique.ttf') format('truetype-variations');\n}\n@font-face {\n    font-family: 'Humane';\n    src: url('~/assets/fonts/Humane.ttf') format('truetype-variations');\n}\n@font-face {\n    font-family: 'Garute';\n    src: url('~/assets/fonts/Garute.ttf') format('truetype-variations');\n}\n\n.main-banner {\n    font-family: 'Garute';\n    font-size: 4rem;\n    padding:0;\n    margin:0;\n    font-weight: 800;\n    text-align: center;\n}\n\n.description {\n    font-family: 'SourGummy';\n    font-size: 3rem;\n    font-weight: 900;\n    letter-spacing: 0.4rem;\n    font-weight: 600;\n}\n\n.sample-artworks {\n    font-size: 2rem;\n}\n\n\n"
+        ],
+        "version": 3
+      }
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1714082888715,
+      "end": 1714082888715,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1714082888715,
+      "end": 1714082888715,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1714082888715,
+      "end": 1714082888715,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "result": "@font-face{font-family:SourGummy;src:url(__VITE_ASSET__DdqnuzMa__) format(\"truetype-variations\")}@font-face{font-family:Unique;src:url(__VITE_ASSET__01TCnBpk__) format(\"truetype-variations\")}@font-face{font-family:Humane;src:url(__VITE_ASSET__C$S3f2UQ__) format(\"truetype-variations\")}@font-face{font-family:Garute;src:url(__VITE_ASSET__YHzHUutL__) format(\"truetype-variations\")}.main-banner[data-v-b6ae57ab]{font-family:Garute;font-size:4rem;font-weight:800;margin:0;padding:0;text-align:center}.description[data-v-b6ae57ab]{font-family:SourGummy;font-size:3rem;font-weight:600;letter-spacing:.4rem}.sample-artworks[data-v-b6ae57ab]{font-size:2rem}",
+      "start": 1714082888715,
+      "end": 1714082888715,
+      "order": "normal",
+      "sourcemaps": {
+        "file": "/Users/omarmartin/Documents/DAW/arthub-project-DAW/frontendV3/pages/index.vue",
+        "mappings": "AAAA,WAAW,qBAAqB,CAAC,+DAA+D,CAAC,WAAW,kBAAkB,CAAC,+DAA+D,CAAC,WAAW,kBAAkB,CAAC,+DAA+D,CAAC,WAAW,kBAAkB,CAAC,+DAA+D,CAAC,8BAAa,kBAAkB,CAAC,cAAc,CAAC,eAAe,CAAC,QAAQ,CAAC,SAAS,CAAC,iBAAiB,CAAC,8BAAa,qBAAqB,CAAC,cAAc,CAAC,eAAe,CAAC,oBAAoB,CAAC,kCAAiB,cAAc",
+        "names": [],
+        "sources": [
+          "/Users/omarmartin/Documents/DAW/arthub-project-DAW/frontendV3/pages/index.vue"
+        ],
+        "sourcesContent": [
+          null
+        ],
+        "version": 3
+      }
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1714082888715,
+      "end": 1714082888715,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1714082888715,
+      "end": 1714082888716,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1714082888715,
+      "end": 1714082888716,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1714082888716,
+      "end": 1714082888716,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1714082888716,
+      "end": 1714082888716,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1714082888716,
+      "end": 1714082888716,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1714082888716,
+      "end": 1714082888716,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1714082888716,
+      "end": 1714082888716,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1714082888716,
+      "end": 1714082888716,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "result": "export default \"@font-face{font-family:SourGummy;src:url(__VITE_ASSET__DdqnuzMa__) format(\\\"truetype-variations\\\")}@font-face{font-family:Unique;src:url(__VITE_ASSET__01TCnBpk__) format(\\\"truetype-variations\\\")}@font-face{font-family:Humane;src:url(__VITE_ASSET__C$S3f2UQ__) format(\\\"truetype-variations\\\")}@font-face{font-family:Garute;src:url(__VITE_ASSET__YHzHUutL__) format(\\\"truetype-variations\\\")}.main-banner[data-v-b6ae57ab]{font-family:Garute;font-size:4rem;font-weight:800;margin:0;padding:0;text-align:center}.description[data-v-b6ae57ab]{font-family:SourGummy;font-size:3rem;font-weight:600;letter-spacing:.4rem}.sample-artworks[data-v-b6ae57ab]{font-size:2rem}\"",
+      "start": 1714082888716,
+      "end": 1714082888716,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1714082888716,
+      "end": 1714082888716,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1714082888716,
+      "end": 1714082888716,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1714082888716,
+      "end": 1714082888716,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1714082888716,
+      "end": 1714082888716,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1714082888716,
+      "end": 1714082888716,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1714082888716,
+      "end": 1714082888716,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1714082888716,
+      "end": 1714082888716,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1714082888716,
+      "end": 1714082888716,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1714082888716,
+      "end": 1714082888716,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1714082888716,
+      "end": 1714082888716,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1714082888716,
+      "end": 1714082888716,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1714082888716,
+      "end": 1714082888716,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1714082888716,
+      "end": 1714082888716,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1714082888716,
+      "end": 1714082888716,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-template",
+      "start": 1714082888716,
+      "end": 1714082888716,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1714082888716,
+      "end": 1714082888716,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1714082888716,
+      "end": 1714082888716,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1714082888716,
+      "end": 1714082888716,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1714082888716,
+      "end": 1714082888716,
+      "order": "normal"
+    }
+  ]
+}

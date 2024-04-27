@@ -1,0 +1,1 @@
+{"version":3,"file":"index-B9cfTSFt.js","sources":["../../../../pages/listartworks/index.vue"],"sourcesContent":["<template>\n    <h1>Artworks</h1>\n\n    <ArtworksGrid />\n</template>\n\n<script setup>\n</script>"],"names":["_ssrRenderComponent"],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAAA,QAAA,2BAAA;AAAA,QAAAA,mBAAA,yBAAA,MAAA,MAAA,OAAA,CAAA;;;;;;;;;;"}

@@ -2,8 +2,9 @@ import { useAuthStore } from '~/store/auth'
 
 export const useUpdateArtwork = async (fetchData) => {
     const { sessionToken} = useAuthStore();
+    const runtimeConfig = useRuntimeConfig()
 
-    const { data, error, pending } = await useFetch('http://localhost:8000/api/v1/update/artwork/', {
+    const { data, error, pending } = await useFetch(runtimeConfig.public.baseUrl+'update/artwork/', {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',

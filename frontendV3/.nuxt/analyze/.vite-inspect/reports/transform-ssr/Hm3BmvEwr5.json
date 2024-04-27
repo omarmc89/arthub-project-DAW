@@ -1,0 +1,254 @@
+{
+  "resolvedId": "/Users/omarmartin/Documents/DAW/arthub-project-DAW/frontendV3/node_modules/@nuxt/ui/dist/runtime/components/elements/MeterGroup.mjs?nuxt_component=async&nuxt_component_name=UMeterGroup",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "import { h, cloneVNode, computed, toRef, defineComponent } from \"vue\";\nimport { twJoin } from \"tailwind-merge\";\nimport UIcon from \"./Icon.vue\";\nimport { useUI } from \"../../composables/useUI.mjs\";\nimport { mergeConfig, getSlotsChildren } from \"../../utils/index.mjs\";\nimport appConfig from \"#build/app.config\";\nimport { meter, meterGroup } from \"#ui/ui.config\";\nconst meterConfig = mergeConfig(appConfig.ui.strategy, appConfig.ui.meter, meter);\nconst meterGroupConfig = mergeConfig(appConfig.ui.strategy, appConfig.ui.meterGroup, meterGroup);\nexport default defineComponent({\n  components: {\n    UIcon\n  },\n  inheritAttrs: false,\n  slots: Object,\n  props: {\n    min: {\n      type: Number,\n      default: 0\n    },\n    max: {\n      type: Number,\n      default: 100\n    },\n    size: {\n      type: String,\n      default: () => meterConfig.default.size,\n      validator(value) {\n        return Object.keys(meterConfig.meter.bar.size).includes(value);\n      }\n    },\n    indicator: {\n      type: Boolean,\n      default: false\n    },\n    icon: {\n      type: String,\n      default: () => meterGroupConfig.default.icon\n    },\n    class: {\n      type: [String, Object, Array],\n      default: () => \"\"\n    },\n    ui: {\n      type: Object,\n      default: () => ({})\n    }\n  },\n  setup(props, { slots }) {\n    const { ui, attrs } = useUI(\"meterGroup\", toRef(props, \"ui\"), meterGroupConfig);\n    const { ui: uiMeter } = useUI(\"meter\", void 0, meterConfig);\n    if (!slots.default) {\n      throw new Error(\"Meter Group has no Meter children.\");\n    }\n    const normalizedMin = computed(() => props.min > props.max ? props.max : props.min);\n    const normalizedMax = computed(() => props.max < props.min ? props.min : props.max);\n    const children = computed(() => getSlotsChildren(slots));\n    const rounded = computed(() => ui.value.orientation[ui.value.rounded]);\n    function clampPercent(value, min, max) {\n      if (min == max) {\n        return value < min ? 0 : 100;\n      }\n      if (min > max) {\n        max = [min, min = max][0];\n      }\n      const percent2 = (value - min) / (max - min) * 100;\n      return Math.max(0, Math.min(100, percent2));\n    }\n    const labels = computed(() => {\n      return children.value.map((node) => node.props.label);\n    });\n    const percents = computed(() => {\n      return children.value.map((node) => clampPercent(node.props.value, props.min, props.max));\n    });\n    const percent = computed(() => {\n      return Math.max(0, Math.max(percents.value.reduce((prev, percent2) => prev + percent2, 0)));\n    });\n    const clones = computed(() => children.value.map((node, index) => {\n      const vProps = {};\n      vProps.style = { width: `${percents.value[index]}%` };\n      vProps.size = props.size;\n      vProps.min = normalizedMin.value;\n      vProps.max = normalizedMax.value;\n      vProps.ui = node.props?.ui || {};\n      vProps.ui.wrapper = node.props?.ui?.wrapper || \"\";\n      vProps.ui.wrapper += [\n        node.props?.ui?.wrapper,\n        ui.value.background,\n        ui.value.transition\n      ].filter(Boolean).join(\" \");\n      vProps.ui.meter = node.props?.ui?.meter || {};\n      vProps.ui.meter.background = `bg-${node.props.color}-500 dark:bg-${node.props.color}-400`;\n      vProps.ui.meter.rounded = \"rounded-none\";\n      vProps.ui.meter.bar = node.props?.ui?.meter?.bar || {};\n      if (index === 0) {\n        vProps.ui.meter.rounded = `${rounded.value.left} rounded-e-none`;\n      }\n      if (index === children.value.length - 1) {\n        vProps.ui.meter.rounded = `${rounded.value.right} rounded-s-none`;\n      }\n      labels.value[index] = node.props.label;\n      const clone = cloneVNode(node, vProps);\n      delete clone.children?.label;\n      delete clone.props?.indicator;\n      delete clone.props?.label;\n      return clone;\n    }));\n    const baseClass = computed(() => {\n      return twJoin(\n        ui.value.base,\n        ui.value.background,\n        ui.value.rounded,\n        ui.value.shadow,\n        uiMeter.value.meter.size[props.size]\n      );\n    });\n    const indicatorContainerClass = computed(() => {\n      return twJoin(\n        uiMeter.value.indicator.container\n      );\n    });\n    const indicatorClass = computed(() => {\n      return twJoin(\n        uiMeter.value.indicator.text,\n        uiMeter.value.indicator.size[props.size]\n      );\n    });\n    const vNodeChildren = computed(() => {\n      const vNodeSlots = [\n        void 0,\n        h(\"div\", { class: baseClass.value }, clones.value),\n        void 0\n      ];\n      if (props.indicator) {\n        vNodeSlots[0] = h(\"div\", { class: indicatorContainerClass.value }, [\n          h(\"div\", { class: indicatorClass.value, style: { width: `${percent.value}%` } }, Math.round(percent.value) + \"%\")\n        ]);\n      } else if (slots.indicator) {\n        vNodeSlots[0] = slots.indicator({ percent: percent.value });\n      }\n      vNodeSlots[2] = h(\"ol\", { class: ui.value.list }, labels.value.map((label, key) => {\n        const labelClass = computed(() => {\n          return twJoin(\n            uiMeter.value.label.base,\n            uiMeter.value.label.text,\n            uiMeter.value.color[clones.value[key]?.props.color] ?? uiMeter.value.label.color.replaceAll(\"{color}\", clones.value[key]?.props.color ?? uiMeter.value.default.color),\n            uiMeter.value.label.size[props.size]\n          );\n        });\n        return h(\"li\", { class: labelClass.value }, [\n          h(UIcon, { name: clones.value[key]?.props.icon ?? props.icon }),\n          `${label} (${Math.round(percents.value[key])}%)`\n        ]);\n      }));\n      return vNodeSlots;\n    });\n    return () => h(\"div\", { class: ui.value.wrapper, ...attrs.value }, vNodeChildren.value);\n  }\n});\n",
+      "start": 1714082885882,
+      "end": 1714082887372,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1714082887372,
+      "end": 1714082887372,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1714082887372,
+      "end": 1714082887372,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1714082887372,
+      "end": 1714082887372,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1714082887372,
+      "end": 1714082887372,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1714082887372,
+      "end": 1714082887372,
+      "order": "pre"
+    },
+    {
+      "name": "server-only-component-transform",
+      "start": 1714082887372,
+      "end": 1714082887372,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1714082887372,
+      "end": 1714082887372,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1714082887372,
+      "end": 1714082887372,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1714082887372,
+      "end": 1714082887372,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1714082887372,
+      "end": 1714082887372,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1714082887372,
+      "end": 1714082887372,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1714082887372,
+      "end": 1714082887372,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1714082887372,
+      "end": 1714082887372,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1714082887372,
+      "end": 1714082887372,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1714082887372,
+      "end": 1714082887372,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1714082887372,
+      "end": 1714082887372,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "result": "import { defineAsyncComponent } from \"vue\"\nexport default defineAsyncComponent(() => import(\"/Users/omarmartin/Documents/DAW/arthub-project-DAW/frontendV3/node_modules/@nuxt/ui/dist/runtime/components/elements/MeterGroup.mjs\").then(r => r.default))",
+      "start": 1714082887372,
+      "end": 1714082887372,
+      "order": "normal",
+      "sourcemaps": null
+    },
+    {
+      "name": "replace",
+      "start": 1714082887372,
+      "end": 1714082887372,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1714082887372,
+      "end": 1714082887372,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1714082887372,
+      "end": 1714082887372,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1714082887372,
+      "end": 1714082887372,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1714082887372,
+      "end": 1714082887372,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1714082887372,
+      "end": 1714082887372,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1714082887372,
+      "end": 1714082887372,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1714082887372,
+      "end": 1714082887372,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1714082887372,
+      "end": 1714082887372,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1714082887372,
+      "end": 1714082887372,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1714082887372,
+      "end": 1714082887372,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1714082887372,
+      "end": 1714082887372,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1714082887372,
+      "end": 1714082887372,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1714082887372,
+      "end": 1714082887372,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1714082887372,
+      "end": 1714082887372,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1714082887372,
+      "end": 1714082887372,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1714082887372,
+      "end": 1714082887372,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1714082887372,
+      "end": 1714082887372,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-template",
+      "start": 1714082887372,
+      "end": 1714082887372,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1714082887372,
+      "end": 1714082887372,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1714082887372,
+      "end": 1714082887372,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1714082887372,
+      "end": 1714082887372,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1714082887372,
+      "end": 1714082887372,
+      "order": "normal"
+    }
+  ]
+}

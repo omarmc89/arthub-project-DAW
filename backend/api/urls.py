@@ -4,6 +4,8 @@ from django.urls import path, include
 from rest_framework import routers
 
 from .viewsets.CreateArtworkViewSet import CreateArtworkViewSet
+from .viewsets.UpdateArtworkViewSet import UpdateArtworkViewSet
+
 from .viewsets.CustomUserViewSet import CustomUserViewSet
 from .viewsets.ArtistViewSet import ArtistViewSet
 from .viewsets.ArtworkViewSet import ArtworkViewSet
@@ -11,6 +13,7 @@ from .viewsets.PhotoViewSet import PhotoViewSet
 from .viewsets.PaintingViewSet import PaintingViewSet
 from .viewsets.SearchViewSet import SearchUserViewSet, SearchArtistViewSet
 from .viewsets.ArtworksByUserViewSet import ArtworksByUserViewSet
+from .viewsets.ShowArtworkDetaislViewSet import ShowArtworkDetailsViewSet
 
 router = routers.DefaultRouter()
 router.register(r'users', CustomUserViewSet, basename="users")
@@ -27,5 +30,7 @@ urlpatterns = [
     path('search/artist/', SearchArtistViewSet.as_view(), name='search-artist'),
     path('search/artworkbyuser/', ArtworksByUserViewSet.as_view(), name='create-artwork'),
     path('create/artwork/', CreateArtworkViewSet.as_view(), name='user-artworks'),
-
+    path('update/artwork/', UpdateArtworkViewSet.as_view(), name='user-artworks'),
+    path('artworkDetails/', ShowArtworkDetailsViewSet.as_view(), name='artworkDetails'),
+    path('randomArtworks/', ArtworkViewSet.as_view({'get': 'getRandomArtworks'}), name='random-artworks'),
 ]

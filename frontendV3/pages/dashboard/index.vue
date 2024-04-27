@@ -189,7 +189,7 @@ watch(artworkCreated, (newValue, oldValue) => {
 })
 
 async function fetchArtworks(idArtist) {
-    const { data, error } = await useFetch(`http://localhost:8000/api/v1/search/artworkbyuser/?id=${idArtist}`, {
+    const { data, error } = await useFetch(`https://arthub-api-polished-breeze-902.fly.dev/api/v1/search/artworkbyuser/?id=${idArtist}`, {
         watch: [artworkCreated],
     })
     if (data) {
@@ -200,7 +200,7 @@ async function fetchArtworks(idArtist) {
 
 async function deleteArtwork(artworkId) {
   try {
-    await useFetch(`http://localhost:8000/api/v1/artworks/${artworkId}/`, {
+    await useFetch(`https://arthub-api-polished-breeze-902.fly.dev/api/v1/artworks/${artworkId}/`, {
       method: 'DELETE'
     } )
     artworkCreated.value += 1

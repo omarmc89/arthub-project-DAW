@@ -1,0 +1,252 @@
+{
+  "resolvedId": "/Users/omarmartin/Documents/DAW/arthub-project-DAW/frontendV3/pages/login/index.vue?vue&type=style&index=0&scoped=e33d105f&lang.css",
+  "transforms": [
+    {
+      "name": "vite:vue",
+      "result": "\n\n.form-label {\n  width: 100%;\n  max-width: 1000px;\n}\n\n.form-label label{\n    font-size: 2rem;\n    font-family: 'Garute';\n}\n\n.form-label input{\n    font-size: 1.5rem;\n    font-family: 'Afacad';\n    font-weight: 500;\n    color: #818cf8;\n    text-transform: uppercase;\n}\n\n.form-control {\n  width: 100%;\n  padding: 8px;\n  border: 1px solid #ccc;\n  border-radius: 20px;\n  margin-bottom: 10px;\n  box-sizing: border-box;\n}\n\n.btn {\n    padding: 10px 20px;\n    border: none;\n    border-radius: 20px;\n    background-color: #232c33;\n    color: #e1e9ec;\n    cursor: pointer;\n}\n\n.btn:hover {\n    background-color: #e1e9ec;\n    color: #232c33;\n}\n",
+      "start": 1714082882531,
+      "end": 1714082882531,
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          "/Users/omarmartin/Documents/DAW/arthub-project-DAW/frontendV3/pages/login/index.vue"
+        ],
+        "names": [],
+        "mappings": "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",
+        "file": "/Users/omarmartin/Documents/DAW/arthub-project-DAW/frontendV3/pages/login/index.vue",
+        "sourceRoot": "",
+        "sourcesContent": [
+          "<template>\n    <section>\n        <form class=\"form space-y-4 mt-2 text-slate-900 flex flex-col items-center justify-center\" @submit.prevent=\"login\">\n            <h2 v-if=\"loginError\" class=\"text-xl text-red-800 rounded-xl p-2 mt-2 bg-red-200\"> Invalid Credentials</h2>\n            <h2 v-if=\"!loginError\" class=\"text-xl rounded-xl p-2 bg-transparent text-transparent\">Login</h2>\n            <section class=\"flex flex-col items-center gap-4\">\n                <div class=\"form-label flex flex-col items-center\">\n                    <label for=\"username\">Username</label>\n                    <input v-model=\"user.email\" type=\"text\" placeholder=\"Email\" required class=\"form-control rounded-full bg-white\">\n                </div>\n                <div class=\"form-label flex flex-col items-center mb-6\">\n                    <label for=\"email\">Email</label>\n                    <input v-model=\"user.password\" type=\"password\" placeholder=\"Password\" required class=\"form-control rounded-full bg-white\">\n                </div>\n            </section>\n            <button type=\"submit\" :disabled=\"pendingFetch\" class=\"btn\">\n                <span v-if=\"pendingFetch\">Submitting...</span>\n                <span v-else>Login</span>\n            </button>\n            \n        </form>\n    </section>\n</template>\n\n<script setup>\n    definePageMeta({\n    layout: 'custom',\n    })\n\n    import { storeToRefs } from 'pinia'\n    import { useAuthStore} from  '~/store/auth'\n\n    const { authenticateUser } = useAuthStore()\n    const { authenticated, userLogged } = storeToRefs(useAuthStore())\n\n    const user = ref({\n        email: '',\n        password: '',\n    })\n\n    const loginError = ref(false)\n    const toast = useToast();\n    const router = useRouter();\n\n    function resetLogin() {\n        user.value.email = ''\n        user.value.password = ''\n    }\n\n    function redirectToDashboard() {\n        navigateTo('/dashboard')\n    }\n\n    const login = async () => {\n        loginError.value = false\n        const { data, error } = await authenticateUser(user.value)\n        // if (authenticated) {\n        //     toast.add({ title: 'Login correct! Redirecting to Home...',\n        //     timeout: 2000, callback:() => router.push('/dashboard') })\n        // }\n        if (data) {\n            toast.add({ title: 'Login correct! Redirecting to your Dashboard...',\n            timeout: 2000, callback:() => redirectToDashboard() })\n        }\n\n        if (error) {\n            loginError.value = true\n            toast.add({ title: 'Login incorrect! Please try again...', timeout: 1500, color:\"red\", callback:resetLogin()})\n        }\n    }\n\n</script>\n\n<style scoped>\n\n.form-label {\n  width: 100%;\n  max-width: 1000px;\n}\n\n.form-label label{\n    font-size: 2rem;\n    font-family: 'Garute';\n}\n\n.form-label input{\n    font-size: 1.5rem;\n    font-family: 'Afacad';\n    font-weight: 500;\n    color: #818cf8;\n    text-transform: uppercase;\n}\n\n.form-control {\n  width: 100%;\n  padding: 8px;\n  border: 1px solid #ccc;\n  border-radius: 20px;\n  margin-bottom: 10px;\n  box-sizing: border-box;\n}\n\n.btn {\n    padding: 10px 20px;\n    border: none;\n    border-radius: 20px;\n    background-color: #232c33;\n    color: #e1e9ec;\n    cursor: pointer;\n}\n\n.btn:hover {\n    background-color: #e1e9ec;\n    color: #232c33;\n}\n</style>"
+        ]
+      }
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1714082882531,
+      "end": 1714082882531,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1714082882531,
+      "end": 1714082882531,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1714082882531,
+      "end": 1714082882531,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "result": ".form-label{max-width:1000px;width:100%}.form-label label{font-family:Garute;font-size:2rem}.form-label input{color:#818cf8;font-family:Afacad;font-size:1.5rem;font-weight:500;text-transform:uppercase}.form-control{border:1px solid #ccc;border-radius:20px;box-sizing:border-box;margin-bottom:10px;padding:8px;width:100%}.btn{background-color:#232c33;border:none;border-radius:20px;color:#e1e9ec;cursor:pointer;padding:10px 20px}.btn:hover{background-color:#e1e9ec;color:#232c33}",
+      "start": 1714082882531,
+      "end": 1714082882549,
+      "order": "normal",
+      "sourcemaps": {
+        "file": "/Users/omarmartin/Documents/DAW/arthub-project-DAW/frontendV3/pages/login/index.vue",
+        "mappings": "AAEA,YAEE,gBAAiB,CADjB,UAEF,CAEA,kBAEI,kBAAqB,CADrB,cAEJ,CAEA,kBAII,aAAc,CAFd,kBAAqB,CADrB,gBAAiB,CAEjB,eAAgB,CAEhB,wBACJ,CAEA,cAGE,qBAAsB,CACtB,kBAAmB,CAEnB,qBAAsB,CADtB,kBAAmB,CAHnB,WAAY,CADZ,UAMF,CAEA,KAII,wBAAyB,CAFzB,WAAY,CACZ,kBAAmB,CAEnB,aAAc,CACd,cAAe,CALf,iBAMJ,CAEA,WACI,wBAAyB,CACzB,aACJ",
+        "names": [],
+        "sources": [
+          "/Users/omarmartin/Documents/DAW/arthub-project-DAW/frontendV3/pages/login/index.vue"
+        ],
+        "sourcesContent": [
+          "\n\n.form-label {\n  width: 100%;\n  max-width: 1000px;\n}\n\n.form-label label{\n    font-size: 2rem;\n    font-family: 'Garute';\n}\n\n.form-label input{\n    font-size: 1.5rem;\n    font-family: 'Afacad';\n    font-weight: 500;\n    color: #818cf8;\n    text-transform: uppercase;\n}\n\n.form-control {\n  width: 100%;\n  padding: 8px;\n  border: 1px solid #ccc;\n  border-radius: 20px;\n  margin-bottom: 10px;\n  box-sizing: border-box;\n}\n\n.btn {\n    padding: 10px 20px;\n    border: none;\n    border-radius: 20px;\n    background-color: #232c33;\n    color: #e1e9ec;\n    cursor: pointer;\n}\n\n.btn:hover {\n    background-color: #e1e9ec;\n    color: #232c33;\n}\n"
+        ],
+        "version": 3
+      }
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1714082882549,
+      "end": 1714082882549,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1714082882549,
+      "end": 1714082882549,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1714082882564,
+      "end": 1714082882564,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "result": ".form-label[data-v-e33d105f]{max-width:1000px;width:100%}.form-label label[data-v-e33d105f]{font-family:Garute;font-size:2rem}.form-label input[data-v-e33d105f]{color:#818cf8;font-family:Afacad;font-size:1.5rem;font-weight:500;text-transform:uppercase}.form-control[data-v-e33d105f]{border:1px solid #ccc;border-radius:20px;box-sizing:border-box;margin-bottom:10px;padding:8px;width:100%}.btn[data-v-e33d105f]{background-color:#232c33;border:none;border-radius:20px;color:#e1e9ec;cursor:pointer;padding:10px 20px}.btn[data-v-e33d105f]:hover{background-color:#e1e9ec;color:#232c33}",
+      "start": 1714082882564,
+      "end": 1714082882565,
+      "order": "normal",
+      "sourcemaps": {
+        "file": "/Users/omarmartin/Documents/DAW/arthub-project-DAW/frontendV3/pages/login/index.vue",
+        "mappings": "AAAA,6BAAY,gBAAgB,CAAC,UAAU,CAAC,mCAAkB,kBAAkB,CAAC,cAAc,CAAC,mCAAkB,aAAa,CAAC,kBAAkB,CAAC,gBAAgB,CAAC,eAAe,CAAC,wBAAwB,CAAC,+BAAc,qBAAqB,CAAC,kBAAkB,CAAC,qBAAqB,CAAC,kBAAkB,CAAC,WAAW,CAAC,UAAU,CAAC,sBAAK,wBAAwB,CAAC,WAAW,CAAC,kBAAkB,CAAC,aAAa,CAAC,cAAc,CAAC,iBAAiB,CAAC,4BAAW,wBAAwB,CAAC,aAAa",
+        "names": [],
+        "sources": [
+          "/Users/omarmartin/Documents/DAW/arthub-project-DAW/frontendV3/pages/login/index.vue"
+        ],
+        "sourcesContent": [
+          null
+        ],
+        "version": 3
+      }
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1714082882566,
+      "end": 1714082882566,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1714082882566,
+      "end": 1714082882566,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1714082882567,
+      "end": 1714082882567,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1714082882567,
+      "end": 1714082882567,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1714082882582,
+      "end": 1714082882582,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1714082882582,
+      "end": 1714082882582,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1714082882583,
+      "end": 1714082882583,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1714082882583,
+      "end": 1714082882584,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "result": "",
+      "start": 1714082882584,
+      "end": 1714082882584,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1714082882584,
+      "end": 1714082882584,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1714082882584,
+      "end": 1714082882584,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1714082882584,
+      "end": 1714082882584,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1714082882584,
+      "end": 1714082882584,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1714082882585,
+      "end": 1714082882585,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1714082882585,
+      "end": 1714082882585,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1714082882585,
+      "end": 1714082882585,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1714082882585,
+      "end": 1714082882585,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1714082882585,
+      "end": 1714082882585,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1714082882585,
+      "end": 1714082882585,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1714082882585,
+      "end": 1714082882585,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1714082882585,
+      "end": 1714082882585,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1714082882585,
+      "end": 1714082882585,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1714082882585,
+      "end": 1714082882585,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1714082882585,
+      "end": 1714082882585,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1714082882585,
+      "end": 1714082882585,
+      "order": "normal"
+    }
+  ]
+}

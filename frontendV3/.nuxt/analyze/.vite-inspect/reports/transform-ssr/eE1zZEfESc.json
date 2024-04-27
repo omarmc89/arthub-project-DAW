@@ -1,0 +1,267 @@
+{
+  "resolvedId": "/Users/omarmartin/Documents/DAW/arthub-project-DAW/frontendV3/node_modules/@nuxt/ui/dist/runtime/components/navigation/Tabs.vue?nuxt_component=async&nuxt_component_name=UTabs",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "<template>\n  <HTabGroup\n    :vertical=\"orientation === 'vertical'\"\n    :selected-index=\"selectedIndex\"\n    as=\"div\"\n    :class=\"ui.wrapper\"\n    v-bind=\"attrs\"\n    @change=\"onChange\"\n  >\n    <HTabList\n      ref=\"listRef\"\n      :class=\"[ui.list.base, ui.list.background, ui.list.rounded, ui.list.shadow, ui.list.padding, ui.list.width, orientation === 'horizontal' && ui.list.height, orientation === 'horizontal' && 'inline-grid items-center']\"\n      :style=\"[orientation === 'horizontal' && `grid-template-columns: repeat(${items.length}, minmax(0, 1fr))`]\"\n    >\n      <div ref=\"markerRef\" :class=\"ui.list.marker.wrapper\">\n        <div :class=\"[ui.list.marker.base, ui.list.marker.background, ui.list.marker.rounded, ui.list.marker.shadow]\" />\n      </div>\n\n      <HTab\n        v-for=\"(item, index) of items\"\n        :key=\"index\"\n        ref=\"itemRefs\"\n        v-slot=\"{ selected, disabled }\"\n        :disabled=\"item.disabled\"\n        as=\"template\"\n      >\n        <button :class=\"[ui.list.tab.base, ui.list.tab.background, ui.list.tab.height, ui.list.tab.padding, ui.list.tab.size, ui.list.tab.font, ui.list.tab.rounded, ui.list.tab.shadow, selected ? ui.list.tab.active : ui.list.tab.inactive]\">\n          <slot :item=\"item\" :index=\"index\" :selected=\"selected\" :disabled=\"disabled\">\n            <span class=\"truncate\">{{ item.label }}</span>\n          </slot>\n        </button>\n      </HTab>\n    </HTabList>\n\n    <HTabPanels :class=\"ui.container\">\n      <HTabPanel v-for=\"(item, index) of items\" :key=\"index\" v-slot=\"{ selected }\" :class=\"ui.base\" :unmount=\"unmount\">\n        <slot :name=\"item.slot || 'item'\" :item=\"item\" :index=\"index\" :selected=\"selected\">\n          {{ item.content }}\n        </slot>\n      </HTabPanel>\n    </HTabPanels>\n  </HTabGroup>\n</template>\n\n<script>\nimport { toRef, ref, watch, onMounted, defineComponent } from \"vue\";\nimport { TabGroup as HTabGroup, TabList as HTabList, Tab as HTab, TabPanels as HTabPanels, TabPanel as HTabPanel, provideUseId } from \"@headlessui/vue\";\nimport { useResizeObserver } from \"@vueuse/core\";\nimport { useUI } from \"../../composables/useUI\";\nimport { mergeConfig } from \"../../utils\";\nimport appConfig from \"#build/app.config\";\nimport { tabs } from \"#ui/ui.config\";\nimport { useId } from \"#imports\";\nconst config = mergeConfig(appConfig.ui.strategy, appConfig.ui.tabs, tabs);\nexport default defineComponent({\n  components: {\n    HTabGroup,\n    HTabList,\n    HTab,\n    HTabPanels,\n    HTabPanel\n  },\n  inheritAttrs: false,\n  props: {\n    modelValue: {\n      type: Number,\n      default: void 0\n    },\n    orientation: {\n      type: String,\n      default: \"horizontal\",\n      validator: (value) => [\"horizontal\", \"vertical\"].includes(value)\n    },\n    defaultIndex: {\n      type: Number,\n      default: 0\n    },\n    items: {\n      type: Array,\n      default: () => []\n    },\n    unmount: {\n      type: Boolean,\n      default: false\n    },\n    class: {\n      type: [String, Object, Array],\n      default: () => \"\"\n    },\n    ui: {\n      type: Object,\n      default: () => ({})\n    }\n  },\n  emits: [\"update:modelValue\", \"change\"],\n  setup(props, { emit }) {\n    const { ui, attrs } = useUI(\"tabs\", toRef(props, \"ui\"), config, toRef(props, \"class\"));\n    const listRef = ref();\n    const itemRefs = ref([]);\n    const markerRef = ref();\n    const selectedIndex = ref(props.modelValue || props.defaultIndex);\n    function calcMarkerSize(index) {\n      const tab = itemRefs.value[index]?.$el;\n      if (!tab) {\n        return;\n      }\n      if (!markerRef.value) {\n        return;\n      }\n      markerRef.value.style.top = `${tab.offsetTop}px`;\n      markerRef.value.style.left = `${tab.offsetLeft}px`;\n      markerRef.value.style.width = `${tab.offsetWidth}px`;\n      markerRef.value.style.height = `${tab.offsetHeight}px`;\n    }\n    function onChange(index) {\n      selectedIndex.value = index;\n      emit(\"change\", index);\n      if (props.modelValue !== void 0) {\n        emit(\"update:modelValue\", selectedIndex.value);\n      }\n      calcMarkerSize(selectedIndex.value);\n    }\n    useResizeObserver(listRef, () => {\n      calcMarkerSize(selectedIndex.value);\n    });\n    watch(() => props.modelValue, (value) => {\n      selectedIndex.value = value;\n      calcMarkerSize(selectedIndex.value);\n    });\n    onMounted(() => calcMarkerSize(selectedIndex.value));\n    provideUseId(() => useId());\n    return {\n      // eslint-disable-next-line vue/no-dupe-keys\n      ui,\n      attrs,\n      listRef,\n      itemRefs,\n      markerRef,\n      selectedIndex,\n      onChange\n    };\n  }\n});\n</script>\n",
+      "start": 1714082887380,
+      "end": 1714082887444,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1714082887444,
+      "end": 1714082887444,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1714082887444,
+      "end": 1714082887444,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1714082887444,
+      "end": 1714082887444,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1714082887444,
+      "end": 1714082887444,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1714082887444,
+      "end": 1714082887444,
+      "order": "pre"
+    },
+    {
+      "name": "server-only-component-transform",
+      "start": 1714082887444,
+      "end": 1714082887444,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1714082887444,
+      "end": 1714082887444,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1714082887444,
+      "end": 1714082887444,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1714082887444,
+      "end": 1714082887444,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1714082887444,
+      "end": 1714082887444,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "result": "\nimport { toRef, ref, watch, onMounted, defineComponent } from \"vue\";\nimport { TabGroup as HTabGroup, TabList as HTabList, Tab as HTab, TabPanels as HTabPanels, TabPanel as HTabPanel, provideUseId } from \"@headlessui/vue\";\nimport { useResizeObserver } from \"@vueuse/core\";\nimport { useUI } from \"../../composables/useUI\";\nimport { mergeConfig } from \"../../utils\";\nimport appConfig from \"#build/app.config\";\nimport { tabs } from \"#ui/ui.config\";\nimport { useId } from \"#imports\";\nconst config = mergeConfig(appConfig.ui.strategy, appConfig.ui.tabs, tabs);\nconst _sfc_main = defineComponent({\n  components: {\n    HTabGroup,\n    HTabList,\n    HTab,\n    HTabPanels,\n    HTabPanel\n  },\n  inheritAttrs: false,\n  props: {\n    modelValue: {\n      type: Number,\n      default: void 0\n    },\n    orientation: {\n      type: String,\n      default: \"horizontal\",\n      validator: (value) => [\"horizontal\", \"vertical\"].includes(value)\n    },\n    defaultIndex: {\n      type: Number,\n      default: 0\n    },\n    items: {\n      type: Array,\n      default: () => []\n    },\n    unmount: {\n      type: Boolean,\n      default: false\n    },\n    class: {\n      type: [String, Object, Array],\n      default: () => \"\"\n    },\n    ui: {\n      type: Object,\n      default: () => ({})\n    }\n  },\n  emits: [\"update:modelValue\", \"change\"],\n  setup(props, { emit }) {\n    const { ui, attrs } = useUI(\"tabs\", toRef(props, \"ui\"), config, toRef(props, \"class\"));\n    const listRef = ref();\n    const itemRefs = ref([]);\n    const markerRef = ref();\n    const selectedIndex = ref(props.modelValue || props.defaultIndex);\n    function calcMarkerSize(index) {\n      const tab = itemRefs.value[index]?.$el;\n      if (!tab) {\n        return;\n      }\n      if (!markerRef.value) {\n        return;\n      }\n      markerRef.value.style.top = `${tab.offsetTop}px`;\n      markerRef.value.style.left = `${tab.offsetLeft}px`;\n      markerRef.value.style.width = `${tab.offsetWidth}px`;\n      markerRef.value.style.height = `${tab.offsetHeight}px`;\n    }\n    function onChange(index) {\n      selectedIndex.value = index;\n      emit(\"change\", index);\n      if (props.modelValue !== void 0) {\n        emit(\"update:modelValue\", selectedIndex.value);\n      }\n      calcMarkerSize(selectedIndex.value);\n    }\n    useResizeObserver(listRef, () => {\n      calcMarkerSize(selectedIndex.value);\n    });\n    watch(() => props.modelValue, (value) => {\n      selectedIndex.value = value;\n      calcMarkerSize(selectedIndex.value);\n    });\n    onMounted(() => calcMarkerSize(selectedIndex.value));\n    provideUseId(() => useId());\n    return {\n      // eslint-disable-next-line vue/no-dupe-keys\n      ui,\n      attrs,\n      listRef,\n      itemRefs,\n      markerRef,\n      selectedIndex,\n      onChange\n    };\n  }\n});\n\nimport { resolveComponent as _resolveComponent, withCtx as _withCtx, renderSlot as _renderSlot, toDisplayString as _toDisplayString, createVNode as _createVNode, renderList as _renderList, Fragment as _Fragment, openBlock as _openBlock, createBlock as _createBlock, createTextVNode as _createTextVNode, mergeProps as _mergeProps } from \"vue\"\nimport { ssrRenderClass as _ssrRenderClass, ssrRenderSlot as _ssrRenderSlot, ssrRenderComponent as _ssrRenderComponent, ssrInterpolate as _ssrInterpolate, ssrRenderList as _ssrRenderList } from \"vue/server-renderer\"\n\nfunction _sfc_ssrRender(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {\n  const _component_HTabGroup = _resolveComponent(\"HTabGroup\")\n  const _component_HTabList = _resolveComponent(\"HTabList\")\n  const _component_HTab = _resolveComponent(\"HTab\")\n  const _component_HTabPanels = _resolveComponent(\"HTabPanels\")\n  const _component_HTabPanel = _resolveComponent(\"HTabPanel\")\n\n  _push(_ssrRenderComponent(_component_HTabGroup, _mergeProps({\n    vertical: _ctx.orientation === 'vertical',\n    \"selected-index\": _ctx.selectedIndex,\n    as: \"div\",\n    class: _ctx.ui.wrapper\n  }, _ctx.attrs, { onChange: _ctx.onChange }, _attrs), {\n    default: _withCtx((_, _push, _parent, _scopeId) => {\n      if (_push) {\n        _push(_ssrRenderComponent(_component_HTabList, {\n          ref: \"listRef\",\n          class: [_ctx.ui.list.base, _ctx.ui.list.background, _ctx.ui.list.rounded, _ctx.ui.list.shadow, _ctx.ui.list.padding, _ctx.ui.list.width, _ctx.orientation === 'horizontal' && _ctx.ui.list.height, _ctx.orientation === 'horizontal' && 'inline-grid items-center'],\n          style: [_ctx.orientation === 'horizontal' && `grid-template-columns: repeat(${_ctx.items.length}, minmax(0, 1fr))`]\n        }, {\n          default: _withCtx((_, _push, _parent, _scopeId) => {\n            if (_push) {\n              _push(`<div class=\"${\n                _ssrRenderClass(_ctx.ui.list.marker.wrapper)\n              }\"${\n                _scopeId\n              }><div class=\"${\n                _ssrRenderClass([_ctx.ui.list.marker.base, _ctx.ui.list.marker.background, _ctx.ui.list.marker.rounded, _ctx.ui.list.marker.shadow])\n              }\"${\n                _scopeId\n              }></div></div><!--[-->`)\n              _ssrRenderList(_ctx.items, (item, index) => {\n                _push(_ssrRenderComponent(_component_HTab, {\n                  key: index,\n                  ref_for: true,\n                  ref: \"itemRefs\",\n                  disabled: item.disabled,\n                  as: \"template\"\n                }, {\n                  default: _withCtx(({ selected, disabled }, _push, _parent, _scopeId) => {\n                    if (_push) {\n                      _push(`<button class=\"${\n                        _ssrRenderClass([_ctx.ui.list.tab.base, _ctx.ui.list.tab.background, _ctx.ui.list.tab.height, _ctx.ui.list.tab.padding, _ctx.ui.list.tab.size, _ctx.ui.list.tab.font, _ctx.ui.list.tab.rounded, _ctx.ui.list.tab.shadow, selected ? _ctx.ui.list.tab.active : _ctx.ui.list.tab.inactive])\n                      }\"${\n                        _scopeId\n                      }>`)\n                      _ssrRenderSlot(_ctx.$slots, \"default\", {\n                        item: item,\n                        index: index,\n                        selected: selected,\n                        disabled: disabled\n                      }, () => {\n                        _push(`<span class=\"truncate\"${\n                          _scopeId\n                        }>${\n                          _ssrInterpolate(item.label)\n                        }</span>`)\n                      }, _push, _parent, _scopeId)\n                      _push(`</button>`)\n                    } else {\n                      return [\n                        _createVNode(\"button\", {\n                          class: [_ctx.ui.list.tab.base, _ctx.ui.list.tab.background, _ctx.ui.list.tab.height, _ctx.ui.list.tab.padding, _ctx.ui.list.tab.size, _ctx.ui.list.tab.font, _ctx.ui.list.tab.rounded, _ctx.ui.list.tab.shadow, selected ? _ctx.ui.list.tab.active : _ctx.ui.list.tab.inactive]\n                        }, [\n                          _renderSlot(_ctx.$slots, \"default\", {\n                            item: item,\n                            index: index,\n                            selected: selected,\n                            disabled: disabled\n                          }, () => [\n                            _createVNode(\"span\", { class: \"truncate\" }, _toDisplayString(item.label), 1)\n                          ])\n                        ], 2)\n                      ]\n                    }\n                  }),\n                  _: 2\n                }, _parent, _scopeId))\n              })\n              _push(`<!--]-->`)\n            } else {\n              return [\n                _createVNode(\"div\", {\n                  ref: \"markerRef\",\n                  class: _ctx.ui.list.marker.wrapper\n                }, [\n                  _createVNode(\"div\", {\n                    class: [_ctx.ui.list.marker.base, _ctx.ui.list.marker.background, _ctx.ui.list.marker.rounded, _ctx.ui.list.marker.shadow]\n                  }, null, 2)\n                ], 2),\n                (_openBlock(true), _createBlock(_Fragment, null, _renderList(_ctx.items, (item, index) => {\n                  return (_openBlock(), _createBlock(_component_HTab, {\n                    key: index,\n                    ref_for: true,\n                    ref: \"itemRefs\",\n                    disabled: item.disabled,\n                    as: \"template\"\n                  }, {\n                    default: _withCtx(({ selected, disabled }) => [\n                      _createVNode(\"button\", {\n                        class: [_ctx.ui.list.tab.base, _ctx.ui.list.tab.background, _ctx.ui.list.tab.height, _ctx.ui.list.tab.padding, _ctx.ui.list.tab.size, _ctx.ui.list.tab.font, _ctx.ui.list.tab.rounded, _ctx.ui.list.tab.shadow, selected ? _ctx.ui.list.tab.active : _ctx.ui.list.tab.inactive]\n                      }, [\n                        _renderSlot(_ctx.$slots, \"default\", {\n                          item: item,\n                          index: index,\n                          selected: selected,\n                          disabled: disabled\n                        }, () => [\n                          _createVNode(\"span\", { class: \"truncate\" }, _toDisplayString(item.label), 1)\n                        ])\n                      ], 2)\n                    ]),\n                    _: 2\n                  }, 1032, [\"disabled\"]))\n                }), 128))\n              ]\n            }\n          }),\n          _: 3\n        }, _parent, _scopeId))\n        _push(_ssrRenderComponent(_component_HTabPanels, {\n          class: _ctx.ui.container\n        }, {\n          default: _withCtx((_, _push, _parent, _scopeId) => {\n            if (_push) {\n              _push(`<!--[-->`)\n              _ssrRenderList(_ctx.items, (item, index) => {\n                _push(_ssrRenderComponent(_component_HTabPanel, {\n                  key: index,\n                  class: _ctx.ui.base,\n                  unmount: _ctx.unmount\n                }, {\n                  default: _withCtx(({ selected }, _push, _parent, _scopeId) => {\n                    if (_push) {\n                      _ssrRenderSlot(_ctx.$slots, item.slot || 'item', {\n                        item: item,\n                        index: index,\n                        selected: selected\n                      }, () => {\n                        _push(`${_ssrInterpolate(item.content)}`)\n                      }, _push, _parent, _scopeId)\n                    } else {\n                      return [\n                        _renderSlot(_ctx.$slots, item.slot || 'item', {\n                          item: item,\n                          index: index,\n                          selected: selected\n                        }, () => [\n                          _createTextVNode(_toDisplayString(item.content), 1)\n                        ])\n                      ]\n                    }\n                  }),\n                  _: 2\n                }, _parent, _scopeId))\n              })\n              _push(`<!--]-->`)\n            } else {\n              return [\n                (_openBlock(true), _createBlock(_Fragment, null, _renderList(_ctx.items, (item, index) => {\n                  return (_openBlock(), _createBlock(_component_HTabPanel, {\n                    key: index,\n                    class: _ctx.ui.base,\n                    unmount: _ctx.unmount\n                  }, {\n                    default: _withCtx(({ selected }) => [\n                      _renderSlot(_ctx.$slots, item.slot || 'item', {\n                        item: item,\n                        index: index,\n                        selected: selected\n                      }, () => [\n                        _createTextVNode(_toDisplayString(item.content), 1)\n                      ])\n                    ]),\n                    _: 2\n                  }, 1032, [\"class\", \"unmount\"]))\n                }), 128))\n              ]\n            }\n          }),\n          _: 3\n        }, _parent, _scopeId))\n      } else {\n        return [\n          _createVNode(_component_HTabList, {\n            ref: \"listRef\",\n            class: [_ctx.ui.list.base, _ctx.ui.list.background, _ctx.ui.list.rounded, _ctx.ui.list.shadow, _ctx.ui.list.padding, _ctx.ui.list.width, _ctx.orientation === 'horizontal' && _ctx.ui.list.height, _ctx.orientation === 'horizontal' && 'inline-grid items-center'],\n            style: [_ctx.orientation === 'horizontal' && `grid-template-columns: repeat(${_ctx.items.length}, minmax(0, 1fr))`]\n          }, {\n            default: _withCtx(() => [\n              _createVNode(\"div\", {\n                ref: \"markerRef\",\n                class: _ctx.ui.list.marker.wrapper\n              }, [\n                _createVNode(\"div\", {\n                  class: [_ctx.ui.list.marker.base, _ctx.ui.list.marker.background, _ctx.ui.list.marker.rounded, _ctx.ui.list.marker.shadow]\n                }, null, 2)\n              ], 2),\n              (_openBlock(true), _createBlock(_Fragment, null, _renderList(_ctx.items, (item, index) => {\n                return (_openBlock(), _createBlock(_component_HTab, {\n                  key: index,\n                  ref_for: true,\n                  ref: \"itemRefs\",\n                  disabled: item.disabled,\n                  as: \"template\"\n                }, {\n                  default: _withCtx(({ selected, disabled }) => [\n                    _createVNode(\"button\", {\n                      class: [_ctx.ui.list.tab.base, _ctx.ui.list.tab.background, _ctx.ui.list.tab.height, _ctx.ui.list.tab.padding, _ctx.ui.list.tab.size, _ctx.ui.list.tab.font, _ctx.ui.list.tab.rounded, _ctx.ui.list.tab.shadow, selected ? _ctx.ui.list.tab.active : _ctx.ui.list.tab.inactive]\n                    }, [\n                      _renderSlot(_ctx.$slots, \"default\", {\n                        item: item,\n                        index: index,\n                        selected: selected,\n                        disabled: disabled\n                      }, () => [\n                        _createVNode(\"span\", { class: \"truncate\" }, _toDisplayString(item.label), 1)\n                      ])\n                    ], 2)\n                  ]),\n                  _: 2\n                }, 1032, [\"disabled\"]))\n              }), 128))\n            ]),\n            _: 3\n          }, 8, [\"class\", \"style\"]),\n          _createVNode(_component_HTabPanels, {\n            class: _ctx.ui.container\n          }, {\n            default: _withCtx(() => [\n              (_openBlock(true), _createBlock(_Fragment, null, _renderList(_ctx.items, (item, index) => {\n                return (_openBlock(), _createBlock(_component_HTabPanel, {\n                  key: index,\n                  class: _ctx.ui.base,\n                  unmount: _ctx.unmount\n                }, {\n                  default: _withCtx(({ selected }) => [\n                    _renderSlot(_ctx.$slots, item.slot || 'item', {\n                      item: item,\n                      index: index,\n                      selected: selected\n                    }, () => [\n                      _createTextVNode(_toDisplayString(item.content), 1)\n                    ])\n                  ]),\n                  _: 2\n                }, 1032, [\"class\", \"unmount\"]))\n              }), 128))\n            ]),\n            _: 3\n          }, 8, [\"class\"])\n        ]\n      }\n    }),\n    _: 3\n  }, _parent))\n}\n\n\nimport { useSSRContext as __vite_useSSRContext } from 'vue'\nconst _sfc_setup = _sfc_main.setup\n_sfc_main.setup = (props, ctx) => {\n  const ssrContext = __vite_useSSRContext()\n  ;(ssrContext.modules || (ssrContext.modules = new Set())).add(\"node_modules/@nuxt/ui/dist/runtime/components/navigation/Tabs.vue\")\n  return _sfc_setup ? _sfc_setup(props, ctx) : undefined\n}\nimport _export_sfc from '\u0000plugin-vue:export-helper'\nexport default /*#__PURE__*/_export_sfc(_sfc_main, [['ssrRender',_sfc_ssrRender]])",
+      "start": 1714082887444,
+      "end": 1714082887447,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "file": "/Users/omarmartin/Documents/DAW/arthub-project-DAW/frontendV3/node_modules/@nuxt/ui/dist/runtime/components/navigation/Tabs.vue",
+        "names": [],
+        "sources": [
+          "/Users/omarmartin/Documents/DAW/arthub-project-DAW/frontendV3/node_modules/@nuxt/ui/dist/runtime/components/navigation/Tabs.vue"
+        ],
+        "sourcesContent": [
+          "<template>\n  <HTabGroup\n    :vertical=\"orientation === 'vertical'\"\n    :selected-index=\"selectedIndex\"\n    as=\"div\"\n    :class=\"ui.wrapper\"\n    v-bind=\"attrs\"\n    @change=\"onChange\"\n  >\n    <HTabList\n      ref=\"listRef\"\n      :class=\"[ui.list.base, ui.list.background, ui.list.rounded, ui.list.shadow, ui.list.padding, ui.list.width, orientation === 'horizontal' && ui.list.height, orientation === 'horizontal' && 'inline-grid items-center']\"\n      :style=\"[orientation === 'horizontal' && `grid-template-columns: repeat(${items.length}, minmax(0, 1fr))`]\"\n    >\n      <div ref=\"markerRef\" :class=\"ui.list.marker.wrapper\">\n        <div :class=\"[ui.list.marker.base, ui.list.marker.background, ui.list.marker.rounded, ui.list.marker.shadow]\" />\n      </div>\n\n      <HTab\n        v-for=\"(item, index) of items\"\n        :key=\"index\"\n        ref=\"itemRefs\"\n        v-slot=\"{ selected, disabled }\"\n        :disabled=\"item.disabled\"\n        as=\"template\"\n      >\n        <button :class=\"[ui.list.tab.base, ui.list.tab.background, ui.list.tab.height, ui.list.tab.padding, ui.list.tab.size, ui.list.tab.font, ui.list.tab.rounded, ui.list.tab.shadow, selected ? ui.list.tab.active : ui.list.tab.inactive]\">\n          <slot :item=\"item\" :index=\"index\" :selected=\"selected\" :disabled=\"disabled\">\n            <span class=\"truncate\">{{ item.label }}</span>\n          </slot>\n        </button>\n      </HTab>\n    </HTabList>\n\n    <HTabPanels :class=\"ui.container\">\n      <HTabPanel v-for=\"(item, index) of items\" :key=\"index\" v-slot=\"{ selected }\" :class=\"ui.base\" :unmount=\"unmount\">\n        <slot :name=\"item.slot || 'item'\" :item=\"item\" :index=\"index\" :selected=\"selected\">\n          {{ item.content }}\n        </slot>\n      </HTabPanel>\n    </HTabPanels>\n  </HTabGroup>\n</template>\n\n<script>\nimport { toRef, ref, watch, onMounted, defineComponent } from \"vue\";\nimport { TabGroup as HTabGroup, TabList as HTabList, Tab as HTab, TabPanels as HTabPanels, TabPanel as HTabPanel, provideUseId } from \"@headlessui/vue\";\nimport { useResizeObserver } from \"@vueuse/core\";\nimport { useUI } from \"../../composables/useUI\";\nimport { mergeConfig } from \"../../utils\";\nimport appConfig from \"#build/app.config\";\nimport { tabs } from \"#ui/ui.config\";\nimport { useId } from \"#imports\";\nconst config = mergeConfig(appConfig.ui.strategy, appConfig.ui.tabs, tabs);\nexport default defineComponent({\n  components: {\n    HTabGroup,\n    HTabList,\n    HTab,\n    HTabPanels,\n    HTabPanel\n  },\n  inheritAttrs: false,\n  props: {\n    modelValue: {\n      type: Number,\n      default: void 0\n    },\n    orientation: {\n      type: String,\n      default: \"horizontal\",\n      validator: (value) => [\"horizontal\", \"vertical\"].includes(value)\n    },\n    defaultIndex: {\n      type: Number,\n      default: 0\n    },\n    items: {\n      type: Array,\n      default: () => []\n    },\n    unmount: {\n      type: Boolean,\n      default: false\n    },\n    class: {\n      type: [String, Object, Array],\n      default: () => \"\"\n    },\n    ui: {\n      type: Object,\n      default: () => ({})\n    }\n  },\n  emits: [\"update:modelValue\", \"change\"],\n  setup(props, { emit }) {\n    const { ui, attrs } = useUI(\"tabs\", toRef(props, \"ui\"), config, toRef(props, \"class\"));\n    const listRef = ref();\n    const itemRefs = ref([]);\n    const markerRef = ref();\n    const selectedIndex = ref(props.modelValue || props.defaultIndex);\n    function calcMarkerSize(index) {\n      const tab = itemRefs.value[index]?.$el;\n      if (!tab) {\n        return;\n      }\n      if (!markerRef.value) {\n        return;\n      }\n      markerRef.value.style.top = `${tab.offsetTop}px`;\n      markerRef.value.style.left = `${tab.offsetLeft}px`;\n      markerRef.value.style.width = `${tab.offsetWidth}px`;\n      markerRef.value.style.height = `${tab.offsetHeight}px`;\n    }\n    function onChange(index) {\n      selectedIndex.value = index;\n      emit(\"change\", index);\n      if (props.modelValue !== void 0) {\n        emit(\"update:modelValue\", selectedIndex.value);\n      }\n      calcMarkerSize(selectedIndex.value);\n    }\n    useResizeObserver(listRef, () => {\n      calcMarkerSize(selectedIndex.value);\n    });\n    watch(() => props.modelValue, (value) => {\n      selectedIndex.value = value;\n      calcMarkerSize(selectedIndex.value);\n    });\n    onMounted(() => calcMarkerSize(selectedIndex.value));\n    provideUseId(() => useId());\n    return {\n      // eslint-disable-next-line vue/no-dupe-keys\n      ui,\n      attrs,\n      listRef,\n      itemRefs,\n      markerRef,\n      selectedIndex,\n      onChange\n    };\n  }\n});\n</script>\n"
+        ],
+        "mappings": ";AA6CA,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,EAAE,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC;AACnE,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,EAAE,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,EAAE,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACvJ,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,EAAE,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAChD,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,EAAE,CAAC,CAAC,CAAC,CAAC,EAAE,EAAE,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC/C,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,EAAE,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACzC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACzC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,EAAE,CAAC,CAAC,CAAC,EAAE,EAAE,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACpC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,EAAE,CAAC,CAAC,CAAC,CAAC,EAAE,EAAE,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAChC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,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CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;EACtC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,EAAE,CAAC,CAAC,CAAC,EAAE,CAAC,EAAE;IACrB,CAAC,CAAC,CAAC,CAAC,EAAE,EAAE,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,EAAE,EAAE,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;IACtF,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC;IACrB,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;IACxB,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC;IACvB,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;IACj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AAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;IACrC;IACA,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,EAAE,CAAC,EAAE;MAC/B,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;IACrC,CAAC,CAAC;IACF,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,EAAE;MACvC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC;MAC3B,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;IACrC,CAAC,CAAC;IACF,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,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"
+      }
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1714082887447,
+      "end": 1714082887447,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1714082887447,
+      "end": 1714082887447,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1714082887447,
+      "end": 1714082887447,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1714082887447,
+      "end": 1714082887447,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1714082887447,
+      "end": 1714082887447,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "result": "import { defineAsyncComponent } from \"vue\"\nexport default defineAsyncComponent(() => import(\"/Users/omarmartin/Documents/DAW/arthub-project-DAW/frontendV3/node_modules/@nuxt/ui/dist/runtime/components/navigation/Tabs.vue\").then(r => r.default))",
+      "start": 1714082887447,
+      "end": 1714082887447,
+      "order": "normal",
+      "sourcemaps": null
+    },
+    {
+      "name": "replace",
+      "start": 1714082887447,
+      "end": 1714082887447,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1714082887447,
+      "end": 1714082887447,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1714082887447,
+      "end": 1714082887447,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1714082887447,
+      "end": 1714082887447,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1714082887447,
+      "end": 1714082887447,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1714082887447,
+      "end": 1714082887447,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1714082887447,
+      "end": 1714082887447,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1714082887447,
+      "end": 1714082887447,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1714082887447,
+      "end": 1714082887447,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1714082887447,
+      "end": 1714082887447,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1714082887447,
+      "end": 1714082887447,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1714082887447,
+      "end": 1714082887447,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1714082887447,
+      "end": 1714082887447,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1714082887447,
+      "end": 1714082887447,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1714082887447,
+      "end": 1714082887447,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1714082887447,
+      "end": 1714082887447,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1714082887447,
+      "end": 1714082887447,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1714082887447,
+      "end": 1714082887447,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-template",
+      "start": 1714082887447,
+      "end": 1714082887447,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1714082887447,
+      "end": 1714082887447,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1714082887447,
+      "end": 1714082887447,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1714082887447,
+      "end": 1714082887447,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1714082887447,
+      "end": 1714082887447,
+      "order": "normal"
+    }
+  ]
+}

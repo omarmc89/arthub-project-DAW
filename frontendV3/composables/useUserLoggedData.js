@@ -1,10 +1,12 @@
 import { useAuthStore } from '~/store/auth'
 
 export const useUserLoggedData = async () => {
+    const runtimeConfig = useRuntimeConfig()
     let artistData = null
+
     const { userLogged , sessionToken} = useAuthStore(); // Asegúrate de invocar la función useAuthStore para obtener el estado actual
     if (userLogged) {
-        const { data, error } = await useFetch(`http://localhost:8000/api/v1/search/artist/?user_id=${userLogged.pk}`, {
+        const { data, error } = await useFetch(`${runtimeConfig.public.baseUrl}search/artist/?user_id=${userLogged.pk}`, {
             method: 'GET',
             headers:{
                 'Content-Type': 'application/json',

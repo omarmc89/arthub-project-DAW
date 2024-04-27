@@ -22,6 +22,7 @@
 </template>
 
 <script setup>
+const runtimeConfig = useRuntimeConfig()
 import { useUserLoggedData } from '@/composables/useUserLoggedData'
 import { set } from 'zod';
 const route = useRoute()
@@ -29,6 +30,7 @@ const params = route.params
 const id = ref(params.id)
 const pendingFetch = ref(true)
 const fetchData = ref({})
+console.log(runtimeConfig.public.baseUrl)
 
 const artist = ref({
     first_name: "",
@@ -49,7 +51,8 @@ onMounted( async () => {
     }, 1000)
 })
     async function fetchArtist(artistId) {
-    const { data, error } = await useFetch(`http://localhost:8000/api/v1/artists/${artistId}/`, {
+    
+    const { data, error } = await useFetch(`${runtimeConfig.public.baseUrl}artists/${artistId}/`, {
     })
     if (data) {
         fetchData.value = data.value

@@ -1,5 +1,6 @@
 export default async function useListArtworks () {
-    const { data, error, pending } = await useFetch('http://localhost:8000/api/v1/artworks/', {
+    const runtimeConfig = useRuntimeConfig()
+    const { data, error, pending } = await useFetch('https://arthub-api-polished-breeze-902.fly.dev/api/v1/artworks/', {
         lazy: false
     })
 

@@ -10,6 +10,5 @@ class ArtworksByUserViewSet(generics.ListAPIView):
         artworks_by_user = Artwork.objects.filter(artist_id=artist_id)
         list_artworks = ArtworkSerializer(data=artworks_by_user, many=True)
         list_artworks.is_valid()
-        print(artworks_by_user, list_artworks)
 
         return Response(list_artworks.data, status=status.HTTP_200_OK )

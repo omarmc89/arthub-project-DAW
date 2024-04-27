@@ -1,0 +1,219 @@
+{
+  "resolvedId": "virtual:nuxt:/Users/omarmartin/Documents/DAW/arthub-project-DAW/frontendV3/.nuxt/layouts.mjs",
+  "transforms": [
+    {
+      "name": "virtual",
+      "result": "export default {\n  custom: () => import(\"/Users/omarmartin/Documents/DAW/arthub-project-DAW/frontendV3/layouts/custom.vue\").then(m => m.default || m),\n  default: () => import(\"/Users/omarmartin/Documents/DAW/arthub-project-DAW/frontendV3/layouts/default.vue\").then(m => m.default || m)\n}",
+      "start": 1714082881312,
+      "end": 1714082881312,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1714082881312,
+      "end": 1714082881312,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1714082881312,
+      "end": 1714082881312,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1714082881312,
+      "end": 1714082881312,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1714082881312,
+      "end": 1714082881312,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1714082881312,
+      "end": 1714082881312,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1714082881312,
+      "end": 1714082881312,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1714082881312,
+      "end": 1714082881312,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1714082881312,
+      "end": 1714082881312,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1714082881312,
+      "end": 1714082881312,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1714082881312,
+      "end": 1714082881312,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1714082881312,
+      "end": 1714082881312,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1714082881312,
+      "end": 1714082881312,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1714082881312,
+      "end": 1714082881312,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1714082881312,
+      "end": 1714082881312,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1714082881312,
+      "end": 1714082881312,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1714082881312,
+      "end": 1714082881312,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1714082881312,
+      "end": 1714082881312,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1714082881312,
+      "end": 1714082881312,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1714082881312,
+      "end": 1714082881312,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1714082881312,
+      "end": 1714082881312,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1714082881312,
+      "end": 1714082881312,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1714082881312,
+      "end": 1714082881312,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1714082881313,
+      "end": 1714082881313,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1714082881313,
+      "end": 1714082881313,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1714082881313,
+      "end": 1714082881313,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1714082881313,
+      "end": 1714082881313,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1714082881313,
+      "end": 1714082881313,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1714082881313,
+      "end": 1714082881313,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1714082881313,
+      "end": 1714082881313,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1714082881313,
+      "end": 1714082881313,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1714082881313,
+      "end": 1714082881313,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "result": "import { __vitePreload } from \"\u0000vite/preload-helper.js\";export default {\n  custom: () => __vitePreload(() => import(\"/Users/omarmartin/Documents/DAW/arthub-project-DAW/frontendV3/layouts/custom.vue\"),__VITE_IS_MODERN__?\"__VITE_PRELOAD__\":void 0,import.meta.url).then(m => m.default || m),\n  default: () => __vitePreload(() => import(\"/Users/omarmartin/Documents/DAW/arthub-project-DAW/frontendV3/layouts/default.vue\"),__VITE_IS_MODERN__?\"__VITE_PRELOAD__\":void 0,import.meta.url).then(m => m.default || m)\n}",
+      "start": 1714082881313,
+      "end": 1714082881313,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": "wDAAA,MAAM,CAAC,OAAO,CAAC,CAAC;AAChB,CAAC,CAAC,MAAM,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,qBAAC,MAAM,CAAC,CAAC,CAAC,KAAK,CAAC,UAAU,CAAC,SAAS,CAAC,GAAG,CAAC,MAAM,CAAC,OAAO,CAAC,GAAG,CAAC,UAAU,CAAC,OAAO,CAAC,MAAM,CAAC,GAAG,CAAC,+DAAC,CAAC,IAAI,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,OAAO,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACrI,CAAC,CAAC,OAAO,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,qBAAC,MAAM,CAAC,CAAC,CAAC,KAAK,CAAC,UAAU,CAAC,SAAS,CAAC,GAAG,CAAC,MAAM,CAAC,OAAO,CAAC,GAAG,CAAC,UAAU,CAAC,OAAO,CAAC,OAAO,CAAC,GAAG,CAAC,+DAAC,CAAC,IAAI,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,OAAO,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACtI"
+      }
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1714082881313,
+      "end": 1714082881313,
+      "order": "normal"
+    }
+  ]
+}

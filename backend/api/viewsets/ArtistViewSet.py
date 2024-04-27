@@ -10,7 +10,6 @@ from api.serializers.ArtistSerializer import ArtistSerializer
 from api.serializers.CustomUserSerializer import CustomUserSerializer
 
 
-
 class ArtistViewSet(viewsets.ModelViewSet):
     queryset = Artist.objects.all()
     serializer_class = ArtistSerializer
@@ -42,3 +41,26 @@ class ArtistViewSet(viewsets.ModelViewSet):
 
         return Response({'message': 'User and artist created successfully'},
                         status=status.HTTP_201_CREATED)
+
+    def update(self, request, *args, **kwargs):
+        print('put on artist view set')
+        user_id = request.data.get('id')
+        artist_id = kwargs.get('pk')
+        try:
+            user = CustomUser.objects.filter(id=user_id).first()
+
+            user.username = request.data.get('username')
+            user.first_name = request.data.get('first_name')
+            user.last_name = request.data.get('last_name')
+            user.email = request.data.get('email')
+            user.avatar = request.data.get('avatar')
+            user.save()
+
+            artist = Artist.objects.filter(id=artist_id).first()
+            artist.nickname = request.data.get('nickname')
+            artist.save()
+        except IntegrityError:
+            return Response('Problem occurred updating user', status=status.HTTP_404_NOT_FOUND)
+
+        return Response({'message': 'updated'},
+                        status=status.HTTP_200_OK)

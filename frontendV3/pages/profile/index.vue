@@ -111,7 +111,7 @@ function checkAvatar () {
 }
 
 const update = async() => {
-  const { data, pending, error } = await useFetch(`http://localhost:8000/api/v1/artists/${artistData.value.id}/`, {
+  const { data, pending, error } = await useFetch(`https://arthub-api-polished-breeze-902.fly.dev/api/v1/artists/${artistData.value.id}/`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json'

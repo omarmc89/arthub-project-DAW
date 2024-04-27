@@ -1,5 +1,6 @@
 export default async function useListArtists () {
-    const { data, error, pending } = await useFetch('http://localhost:8000/api/v1/artists/', {
+    const runtimeConfig = useRuntimeConfig()
+    const { data, error, pending } = await useFetch(runtimeConfig.public.baseUrl+'artists/', {
         lazy: false
     })
 

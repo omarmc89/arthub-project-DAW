@@ -1,0 +1,294 @@
+{
+  "resolvedId": "/Users/omarmartin/Documents/DAW/arthub-project-DAW/frontendV3/pages/profile/index.vue?vue&type=style&index=0&scoped=595ccc27&lang.css",
+  "transforms": [
+    {
+      "name": "vite:vue",
+      "result": "\n\n.btn-clicked{\n  background-color: #bbf7d0;\n  color:#232c33;\n  padding: 10px 20px;\n    border: none;\n    border-radius: 20px;\n    cursor: pointer;\n}\n\n.input-blocked{\n  background-color: #232c33;\n  color: white;\n  cursor:not-allowed;\n}\n\n.title {\n    font-family: 'Garute';\n    font-size: 4rem;\n    font-weight: 800;\n    text-align: center;\n    padding: 3rem;\n}\n\n.main-container {\n    align-items: center;\n    justify-content: space-between;\n    width: 100%;\n}\n.form-container {\n    flex: 1;\n}\n\n.image-container {\n    max-width: 400px;\n    max-height: 400px;\n    overflow: hidden;\n    flex: 1;\n}\n\n  .artwork-form {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n  }\n\n  .form-label {\n    width: 100%;\n    max-width: 1000px;\n  }\n\n  .form-control {\n    width: 100%;\n    padding: 8px;\n    border: 1px solid #ccc;\n    border-radius: 20px;\n    margin-bottom: 10px;\n    box-sizing: border-box;\n  }\n\n  .btn {\n    padding: 10px 20px;\n    border: none;\n    border-radius: 20px;\n    background-color: #232c33;\n    color: #e1e9ec;\n    cursor: pointer;\n  }\n\n  .btn:hover {\n    background-color: #e1e9ec;\n    color: #232c33;\n  }\n",
+      "start": 1714082888507,
+      "end": 1714082888507,
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          "/Users/omarmartin/Documents/DAW/arthub-project-DAW/frontendV3/pages/profile/index.vue"
+        ],
+        "names": [],
+        "mappings": "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",
+        "file": "/Users/omarmartin/Documents/DAW/arthub-project-DAW/frontendV3/pages/profile/index.vue",
+        "sourceRoot": "",
+        "sourcesContent": [
+          "<template>\n  <section class=\"flex flex-row gap-8 mb-12\">\n    <UButton :class=\"{ 'btn-clicked': !inputBlocked, 'btn': inputBlocked}\" @click=\"inputBlockedToggle\">Edit profile</UButton>\n    <UButton class=\"btn\" @click=\"inputBlockedToggle\">Change password</UButton>\n  </section>\n  <section class=\"main-container flex flex-row\">\n      <article class=\"image-container\">\n          <img v-if=\"skeletonOff\" :src=\"avatar_image\" :alt=\"user.avatar\" />\n          <USkeleton v-if=\"!skeletonOff\" class=\"h-[350px] w-[350px]\" />\n      </article>\n      <article class=\"form-container flex flex-col justify-center items-center\">\n          <form class=\"artwork-form space-y-4 text-slate-900\" @submit.prevent=\"update\">\n                  <div>\n                      <div class=\"form-label text-center text-center\">\n                          <label for=\"first_name\">First Name</label>\n                          <input v-model=\"user.first_name\" :class=\"{ 'input-blocked': inputBlocked }\"  :readonly=\"inputBlocked\" id=\"first_name\" name=\"first_name\" type=\"text\" class=\"form-control rounded-full bg-white\">\n                      </div>\n                      <div class=\"form-label text-center\">\n                          <label for=\"last_name\">Last Name</label>\n                          <input v-model=\"user.last_name\" :class=\"{ 'input-blocked': inputBlocked }\"  :readonly=\"inputBlocked\" id=\"last_name\" name=\"last_name\" type=\"text\" class=\"form-control rounded-full bg-white\">\n                      </div>\n                      <div class=\"form-label text-center\">\n                          <label for=\"username\">Username</label>\n                          <input v-model=\"user.username\" :class=\"{ 'input-blocked': inputBlocked }\"  :readonly=\"inputBlocked\" id=\"username\" name=\"username\" type=\"text\" class=\"form-control rounded-full bg-white\">\n                      </div>\n                      <div class=\"form-label text-center\">\n                          <label for=\"avatar\">Image URL</label>\n                          <input v-model=\"user.avatar\" :class=\"{ 'input-blocked': inputBlocked }\"  :readonly=\"inputBlocked\" id=\"avatar\" name=\"avatar\" type=\"text\" class=\"form-control rounded-full bg-white\">\n                      </div>\n                      <div class=\"form-label text-center\">\n                          <label for=\"nickname\">Nickname</label>\n                          <input v-model=\"artist.nickname\" :class=\"{ 'input-blocked': inputBlocked }\"  :readonly=\"inputBlocked\" id=\"nickname\" name=\"nickname\" type=\"text\" class=\"form-control rounded-full bg-white\">\n                      </div>\n                      <div class=\"form-label text-center\">\n                          <label for=\"email\">email</label>\n                          <input v-model=\"user.email\" :class=\"{ 'input-blocked': inputBlocked }\"  :readonly=\"inputBlocked\" id=\"email\" name=\"email\" type=\"email\" class=\"form-control rounded-full bg-white\">\n                      </div>\n                  </div>\n              <button type=\"submit\" :disabled=\"pendingFetch\" class=\"btn btn-primary\">\n                  <span v-if=\"pendingFetch\">Updating...</span>\n                  <span v-else>Update</span>\n              </button>\n          </form>\n      </article>\n  </section>\n    \n</template>\n\n<script setup>\nimport { useUserLoggedData } from '@/composables/useUserLoggedData'\nimport { useAuthStore } from '~/store/auth';\n\nconst route = useRoute()\nconst toast = useToast();\nconst { userLogged } = storeToRefs(useAuthStore());\nconst pendingFetch = ref(false)\nconst avatar_image = ref('')\nconst inputBlocked = ref(true)\nconst artist = ref({\n    nickname: ''\n})\nconst user = ref({\n    first_name: '',\n    last_name: '',\n    username:'',\n    email:'',\n    password:'',\n    avatar:''\n})\n\nconst dataFetch = ref({})\nconst skeletonOff = ref(false)\nconst artistData = ref({})\n\nonBeforeMount(async() => {\n  // Llama a tu función aquí\n  artistData.value = await useUserLoggedData();\n});\n\nonMounted(async () => {\n  try {\n    artistData.value = await useUserLoggedData();\n    if (artistData.value) {\n        user.value.username = artistData.value.user.username\n        user.value.first_name = artistData.value.user.first_name\n        user.value.last_name = artistData.value.user.last_name\n        user.value.email = artistData.value.user.email\n        user.value.avatar = artistData.value.user.avatar\n        user.value.password = artistData.value.user.password\n        artist.value.nickname = artistData.value.nickname\n    }\n    checkAvatar()\n    skeletonOff.value = true\n  } catch (error) {\n    console.error('Error fetching user artworks:', error);\n  }\n});\n\nwatch(user.value, () => {\n  // Si el avatar cambia, actualiza la imagen\n  checkAvatar();\n  console.log('Avatar changed');\n});\n\nfunction checkAvatar () {\n    if (user.value.avatar.includes('http')) {\n        avatar_image.value = user.value.avatar\n    } else {\n        avatar_image.value = 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/1024px-User-avatar.svg.png'\n    }\n}\n\nconst update = async() => {\n  const { data, pending, error } = await useFetch(`https://arthub-api-polished-breeze-902.fly.dev/api/v1/artists/${artistData.value.id}/`, {\n    method: 'PUT',\n    headers: {\n      'Content-Type': 'application/json'\n      //'Authorization': 'Token f3b557760eda960a094698122c6eb9489c2487f3'\n    },\n    body: JSON.stringify({\n        id: userLogged.value.pk,\n        username: user.value.username,\n        email: user.value.email,\n        first_name: user.value.first_name,\n        last_name: user.value.last_name,\n        password: user.value.password,\n        avatar: user.value.avatar,\n        nickname: artist.value.nickname,\n    })\n  });\n  if (error) {\n    console.log(error.value)\n  }\n  if (data) {\n    dataFetch.value = data.value;\n    console.log(dataFetch.value);\n    toast.add({ title: 'Artist created! Redirecting to Home...', timeout: 2000, callback:() => navigateTo('/home') })\n  }\n  }\n\n  function inputBlockedToggle() {\n    inputBlocked.value = !inputBlocked.value\n  }\n\n</script>\n\n<style scoped>\n\n.btn-clicked{\n  background-color: #bbf7d0;\n  color:#232c33;\n  padding: 10px 20px;\n    border: none;\n    border-radius: 20px;\n    cursor: pointer;\n}\n\n.input-blocked{\n  background-color: #232c33;\n  color: white;\n  cursor:not-allowed;\n}\n\n.title {\n    font-family: 'Garute';\n    font-size: 4rem;\n    font-weight: 800;\n    text-align: center;\n    padding: 3rem;\n}\n\n.main-container {\n    align-items: center;\n    justify-content: space-between;\n    width: 100%;\n}\n.form-container {\n    flex: 1;\n}\n\n.image-container {\n    max-width: 400px;\n    max-height: 400px;\n    overflow: hidden;\n    flex: 1;\n}\n\n  .artwork-form {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n  }\n\n  .form-label {\n    width: 100%;\n    max-width: 1000px;\n  }\n\n  .form-control {\n    width: 100%;\n    padding: 8px;\n    border: 1px solid #ccc;\n    border-radius: 20px;\n    margin-bottom: 10px;\n    box-sizing: border-box;\n  }\n\n  .btn {\n    padding: 10px 20px;\n    border: none;\n    border-radius: 20px;\n    background-color: #232c33;\n    color: #e1e9ec;\n    cursor: pointer;\n  }\n\n  .btn:hover {\n    background-color: #e1e9ec;\n    color: #232c33;\n  }\n</style>"
+        ]
+      }
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1714082888507,
+      "end": 1714082888507,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1714082888507,
+      "end": 1714082888507,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1714082888508,
+      "end": 1714082888508,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1714082888508,
+      "end": 1714082888508,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1714082888508,
+      "end": 1714082888508,
+      "order": "pre"
+    },
+    {
+      "name": "server-only-component-transform",
+      "start": 1714082888508,
+      "end": 1714082888508,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "result": ".btn-clicked{background-color:#bbf7d0;border:none;border-radius:20px;color:#232c33;cursor:pointer;padding:10px 20px}.input-blocked{background-color:#232c33;color:#fff;cursor:not-allowed}.title{font-family:Garute;font-size:4rem;font-weight:800;padding:3rem;text-align:center}.main-container{align-items:center;justify-content:space-between;width:100%}.form-container{flex:1}.image-container{flex:1;max-height:400px;max-width:400px;overflow:hidden}.artwork-form{align-items:center;display:flex;flex-direction:column}.form-label{max-width:1000px;width:100%}.form-control{border:1px solid #ccc;border-radius:20px;box-sizing:border-box;margin-bottom:10px;padding:8px;width:100%}.btn{background-color:#232c33;border:none;border-radius:20px;color:#e1e9ec;cursor:pointer;padding:10px 20px}.btn:hover{background-color:#e1e9ec;color:#232c33}",
+      "start": 1714082888508,
+      "end": 1714082888524,
+      "order": "normal",
+      "sourcemaps": {
+        "file": "/Users/omarmartin/Documents/DAW/arthub-project-DAW/frontendV3/pages/profile/index.vue",
+        "mappings": "AAEA,aACE,wBAAyB,CAGvB,WAAY,CACZ,kBAAmB,CAHrB,aAAa,CAIX,cAAe,CAHjB,iBAIF,CAEA,eACE,wBAAyB,CACzB,UAAY,CACZ,kBACF,CAEA,OACI,kBAAqB,CACrB,cAAe,CACf,eAAgB,CAEhB,YAAa,CADb,iBAEJ,CAEA,gBACI,kBAAmB,CACnB,6BAA8B,CAC9B,UACJ,CACA,gBACI,MACJ,CAEA,iBAII,MAAO,CAFP,gBAAiB,CADjB,eAAgB,CAEhB,eAEJ,CAEE,cAGE,kBAAmB,CAFnB,YAAa,CACb,qBAEF,CAEA,YAEE,gBAAiB,CADjB,UAEF,CAEA,cAGE,qBAAsB,CACtB,kBAAmB,CAEnB,qBAAsB,CADtB,kBAAmB,CAHnB,WAAY,CADZ,UAMF,CAEA,KAIE,wBAAyB,CAFzB,WAAY,CACZ,kBAAmB,CAEnB,aAAc,CACd,cAAe,CALf,iBAMF,CAEA,WACE,wBAAyB,CACzB,aACF",
+        "names": [],
+        "sources": [
+          "/Users/omarmartin/Documents/DAW/arthub-project-DAW/frontendV3/pages/profile/index.vue"
+        ],
+        "sourcesContent": [
+          "\n\n.btn-clicked{\n  background-color: #bbf7d0;\n  color:#232c33;\n  padding: 10px 20px;\n    border: none;\n    border-radius: 20px;\n    cursor: pointer;\n}\n\n.input-blocked{\n  background-color: #232c33;\n  color: white;\n  cursor:not-allowed;\n}\n\n.title {\n    font-family: 'Garute';\n    font-size: 4rem;\n    font-weight: 800;\n    text-align: center;\n    padding: 3rem;\n}\n\n.main-container {\n    align-items: center;\n    justify-content: space-between;\n    width: 100%;\n}\n.form-container {\n    flex: 1;\n}\n\n.image-container {\n    max-width: 400px;\n    max-height: 400px;\n    overflow: hidden;\n    flex: 1;\n}\n\n  .artwork-form {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n  }\n\n  .form-label {\n    width: 100%;\n    max-width: 1000px;\n  }\n\n  .form-control {\n    width: 100%;\n    padding: 8px;\n    border: 1px solid #ccc;\n    border-radius: 20px;\n    margin-bottom: 10px;\n    box-sizing: border-box;\n  }\n\n  .btn {\n    padding: 10px 20px;\n    border: none;\n    border-radius: 20px;\n    background-color: #232c33;\n    color: #e1e9ec;\n    cursor: pointer;\n  }\n\n  .btn:hover {\n    background-color: #e1e9ec;\n    color: #232c33;\n  }\n"
+        ],
+        "version": 3
+      }
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1714082888524,
+      "end": 1714082888524,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1714082888524,
+      "end": 1714082888524,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1714082888538,
+      "end": 1714082888538,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "result": ".btn-clicked[data-v-595ccc27]{background-color:#bbf7d0;border:none;border-radius:20px;color:#232c33;cursor:pointer;padding:10px 20px}.input-blocked[data-v-595ccc27]{background-color:#232c33;color:#fff;cursor:not-allowed}.title[data-v-595ccc27]{font-family:Garute;font-size:4rem;font-weight:800;padding:3rem;text-align:center}.main-container[data-v-595ccc27]{align-items:center;justify-content:space-between;width:100%}.form-container[data-v-595ccc27]{flex:1}.image-container[data-v-595ccc27]{flex:1;max-height:400px;max-width:400px;overflow:hidden}.artwork-form[data-v-595ccc27]{align-items:center;display:flex;flex-direction:column}.form-label[data-v-595ccc27]{max-width:1000px;width:100%}.form-control[data-v-595ccc27]{border:1px solid #ccc;border-radius:20px;box-sizing:border-box;margin-bottom:10px;padding:8px;width:100%}.btn[data-v-595ccc27]{background-color:#232c33;border:none;border-radius:20px;color:#e1e9ec;cursor:pointer;padding:10px 20px}.btn[data-v-595ccc27]:hover{background-color:#e1e9ec;color:#232c33}",
+      "start": 1714082888539,
+      "end": 1714082888539,
+      "order": "normal",
+      "sourcemaps": {
+        "file": "/Users/omarmartin/Documents/DAW/arthub-project-DAW/frontendV3/pages/profile/index.vue",
+        "mappings": "AAAA,8BAAa,wBAAwB,CAAC,WAAW,CAAC,kBAAkB,CAAC,aAAa,CAAC,cAAc,CAAC,iBAAiB,CAAC,gCAAe,wBAAwB,CAAC,UAAU,CAAC,kBAAkB,CAAC,wBAAO,kBAAkB,CAAC,cAAc,CAAC,eAAe,CAAC,YAAY,CAAC,iBAAiB,CAAC,iCAAgB,kBAAkB,CAAC,6BAA6B,CAAC,UAAU,CAAC,iCAAgB,MAAM,CAAC,kCAAiB,MAAM,CAAC,gBAAgB,CAAC,eAAe,CAAC,eAAe,CAAC,+BAAc,kBAAkB,CAAC,YAAY,CAAC,qBAAqB,CAAC,6BAAY,gBAAgB,CAAC,UAAU,CAAC,+BAAc,qBAAqB,CAAC,kBAAkB,CAAC,qBAAqB,CAAC,kBAAkB,CAAC,WAAW,CAAC,UAAU,CAAC,sBAAK,wBAAwB,CAAC,WAAW,CAAC,kBAAkB,CAAC,aAAa,CAAC,cAAc,CAAC,iBAAiB,CAAC,4BAAW,wBAAwB,CAAC,aAAa",
+        "names": [],
+        "sources": [
+          "/Users/omarmartin/Documents/DAW/arthub-project-DAW/frontendV3/pages/profile/index.vue"
+        ],
+        "sourcesContent": [
+          null
+        ],
+        "version": 3
+      }
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1714082888539,
+      "end": 1714082888540,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1714082888540,
+      "end": 1714082888540,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1714082888540,
+      "end": 1714082888540,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1714082888540,
+      "end": 1714082888540,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1714082888540,
+      "end": 1714082888540,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1714082888540,
+      "end": 1714082888540,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1714082888555,
+      "end": 1714082888555,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1714082888556,
+      "end": 1714082888577,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1714082888578,
+      "end": 1714082888578,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "result": "",
+      "start": 1714082888578,
+      "end": 1714082888578,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1714082888578,
+      "end": 1714082888578,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1714082888578,
+      "end": 1714082888578,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1714082888578,
+      "end": 1714082888578,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1714082888578,
+      "end": 1714082888578,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1714082888578,
+      "end": 1714082888578,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1714082888578,
+      "end": 1714082888578,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1714082888578,
+      "end": 1714082888578,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1714082888578,
+      "end": 1714082888578,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1714082888578,
+      "end": 1714082888578,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1714082888578,
+      "end": 1714082888578,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1714082888578,
+      "end": 1714082888579,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1714082888578,
+      "end": 1714082888579,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1714082888579,
+      "end": 1714082888579,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1714082888579,
+      "end": 1714082888579,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-template",
+      "start": 1714082888579,
+      "end": 1714082888579,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1714082888579,
+      "end": 1714082888579,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1714082888579,
+      "end": 1714082888579,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1714082888579,
+      "end": 1714082888579,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1714082888579,
+      "end": 1714082888579,
+      "order": "normal"
+    }
+  ]
+}

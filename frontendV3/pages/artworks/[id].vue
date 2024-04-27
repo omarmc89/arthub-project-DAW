@@ -66,7 +66,7 @@ onMounted( async () => {
     }, 1000)
 })
     async function fetchArtwork(artworkId) {
-    const { data, error } = await useFetch(`http://localhost:8000/api/v1/artworkDetails/?id=${artworkId}`, {
+    const { data, error } = await useFetch(`https://arthub-api-polished-breeze-902.fly.dev/api/v1/artworkDetails/?id=${artworkId}`, {
     })
     if (data) {
         fetchData.value = data.value

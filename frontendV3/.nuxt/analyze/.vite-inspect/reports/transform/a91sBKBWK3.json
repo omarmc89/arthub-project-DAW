@@ -1,0 +1,234 @@
+{
+  "resolvedId": "/Users/omarmartin/Documents/DAW/arthub-project-DAW/frontendV3/node_modules/@nuxt/ui/dist/runtime/components/elements/Icon.vue?nuxt_component=async&nuxt_component_name=UIcon",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "<template>\n  <Icon v-if=\"dynamic\" :name=\"name\" />\n  <span v-else :class=\"name\" />\n</template>\n\n<script>\nimport { defineComponent, computed } from \"vue\";\nimport { useAppConfig } from \"#imports\";\nexport default defineComponent({\n  props: {\n    name: {\n      type: String,\n      required: true\n    },\n    dynamic: {\n      type: Boolean,\n      default: false\n    }\n  },\n  setup(props) {\n    const appConfig = useAppConfig();\n    const dynamic = computed(() => props.dynamic || appConfig.ui?.icons?.dynamic);\n    return {\n      // eslint-disable-next-line vue/no-dupe-keys\n      dynamic\n    };\n  }\n});\n</script>\n",
+      "start": 1714082879931,
+      "end": 1714082880032,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1714082880032,
+      "end": 1714082880032,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1714082880032,
+      "end": 1714082880032,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1714082880032,
+      "end": 1714082880032,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1714082880032,
+      "end": 1714082880032,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1714082880032,
+      "end": 1714082880032,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1714082880032,
+      "end": 1714082880032,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1714082880032,
+      "end": 1714082880032,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "result": "\nimport { defineComponent, computed } from \"vue\";\nimport { useAppConfig } from \"#imports\";\nconst _sfc_main = defineComponent({\n  props: {\n    name: {\n      type: String,\n      required: true\n    },\n    dynamic: {\n      type: Boolean,\n      default: false\n    }\n  },\n  setup(props) {\n    const appConfig = useAppConfig();\n    const dynamic = computed(() => props.dynamic || appConfig.ui?.icons?.dynamic);\n    return {\n      // eslint-disable-next-line vue/no-dupe-keys\n      dynamic\n    };\n  }\n});\n\nimport { resolveComponent as _resolveComponent, openBlock as _openBlock, createBlock as _createBlock, createCommentVNode as _createCommentVNode, normalizeClass as _normalizeClass, createElementBlock as _createElementBlock } from \"vue\"\n\nfunction _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {\n  const _component_Icon = _resolveComponent(\"Icon\", true)\n\n  return (_ctx.dynamic)\n    ? (_openBlock(), _createBlock(_component_Icon, {\n        key: 0,\n        name: _ctx.name\n      }, null, 8, [\"name\"]))\n    : (_openBlock(), _createElementBlock(\"span\", {\n        key: 1,\n        class: _normalizeClass(_ctx.name)\n      }, null, 2))\n}\n\n\nimport _export_sfc from '\u0000plugin-vue:export-helper'\nexport default /*#__PURE__*/_export_sfc(_sfc_main, [['render',_sfc_render]])",
+      "start": 1714082880032,
+      "end": 1714082880033,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "file": "/Users/omarmartin/Documents/DAW/arthub-project-DAW/frontendV3/node_modules/@nuxt/ui/dist/runtime/components/elements/Icon.vue",
+        "names": [],
+        "sources": [
+          "/Users/omarmartin/Documents/DAW/arthub-project-DAW/frontendV3/node_modules/@nuxt/ui/dist/runtime/components/elements/Icon.vue"
+        ],
+        "sourcesContent": [
+          "<template>\n  <Icon v-if=\"dynamic\" :name=\"name\" />\n  <span v-else :class=\"name\" />\n</template>\n\n<script>\nimport { defineComponent, computed } from \"vue\";\nimport { useAppConfig } from \"#imports\";\nexport default defineComponent({\n  props: {\n    name: {\n      type: String,\n      required: true\n    },\n    dynamic: {\n      type: Boolean,\n      default: false\n    }\n  },\n  setup(props) {\n    const appConfig = useAppConfig();\n    const dynamic = computed(() => props.dynamic || appConfig.ui?.icons?.dynamic);\n    return {\n      // eslint-disable-next-line vue/no-dupe-keys\n      dynamic\n    };\n  }\n});\n</script>\n"
+        ],
+        "mappings": ";AAMA,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,EAAE,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC;AAC/C,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,EAAE,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACvC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;EAC7B,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE;IACL,CAAC,CAAC,CAAC,CAAC,EAAE;MACJ,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;MACZ,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC;IACf,CAAC;IACD,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE;MACP,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;MACb,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC;IACf;EACF,CAAC;EACD,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE;IACX,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;IAChC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;IAC7E,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE;MACL,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;MAC3C,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;IACR,CAAC;EACH;AACF,CAAC,CAAC;;;;;;;UA1BY,YAAO;qBAAnB,aAAoC;QADtC,KAAA;QACwB,IAAI,EAAE,SAAI;;qBAChC,oBAA6B;QAF/B,KAAA;QAEgB,KAAK,EAFrB,gBAEuB,SAAI"
+      }
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1714082880033,
+      "end": 1714082880033,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1714082880033,
+      "end": 1714082880033,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1714082880033,
+      "end": 1714082880033,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1714082880033,
+      "end": 1714082880033,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "result": "import { defineAsyncComponent } from \"vue\"\nexport default defineAsyncComponent(() => import(\"/Users/omarmartin/Documents/DAW/arthub-project-DAW/frontendV3/node_modules/@nuxt/ui/dist/runtime/components/elements/Icon.vue\").then(r => r.default))",
+      "start": 1714082880033,
+      "end": 1714082880033,
+      "order": "normal",
+      "sourcemaps": null
+    },
+    {
+      "name": "replace",
+      "start": 1714082880033,
+      "end": 1714082880033,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1714082880033,
+      "end": 1714082880033,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1714082880033,
+      "end": 1714082880033,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1714082880033,
+      "end": 1714082880033,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1714082880033,
+      "end": 1714082880033,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1714082880033,
+      "end": 1714082880033,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1714082880033,
+      "end": 1714082880033,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1714082880033,
+      "end": 1714082880033,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1714082880033,
+      "end": 1714082880033,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1714082880033,
+      "end": 1714082880033,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1714082880033,
+      "end": 1714082880033,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1714082880033,
+      "end": 1714082880033,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1714082880033,
+      "end": 1714082880033,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1714082880033,
+      "end": 1714082880033,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1714082880033,
+      "end": 1714082880033,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1714082880033,
+      "end": 1714082880033,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1714082880033,
+      "end": 1714082880033,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1714082880033,
+      "end": 1714082880033,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "result": "import { __vitePreload } from \"\u0000vite/preload-helper.js\";import { defineAsyncComponent } from \"vue\"\nexport default defineAsyncComponent(() => __vitePreload(() => import(\"/Users/omarmartin/Documents/DAW/arthub-project-DAW/frontendV3/node_modules/@nuxt/ui/dist/runtime/components/elements/Icon.vue\"),__VITE_IS_MODERN__?\"__VITE_PRELOAD__\":void 0,import.meta.url).then(r => r.default))",
+      "start": 1714082880033,
+      "end": 1714082880033,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": "wDAAA,MAAM,CAAC,CAAC,CAAC,oBAAoB,CAAC,CAAC,CAAC,IAAI,CAAC,CAAC,GAAG,CAAC;AAC1C,MAAM,CAAC,OAAO,CAAC,oBAAoB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,qBAAC,MAAM,CAAC,CAAC,CAAC,KAAK,CAAC,UAAU,CAAC,SAAS,CAAC,GAAG,CAAC,MAAM,CAAC,OAAO,CAAC,GAAG,CAAC,UAAU,CAAC,YAAY,CAAC,CAAC,IAAI,CAAC,EAAE,CAAC,IAAI,CAAC,OAAO,CAAC,UAAU,CAAC,QAAQ,CAAC,IAAI,CAAC,GAAG,CAAC,+DAAC,CAAC,IAAI,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,OAAO,CAAC"
+      }
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1714082880033,
+      "end": 1714082880033,
+      "order": "normal"
+    }
+  ]
+}

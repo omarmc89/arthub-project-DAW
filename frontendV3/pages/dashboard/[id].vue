@@ -85,7 +85,7 @@ onMounted(() => {
     fetchArtwork(id.value)
 })
     async function fetchArtwork(artworkId) {
-    const { data, error } = await useFetch(`http://localhost:8000/api/v1/artworkDetails/?id=${artworkId}`, {
+    const { data, error } = await useFetch(`https://arthub-api-polished-breeze-902.fly.dev/api/v1/artworkDetails/?id=${artworkId}`, {
         // watch: [artworkCreated],
     })
     if (data) {
