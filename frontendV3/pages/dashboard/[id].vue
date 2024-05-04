@@ -156,30 +156,30 @@ function artoworkUpdateOk() {
     animation: rotate calc(var(--uib-speed) * 4) linear infinite;
 }
 .image-container {
-    flex: 1; /* Toma todo el espacio disponible */
-    margin-right: 20px; /* Espacio entre la imagen y el formulario */
+    flex: 1;
+    margin-right: 20px
 }
 
 .form-container {
-    flex: 1; /* Toma todo el espacio disponible */
+    flex: 1;
 }
 
   .artwork-form {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centra horizontalmente los elementos del formulario */
+    align-items: center;
   }
 
   .form-label {
     width: 100%;
-    max-width: 1000px; /* Ancho máximo del formulario */
+    max-width: 1000px;
   }
 
   .form-control {
     width: 100%;
     padding: 8px;
     border: 1px solid #ccc;
-    border-radius: 20px; /* Cantos redondos */
+    border-radius: 20px;
     margin-bottom: 10px;
     box-sizing: border-box;
   }
@@ -187,7 +187,7 @@ function artoworkUpdateOk() {
   .btn {
     padding: 10px 20px;
     border: none;
-    border-radius: 20px; /* Cantos redondos */
+    border-radius: 20px;
     background-color: #232c33;
     color: #e1e9ec;
     cursor: pointer;

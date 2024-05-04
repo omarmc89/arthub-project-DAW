@@ -1,0 +1,26 @@
+[
+  {
+    "model": "api.artist",
+    "pk": 1,
+    "fields" : {
+      "nickname": "Omar",
+      "user": "00000000-0000-0000-0000-000000000001"
+    }
+  },
+  {
+    "model": "api.artist",
+    "pk": 2,
+    "fields" : {
+      "nickname": "Marina",
+      "user": "00000000-0000-0000-0000-000000000003"
+    }
+  },
+   {
+    "model": "api.artist",
+    "pk": 3,
+    "fields" : {
+      "nickname": "Noah",
+      "user": "00000000-0000-0000-0000-000000000003"
+    }
+  }
+]

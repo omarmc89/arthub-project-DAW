@@ -3,3 +3,4 @@ backend/venv/
 node_modules/
 _pycache_/
 .DS_Store/
+frontendV3/.nuxt/

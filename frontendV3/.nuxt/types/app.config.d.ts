@@ -5,7 +5,7 @@ import cfg0 from "/Users/omarmartin/Documents/DAW/arthub-project-DAW/frontendV3/
 
 declare const inlineConfig = {
   "nuxt": {
-    "buildId": "a9fee9f4-d3d0-4c36-808d-3dda4d112cbb"
+    "buildId": "dev"
   },
   "ui": {
     "primary": "green",
