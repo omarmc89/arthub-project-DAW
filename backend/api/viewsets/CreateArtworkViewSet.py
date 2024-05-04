@@ -1,9 +1,6 @@
 from rest_framework import generics
 from rest_framework import status
 from rest_framework.response import Response
-from django.core.exceptions import ObjectDoesNotExist
-from rest_framework.exceptions import NotFound
-
 from api.models import Artwork, Artist, Painting, Photo
 from api.serializers.ArtworkSerializer import ArtworkSerializer
 from api.serializers.PaintingSerializer import PaintingSerializer
