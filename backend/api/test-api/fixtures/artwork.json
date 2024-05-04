@@ -1,0 +1,158 @@
+[
+    {
+        "model": "api.artwork",
+        "pk": "00000000-0000-0000-0000-000000000001",
+        "fields": {
+            "artist": "00000000-0000-0000-0000-000000000001",
+            "title": "Mountain hole",
+            "description": "Natural hole on the mountain",
+            "image_url": "https://images.unsplash.com/photo-1711216818794-cd4f226dc88d?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "price": 200.0,
+            "created_at": "2024-04-01T14:25:54.760845Z",
+            "updated_at": "2024-04-01T14:25:54.760854Z"
+        }
+    },
+    {
+        "model": "api.artwork",
+        "pk": "00000000-0000-0000-0000-000000000002",
+        "fields": {
+            "artist": "00000000-0000-0000-0000-000000000001",
+            "title": "Susnset on background",
+            "description": "Sunset on the background through the field ",
+            "image_url": "https://images.unsplash.com/photo-1475113548554-5a36f1f523d6?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "price": 150.0,
+            "created_at": "2024-04-04T21:33:51.716306Z",
+            "updated_at": "2024-04-04T21:33:51.716369Z"
+        }
+    },
+    {
+        "model": "api.artwork",
+        "pk": "00000000-0000-0000-0000-000000000003",
+        "fields": {
+            "artist": "00000000-0000-0000-0000-000000000001",
+            "title": "Sea Sunset",
+            "description": "Sunset and a wave on the beach",
+            "image_url": "https://images.unsplash.com/photo-1414609245224-afa02bfb3fda?q=80&w=1289&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "price": 300.0,
+            "created_at": "2024-04-04T21:38:08.465161Z",
+            "updated_at": "2024-04-04T21:38:08.465215Z"
+        }
+    },
+    {
+        "model": "api.artwork",
+        "pk": "00000000-0000-0000-0000-000000000004",
+        "fields": {
+            "artist": "00000000-0000-0000-0000-000000000002",
+            "title": "4 mountains",
+            "description": "Two mountains reflexed on a lake",
+            "image_url": "https://images.unsplash.com/photo-1439853949127-fa647821eba0?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "price": 250.0,
+            "created_at": "2024-04-04T21:44:49.367721Z",
+            "updated_at": "2024-04-04T21:44:49.367781Z"
+        }
+    },
+    {
+        "model": "api.artwork",
+        "pk": "00000000-0000-0000-0000-000000000005",
+        "fields": {
+            "artist": "00000000-0000-0000-0000-000000000002",
+            "title": "Girl on boat",
+            "description": "Girl in a boat on the background",
+            "image_url": "https://img.freepik.com/foto-gratis/retrato-mujer-adulta-estilo-arte-digital_23-2151122794.jpg?w=996",
+            "price": 300.0,
+            "created_at": "2024-04-08T11:52:19.612746Z",
+            "updated_at": "2024-04-08T11:52:19.612774Z"
+        }
+    },
+    {
+        "model": "api.artwork",
+        "pk": "00000000-0000-0000-0000-000000000006",
+        "fields": {
+            "artist": "00000000-0000-0000-0000-000000000002",
+            "title": "Sunset on a lake",
+            "description": "Sunset over the small island on a lake",
+            "image_url": "https://images.unsplash.com/photo-1586348943529-beaae6c28db9?q=80&w=1315&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "price": 200.0,
+            "created_at": "2024-04-04T21:17:39.821387Z",
+            "updated_at": "2024-04-14T17:13:24.438900Z"
+        }
+    },
+    {
+        "model": "api.artwork",
+        "pk": "00000000-0000-0000-0000-000000000007",
+        "fields": {
+            "artist": "00000000-0000-0000-0000-000000000002",
+            "title": "Brushing a rainbow",
+            "description": "Simulating rainbow with brush",
+            "image_url": "https://images.unsplash.com/photo-1543857778-c4a1a3e0b2eb?q=80&w=2810&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "price": 200.0,
+            "created_at": "2024-04-01T15:25:28.997015Z",
+            "updated_at": "2024-04-14T17:41:28.375315Z"
+        }
+    },
+    {
+        "model": "api.artwork",
+        "pk": "00000000-0000-0000-0000-000000000008",
+        "fields": {
+            "artist": "00000000-0000-0000-0000-000000000003",
+            "title": "Forest cascade",
+            "description": "Cascade in the middle of the forest",
+            "image_url": "https://plus.unsplash.com/premium_photo-1675827055694-010aef2cf08f?q=80&w=1312&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "price": 400.0,
+            "created_at": "2024-04-04T17:00:29.548520Z",
+            "updated_at": "2024-04-14T17:19:55.490997Z"
+        }
+    },
+    {
+        "model": "api.artwork",
+        "pk": "00000000-0000-0000-0000-000000000009",
+        "fields": {
+            "artist": 3,
+            "title": "2 Foxes",
+            "description": "Two orange foxes",
+            "image_url": "https://images.unsplash.com/photo-1613206468203-fa00870edf79?q=80&w=2448&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "price": 150.0,
+            "created_at": "2024-04-01T15:24:22.775605Z",
+            "updated_at": "2024-04-14T17:41:54.722220Z"
+        }
+    },
+    {
+        "model": "api.artwork",
+        "pk": "00000000-0000-0000-0000-000000000010",
+        "fields": {
+            "artist": "00000000-0000-0000-0000-000000000001",
+            "title": "snowy bridge",
+            "description": "bridge covered by snow sorrounded by trees",
+            "image_url": "https://plus.unsplash.com/premium_photo-1688416554312-1e87989c3718?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "price": 150.0,
+            "created_at": "2024-04-22T12:43:49.027098Z",
+            "updated_at": "2024-04-22T12:43:49.027137Z"
+        }
+    },
+    {
+        "model": "api.artwork",
+        "pk": "00000000-0000-0000-0000-000000000011",
+        "fields": {
+            "artist": "00000000-0000-0000-0000-000000000003",
+            "title": "Woman face",
+            "description": "Woman face looking through the hole of her hands",
+            "image_url": "https://plus.unsplash.com/premium_photo-1692186630676-52aede5063e3?q=80&w=2094&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "price": 350.0,
+            "created_at": "2024-04-22T12:45:22.547618Z",
+            "updated_at": "2024-04-22T12:45:22.547640Z"
+        }
+    },
+    {
+        "model": "api.artwork",
+        "pk": "00000000-0000-0000-0000-000000000012",
+        "fields": {
+            "artist": "00000000-0000-0000-0000-000000000003",
+            "title": "Water drops",
+            "description": "Water drops falling over the tree",
+            "image_url": "https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "price": 100.0,
+            "created_at": "2024-04-22T12:45:22.547618Z",
+            "updated_at": "2024-04-22T12:45:22.547640Z"
+        }
+    }
+]

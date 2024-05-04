@@ -90,7 +90,11 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': env.db()
+    'default': env.db(),
+    'test': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': 'testdb.sqlite'
+        },
 }
 
 
@@ -183,3 +187,7 @@ APPEND_SLASH = False
 #     'JWT_SERIALIZER': 'dj_rest_auth.serializers.JWTSerializer',
 #     'USE_JWT': False,
 # }
+
+TEST_RUNNER = 'django.test.runner.DiscoverRunner'
+
+FIXTURE_DIRS = ('api/test-api/fixtures',)

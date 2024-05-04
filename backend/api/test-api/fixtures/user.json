@@ -1,0 +1,38 @@
+[
+    {
+        "model": "api.customuser",
+        "pk": "00000000-0000-0000-0000-000000000001",
+        "fields": {
+            "first_name": "User1_first_name",
+            "last_name": "User1_last_name",
+            "username": "user1",
+            "email": "user1@gmail.com",
+            "password": "bcrypt_sha256$$2b$12$cTVqgMX3WI7bTKMEf9WoEeGsbluFjJtGDkqYYNuhMbhDl/hsggWdK",
+            "avatar": "https://i.pravatar.cc/300?img=65"
+        }
+    },
+    {
+        "model": "api.customuser",
+        "pk": "00000000-0000-0000-0000-000000000002",
+        "fields": {
+            "first_name": "User2_first_name",
+            "last_name": "User2_last_name",
+            "username": "user2",
+            "email": "user2@gmail.com",
+            "password": "bcrypt_sha256$$2b$12$cTVqgMX3WI7bTKMEf9WoEeGsbluFjJtGDkqYYNuhMbhDl/hsggWdK",
+            "avatar": "https://m.media-amazon.com/images/I/71a5wa+Q9cL.jpg"
+        }
+    },
+    {
+        "model": "api.customuser",
+        "pk": "00000000-0000-0000-0000-000000000003",
+        "fields": {
+            "first_name": "User3_first_name",
+            "last_name": "User3_last_name",
+            "username": "user3",
+            "email": "user3@gmail.com",
+            "password": "bcrypt_sha256$$2b$12$cTVqgMX3WI7bTKMEf9WoEeGsbluFjJtGDkqYYNuhMbhDl/hsggWdK",
+            "avatar": "https://i.pravatar.cc/300?img=24"
+        }
+    }
+]
