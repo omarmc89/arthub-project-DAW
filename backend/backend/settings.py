@@ -190,4 +190,4 @@ APPEND_SLASH = False
 
 TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 
-FIXTURE_DIRS = ('api/tests/fixtures',)
+FIXTURE_DIRS = ('api/test-api/fixtures',)
