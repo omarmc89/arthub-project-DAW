@@ -4,7 +4,7 @@ backend/.idea/
 backend/.venv/
 backend/__pycache_/
 _pycache_/
-.DS_Store/
+.DS_Store
 frontend/.nuxt/
 frontend/.vscode/
 frontend/.output/

@@ -84,12 +84,9 @@ class TestsAPI(TestCase):
             'nickname': 'test'
         }
         response = self.client.post('/api/v1/artists/', data, format='json')
-
         user_created = CustomUser.objects.get(username='test')
         artist_created = Artist.objects.get(nickname='test')
 
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertIsInstance(artist_created, Artist)
         self.assertIsInstance(user_created, CustomUser)
-
-
