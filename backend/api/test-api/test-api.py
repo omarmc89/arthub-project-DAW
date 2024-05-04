@@ -7,7 +7,6 @@ from api.models import *
 
 
 class TestsAPI(TestCase):
-
     fixtures = [
         'artist.json',
         'artwork.json',
