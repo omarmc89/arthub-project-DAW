@@ -2,7 +2,8 @@ name: Django Tests
 
 on:
   push:
-    branches: develop
+    branches:
+      - develop
 
 jobs:
   build:
