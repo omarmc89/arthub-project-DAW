@@ -3,11 +3,8 @@ from django.test import TestCase
 from urllib.parse import urlencode
 from rest_framework.test import APIRequestFactory
 from rest_framework.test import APIClient
-from uuid import UUID
-
 from api.models import *
-# from django.test.utils import ignore_warnings
-# ignore_warnings(message="No directory at", module="whitenoise.base").enable()
+
 
 class TestsAPI(TestCase):
 
