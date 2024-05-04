@@ -1,4 +1,4 @@
-name: Fly Deploy Backend
+name: Fly Deploy Frontend
 on:
   pull_request:
     types: [closed]
