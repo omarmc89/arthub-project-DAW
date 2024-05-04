@@ -29,5 +29,5 @@ jobs:
       - name: Run Tests
         run: |
           pwd
-          cd backend/api
+          cd backend
           python manage.py test --noinput api.test-api.test-api
