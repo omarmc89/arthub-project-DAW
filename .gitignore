@@ -1,6 +1,10 @@
-frontendV3/node_modules/
+frontend/node_modules/
 backend/venv/
-node_modules/
+backend/.idea/
+backend/.venv/
+backend/__pycache_/
 _pycache_/
-.DS_Store/
-frontendV3/.nuxt/
+.DS_Store
+frontend/.nuxt/
+frontend/.vscode/
+frontend/.output/
