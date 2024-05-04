@@ -6,7 +6,7 @@ on:
 
 jobs:
   deploy_backend:
-    name: Deploy Backend
+    name: arthub-app
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
