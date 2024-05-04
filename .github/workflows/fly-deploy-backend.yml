@@ -1,13 +1,13 @@
 name: Fly Deploy Backend
 on:
-  push:
-    branches:
-      - main
+  pull_request:
+    types: [closed]
 
 jobs:
-  deploy_backend:
-    name: artHUB-api
+  build:
+    if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'main'
     runs-on: ubuntu-latest
+    name: artHUB-api deploy
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
