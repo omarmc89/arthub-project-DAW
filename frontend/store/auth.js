@@ -1,18 +1,15 @@
 import { defineStore } from 'pinia'
 
-// interface UserPayloadInterface {
-//     email: string
-//     password: string
-// }
-
 export const useAuthStore = defineStore('auth', {
     state: () => ({
         authenticated: false,
         loading: false,
         userEmailLogged: '',
         userLogged : '',
+        userType:'',
         sessionToken : '',
-        artistId: ''
+        artistId: '',
+        clientId: ''
     }),
 
     actions: {
@@ -57,22 +54,48 @@ export const useAuthStore = defineStore('auth', {
                 this.userLogged = userLogin
                 localStorage.setItem('userId', data.value.pk)
                 this.getArtistId()
+                this.getClientId()
             }
         },
         
         async getArtistId() {
-            const { data } = await useFetch (`https://arthub-api-polished-breeze-902.fly.dev/api/v1/search/artist/?user_id=${this.userLogged.pk}`, {
+            const { data, error } = await useFetch (`https://arthub-api-polished-breeze-902.fly.dev/api/v1/search/artist/?user_id=${this.userLogged.pk}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Token ${localStorage.getItem('token')}`
+            }
+    
+        })
+            if (error){
+                this.artistId = ''
+            }
+
+            if (data.value) {
+                const artistData = data.value
+                this.artistId = artistData.id
+                this.userType = 'artist'
+                localStorage.setItem('artistID', data.value.id)
+            }
+        },
+
+        async getClientId() {
+            const { data, error } = await useFetch (`http://localhost:8000/api/v1/search/client/?user=${this.userLogged.pk}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Token ${localStorage.getItem('token')}`
             }
         })
+            if(error){
+                this.clientId = ''
+            }
 
             if (data.value) {
-                const artistData = data.value
-                this.artistId = artistData.id
-                localStorage.setItem('artistID', data.value.id)
+                const clientData = data.value
+                this.clientId = clientData.id
+                this.userType = 'client'
+                localStorage.setItem('clientId', clientData.id)
             }
         },
 
@@ -84,6 +107,7 @@ export const useAuthStore = defineStore('auth', {
             this.userLogged = null
             this.sessionToken = null
             this.artistId = null
+            this.clientId = null
             localStorage.removeItem('token')
             localStorage.removeItem('userId')
         }

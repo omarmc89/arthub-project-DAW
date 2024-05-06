@@ -1,2 +1,0 @@
-import{k as u}from"./C79j48wv.js";import{u as n}from"./C0_R-043.js";import{u as i}from"./6iK2AHlT.js";const m=async()=>{const t=u();let e=null;const{userLogged:o,sessionToken:s}=i();if(o){const{data:r,error:a}=await n(`${t.public.baseUrl}search/artist/?user_id=${o.pk}`,{method:"GET",headers:{"Content-Type":"application/json",Authorization:`Bearer ${s}`}},"$5fqoZ5Ny2k");if(r)e=r.value;else return a}else return console.error("No se pudo obtener el usuario logueado"),null;return e};export{m as u};
-//# sourceMappingURL=Bc04BqWs.js.map

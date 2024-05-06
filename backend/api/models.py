@@ -52,4 +52,36 @@ class Photo(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
 
+class Client(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4)
+    birth_date = models.DateField()
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+
+class Address(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4)
+    street = models.CharField(max_length=200)
+    city = models.CharField(max_length=100)
+    postal_code = models.IntegerField()
+    country = models.CharField(max_length=100)
+    client = models.ForeignKey(Client, on_delete=models.CASCADE, related_name='addresses')
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+
+class Order(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4)
+    address = models.ForeignKey(Address, on_delete=models.CASCADE, related_name='orders')
+    client = models.ForeignKey(Client, on_delete=models.CASCADE, related_name='orders')
+    total = models.DecimalField(max_digits=10, decimal_places=2)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+
+class OrderLine(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4)
+    order = models.OneToOneField(Order, on_delete=models.CASCADE)
+    artwork = models.ForeignKey(Artwork, on_delete=models.CASCADE, related_name='order_line_artwork')
 

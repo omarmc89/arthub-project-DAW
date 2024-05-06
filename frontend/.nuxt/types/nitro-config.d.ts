@@ -3,7 +3,7 @@
 // App Config
 import type { Defu } from 'defu'
 
-import type { default as appConfig0 } from "/Users/omarmartin/Documents/DAW/arthub-project-DAW/frontendV3/app.config";
+import type { default as appConfig0 } from "/Users/omarmartin/Documents/DAW/arthub-project-DAW/frontend/app.config";
 
 type UserAppConfig = Defu<{}, [typeof appConfig0]>
 
