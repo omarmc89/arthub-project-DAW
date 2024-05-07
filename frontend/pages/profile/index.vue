@@ -52,8 +52,7 @@
 
 <script setup>
 import { useUserLoggedData } from '@/composables/useUserLoggedData'
-import { useAuthStore } from '~/store/auth';
-
+s
 const route = useRoute()
 const toast = useToast();
 const { userLogged, userType, artistId, clientId } = storeToRefs(useAuthStore());
@@ -252,4 +251,4 @@ const update = async() => {
     background-color: #e1e9ec;
     color: #232c33;
   }
-</style>
+</style>~/stores/auth

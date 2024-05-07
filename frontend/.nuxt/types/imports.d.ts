@@ -107,7 +107,9 @@ declare global {
   const useAppConfig: typeof import('../../node_modules/nuxt/dist/app/config')['useAppConfig']
   const useAsyncData: typeof import('../../node_modules/nuxt/dist/app/composables/asyncData')['useAsyncData']
   const useAttrs: typeof import('../../node_modules/vue')['useAttrs']
+  const useAuthStore: typeof import('../../stores/auth')['useAuthStore']
   const useCarouselScroll: typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useCarouselScroll')['useCarouselScroll']
+  const useCartStore: typeof import('../../stores/auth')['useCartStore']
   const useColorMode: typeof import('../../node_modules/@nuxtjs/color-mode/dist/runtime/composables')['useColorMode']
   const useCookie: typeof import('../../node_modules/nuxt/dist/app/composables/cookie')['useCookie']
   const useCopyToClipboard: typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useCopyToClipboard')['useCopyToClipboard']
@@ -288,7 +290,9 @@ declare module 'vue' {
     readonly useAppConfig: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/config')['useAppConfig']>
     readonly useAsyncData: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/asyncData')['useAsyncData']>
     readonly useAttrs: UnwrapRef<typeof import('../../node_modules/vue')['useAttrs']>
+    readonly useAuthStore: UnwrapRef<typeof import('../../stores/auth')['useAuthStore']>
     readonly useCarouselScroll: UnwrapRef<typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useCarouselScroll')['useCarouselScroll']>
+    readonly useCartStore: UnwrapRef<typeof import('../../stores/auth')['useCartStore']>
     readonly useColorMode: UnwrapRef<typeof import('../../node_modules/@nuxtjs/color-mode/dist/runtime/composables')['useColorMode']>
     readonly useCookie: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/cookie')['useCookie']>
     readonly useCopyToClipboard: UnwrapRef<typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useCopyToClipboard')['useCopyToClipboard']>
@@ -462,7 +466,9 @@ declare module '@vue/runtime-core' {
     readonly useAppConfig: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/config')['useAppConfig']>
     readonly useAsyncData: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/asyncData')['useAsyncData']>
     readonly useAttrs: UnwrapRef<typeof import('../../node_modules/vue')['useAttrs']>
+    readonly useAuthStore: UnwrapRef<typeof import('../../stores/auth')['useAuthStore']>
     readonly useCarouselScroll: UnwrapRef<typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useCarouselScroll')['useCarouselScroll']>
+    readonly useCartStore: UnwrapRef<typeof import('../../stores/auth')['useCartStore']>
     readonly useColorMode: UnwrapRef<typeof import('../../node_modules/@nuxtjs/color-mode/dist/runtime/composables')['useColorMode']>
     readonly useCookie: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/cookie')['useCookie']>
     readonly useCopyToClipboard: UnwrapRef<typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useCopyToClipboard')['useCopyToClipboard']>

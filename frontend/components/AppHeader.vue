@@ -1,7 +1,7 @@
 <template>
     <nav class="flex flex-col items-center justify-between w-full px-4 z-10 mt-2">
         <section class="flex flex-col w-full h-auto">
-            <article class="flex justify-end w-full" >
+            <article class="flex justify-end w-full px-12" >
                 <ul class="flex flex-row gap-x-4 items-center justify-end">
                     <li v-if="!authenticated" class="app-link-top  p-1 hover:bg-green-300 hover:rounded-lg">
                         <NuxtLink to="/register">Register</NuxtLink>
@@ -14,6 +14,16 @@
                     </li>
                     <li v-if="authenticated" class="app-link-top p-1 hover:bg-sky-300 hover:rounded-lg hover:cursor-pointer">
                         <NuxtLink type="button" @click="userLogout">Logout</NuxtLink>
+                    </li>
+                    <li class="app-link-top p-1 hover:bg-sky-300 hover:rounded-lg hover:cursor-pointer">
+                        <div class="flex gap-3 items-center justify-center">
+                            <UChip :text="cartStore.totalCounts" :show="true" color="fuchsia" size="xl">
+                                <button class="flex items-center justify-center" @click="toggleModal">
+                                    <Icon class="icon" name="mage:basket"/>
+                                 </button>
+                            </UChip>
+                            
+                        </div>
                     </li>
                 </ul>
             </article>
@@ -48,28 +58,55 @@
             </article>
         </section>
     </nav>
+
+    <UModal v-model="checkoutModal">
+      <UCard class="flex flex-col w-full items-center justify-center" :ui="{ ring: '', divide: 'divide-y divide-gray-100 dark:divide-gray-100'}">
+        <template #header>
+            <div class="flex items-center justify-between">
+            <h3 class="h-8 text-xl font-bold drop-shadow-lg text-slate-900">Cart</h3>
+            <UButton color="gray" variant="ghost" icon="i-heroicons-x-mark-20-solid" class="-my-1" @click="checkoutModal=false" />
+          </div>
+        </template>
+        <CheckoutModal v-if="cartStore.totalCounts > 0" :items="cartStore.groupedItems" />
+        <p v-if="cartStore.totalCounts == 0" class="text-slate-900 text-xl">Cart is empty</p>
+        <template #footer>
+            <div class="flex flex-row items-center justify-around gap-10">
+                <button class="bg-slate-800 text-slate-200 text-center rounded-xl h-12 text-xl font-bold hover:text-slate-900 hover:bg-green-400 px-4" @click="navigateTo('/checkout')">Checkout</button>
+                <div clas="flex flex-row gap-2 rounded-xl">
+                    <p v-if="cartStore.totalPrice" class="bg-pink-400 rounded-xl px-2 text-xl text-slate-800 flex flex-row gap-2 font-bold flex items-center hover:bg-purple-400">TOTAL:
+                        <span class="font-normal text-2xl p-2">
+                            {{ cartStore.totalPrice }}€
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </template>
+      </UCard>
+    </UModal>
 </template>
 
 
 <script setup>
 
-import { storeToRefs } from 'pinia'; // import storeToRefs helper hook from pinia
-import { useAuthStore } from '~/store/auth'; // import the auth store we just created
+import { storeToRefs } from 'pinia'; 
+import { useAuthStore, useCartStore } from '~/stores/auth';
 import { ref } from 'vue';
+
 
 const router = useRouter();
 
+const cartStore = useCartStore();
 
-const { logout } = useAuthStore(); // use authenticateUser action from  auth store
-const { authenticated } = storeToRefs(useAuthStore()); // make authenticated state reactive with storeToRefs
-const { userLogged } = storeToRefs(useAuthStore()); // make userLogged state reactive with storeToRefs
-const route = useRoute();
-const path = ref(route.path);
+const { logout } = useAuthStore();
+const { authenticated, userLogged  } = storeToRefs(useAuthStore()); 
+const checkoutModal = ref(false);
 
-const isNavOpen = ref(false);
+onMounted(() => {
+  console.log('Componente montado, acceso a localStorage aquí');
+});
 
-const toggleNav = () => {
-    isNavOpen.value = !isNavOpen.value;
+const toggleModal = () => {
+    checkoutModal.value = !checkoutModal.value;
 };
 const userLogout = () => {
   logout();

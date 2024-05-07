@@ -33,6 +33,7 @@ export { default as useListUserArtworks } from '../composables/useListUserArtwor
 export { default as useScrollToTop } from '../composables/useScrollToTop';
 export { useUpdateArtwork } from '../composables/useUpdateArtwork';
 export { useUserLoggedData } from '../composables/useUserLoggedData';
+export { useAuthStore, useCartStore } from '../stores/auth';
 export { defineShortcuts } from '../node_modules/@nuxt/ui/dist/runtime/composables/defineShortcuts';
 export { useProvideButtonGroup, useInjectButtonGroup } from '../node_modules/@nuxt/ui/dist/runtime/composables/useButtonGroup';
 export { useCarouselScroll } from '../node_modules/@nuxt/ui/dist/runtime/composables/useCarouselScroll';

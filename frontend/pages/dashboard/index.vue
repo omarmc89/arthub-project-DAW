@@ -80,7 +80,7 @@ definePageMeta({
 })
 import { useUserLoggedData } from '@/composables/useUserLoggedData'
 import { useCreateArtwork } from '@/composables/useCreateArtwork';
-import { useAuthStore } from '~/store/auth';
+import { useAuthStore } from '~/stores/auth';
 import UserArtworksList from '~/components/UserArtworksList.vue';
 
 const authStore = useAuthStore();
@@ -293,4 +293,4 @@ function resetForm() {
     color: #232c33;
   }
 
-</style>
+</style>~/stores/auth

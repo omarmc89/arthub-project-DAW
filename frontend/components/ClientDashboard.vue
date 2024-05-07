@@ -42,7 +42,7 @@
 </template> 
 
 <script setup>
-import { useAuthStore } from '~/store/auth';
+import { useAuthStore } from '~/stores/auth';
 
 defineProps({
   clientId : String,
@@ -82,4 +82,4 @@ function getOrders(clientId){
 function toggleModal(){
     showModal.value = !showModal.value
 }
-</script>
+</script>~/stores/auth
