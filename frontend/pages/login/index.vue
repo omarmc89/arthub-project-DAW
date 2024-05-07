@@ -28,7 +28,7 @@
     })
 
     import { storeToRefs } from 'pinia'
-    import { useAuthStore} from  '~/store/auth'
+    import { useAuthStore} from  '~/stores/auth'
 
     const { authenticateUser } = useAuthStore()
     const { authenticated, userLogged } = storeToRefs(useAuthStore())
@@ -113,4 +113,4 @@
     background-color: #e1e9ec;
     color: #232c33;
 }
-</style>
+</style>~/stores/auth

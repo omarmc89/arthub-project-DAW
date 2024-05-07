@@ -1,5 +1,10 @@
 <script setup>
 
+import { useCartStore} from '~/stores/auth'
+
+const cartStore = useCartStore();
+
+
 const artworks = ref({})
 const fetching = ref(false)
 
@@ -13,24 +18,35 @@ if (data) {
     fetching.value = false
 
 }
+
+
+
+
 </script>
 
 <template>
-    <section class="container">
+    <section class="container relative">
     <article v-for="artwork in artworks" :key="artwork.id" class="card">
         <NuxtLink class="image-container" :href="'/artworks/' + artwork.id">
-          <img :src="artwork.image_url" :alt="artwork.title" />
-          <p> {{ artwork.artist.user.username }}</p>
+            <img :src="artwork.image_url" :alt="artwork.title" class="hover:brightness-110 hover:contrast-100	hover:outline outline-4 outline-yellow-300"/>
+            <p class="artist"> {{ artwork.artist.user.username }}</p>
+            <p class="price"> {{ artwork.price }}€</p>
         </NuxtLink>
-      <div class="text-card p-1 text-center">
-          <h5 class="text-xl font-bold tracking-tight text-gray-900">{{ artwork.title }}</h5>
-          <p class="font-normal text-gray-700">{{ artwork.description }}</p>
-      </div>
+        <div class="flex flex-row relative">
+          <div class="text-card p-1 text-center w-full">
+              <h5 class="text-xl font-bold tracking-tight text-gray-900">{{ artwork.title }}</h5>
+              <p class="font-normal text-gray-700">{{ artwork.description }}</p>      
+          </div>
+          <button class="cart-button hover:" @click="cartStore.addArtwork(artwork.id, artwork.title, artwork.price, artwork.image_url)">
+              <Icon class="icon" name="carbon:shopping-cart-arrow-down"/>
+          </button>
+        </div>
+
     </article>
   </section>
 </template>
 
-<style>
+<style scoped>
 
 .container {
   columns:2;
@@ -48,6 +64,7 @@ if (data) {
 
 .image-container {
   position:relative;
+  width: 100%;
 }
 
 .image-container img {
@@ -58,7 +75,7 @@ if (data) {
   border-radius: 10px;
 }
 
-.image-container p {
+.artist {
   position: absolute;
   top: 10px;
   left: 10px;
@@ -70,8 +87,48 @@ if (data) {
   border-radius: 10px;
 }
 
+.price {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  margin:auto;
+  font-size: 20px;
+  font-weight: bold;
+  backdrop-filter: blur(5px);
+  background-color: rgba(255, 255, 255, 0.4);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.cart-button {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70%;
+  width: 10%;
+  bottom: 10px;
+  right: 10px;
+  margin:auto;
+  font-size: 1.8rem;
+  padding: 0.6rem;
+  border-radius: 10px;
+}
+
+.cart-button svg {
+  color: #9334E9;
+}
+
+.cart-button:hover {
+  color: #9334E9;
+  background-color: #f473b5;
+  border-radius:10px;
+  padding: 0.5rem;
+}
+
+
 .text-card {
   border-bottom: 1px solid #00000055;
-
 }
+
 </style>

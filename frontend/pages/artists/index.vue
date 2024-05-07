@@ -44,7 +44,7 @@ const { data, error, loading } = await useListArtists()
 }
 </script>
 
-<style>
+<style scoped>
 
 .container {
 columns:2;

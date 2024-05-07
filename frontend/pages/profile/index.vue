@@ -27,9 +27,13 @@
                           <label for="avatar">Image URL</label>
                           <input v-model="user.avatar" :class="{ 'input-blocked': inputBlocked }"  :readonly="inputBlocked" id="avatar" name="avatar" type="text" class="form-control rounded-full bg-white">
                       </div>
-                      <div class="form-label text-center">
+                      <div v-if="userType == 'artist'" class="form-label text-center">
                           <label for="nickname">Nickname</label>
                           <input v-model="artist.nickname" :class="{ 'input-blocked': inputBlocked }"  :readonly="inputBlocked" id="nickname" name="nickname" type="text" class="form-control rounded-full bg-white">
+                      </div>
+                      <div v-if="userType == 'client'" class="form-label text-center">
+                          <label for="birth_date">birth_date</label>
+                          <input v-model="client.birth_date" :class="{ 'input-blocked': inputBlocked }"  :readonly="inputBlocked" id="birth_date" name="birth_date" type="date" class="form-control rounded-full bg-white">
                       </div>
                       <div class="form-label text-center">
                           <label for="email">email</label>
@@ -48,11 +52,10 @@
 
 <script setup>
 import { useUserLoggedData } from '@/composables/useUserLoggedData'
-import { useAuthStore } from '~/store/auth';
-
+s
 const route = useRoute()
 const toast = useToast();
-const { userLogged } = storeToRefs(useAuthStore());
+const { userLogged, userType, artistId, clientId } = storeToRefs(useAuthStore());
 const pendingFetch = ref(false)
 const avatar_image = ref('')
 const inputBlocked = ref(true)
@@ -68,26 +71,30 @@ const user = ref({
     avatar:''
 })
 
+const client = ref({
+    birth_date: ''
+})
+
 const dataFetch = ref({})
 const skeletonOff = ref(false)
-const artistData = ref({})
+const userData = ref({})
 
 onBeforeMount(async() => {
   // Llama a tu función aquí
-  artistData.value = await useUserLoggedData();
+  userData.value = await useUserLoggedData();
 });
 
 onMounted(async () => {
   try {
-    artistData.value = await useUserLoggedData();
-    if (artistData.value) {
-        user.value.username = artistData.value.user.username
-        user.value.first_name = artistData.value.user.first_name
-        user.value.last_name = artistData.value.user.last_name
-        user.value.email = artistData.value.user.email
-        user.value.avatar = artistData.value.user.avatar
-        user.value.password = artistData.value.user.password
-        artist.value.nickname = artistData.value.nickname
+    userData.value = await useUserLoggedData();
+    if (userData.value) {
+        user.value.username = userData.value.user.username
+        user.value.first_name = userData.value.user.first_name
+        user.value.last_name = userData.value.user.last_name
+        user.value.email = userData.value.user.email
+        user.value.avatar = userData.value.user.avatar
+        user.value.password = userData.value.user.password
+        client.value.birth_date = userData.value.birth_date
     }
     checkAvatar()
     skeletonOff.value = true
@@ -111,31 +118,57 @@ function checkAvatar () {
 }
 
 const update = async() => {
-  const { data, pending, error } = await useFetch(`https://arthub-api-polished-breeze-902.fly.dev/api/v1/artists/${artistData.value.id}/`, {
-    method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json'
-      //'Authorization': 'Token f3b557760eda960a094698122c6eb9489c2487f3'
-    },
-    body: JSON.stringify({
-        id: userLogged.value.pk,
-        username: user.value.username,
-        email: user.value.email,
-        first_name: user.value.first_name,
-        last_name: user.value.last_name,
-        password: user.value.password,
-        avatar: user.value.avatar,
-        nickname: artist.value.nickname,
-    })
-  });
-  if (error) {
-    console.log(error.value)
-  }
-  if (data) {
-    dataFetch.value = data.value;
-    console.log(dataFetch.value);
-    toast.add({ title: 'Artist created! Redirecting to Home...', timeout: 2000, callback:() => navigateTo('/home') })
-  }
+  if (userType == 'artist') {
+      const { data, pending, error } = await useFetch(`https://arthub-api-polished-breeze-902.fly.dev/api/v1/artists/${artistData.value.id}/`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+          //'Authorization': 'Token f3b557760eda960a094698122c6eb9489c2487f3'
+        },
+        body: JSON.stringify({
+            id: userLogged.value.pk,
+            username: user.value.username,
+            email: user.value.email,
+            first_name: user.value.first_name,
+            last_name: user.value.last_name,
+            password: user.value.password,
+            avatar: user.value.avatar,
+            nickname: artist.value.nickname,
+        })
+      });
+      if (error) {
+        console.log(error.value)
+      }
+      if (data) {
+        dataFetch.value = data.value;
+        toast.add({ title: 'User Updated! Redirecting to Dashboard...', timeout: 2000, callback:() => navigateTo('/dashboard') })
+      }
+    } else {
+      const { data, pending, error } = await useFetch(`http://localhost:8000/api/v1/clients/${clientId.value}/`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+          //'Authorization': 'Token f3b557760eda960a094698122c6eb9489c2487f3'
+        },
+        body: JSON.stringify({
+            id: userLogged.value.pk,
+            username: user.value.username,
+            email: user.value.email,
+            first_name: user.value.first_name,
+            last_name: user.value.last_name,
+            password: user.value.password,
+            avatar: user.value.avatar,
+            birth_date: client.value.birth_date,
+        })
+      });
+      if (error) {
+        console.log(error.value)
+      }
+      if (data) {
+        dataFetch.value = data.value;
+        toast.add({ title: 'User Updated! Redirecting to Dashboard...', timeout: 2000, callback:() => navigateTo('/dashboard') })
+      }
+    }
   }
 
   function inputBlockedToggle() {
@@ -218,4 +251,4 @@ const update = async() => {
     background-color: #e1e9ec;
     color: #232c33;
   }
-</style>
+</style>~/stores/auth

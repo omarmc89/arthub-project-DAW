@@ -20,7 +20,6 @@ class TestsAPI(TestCase):
         self.client = APIClient()
 
     def test_api_random_artworks(self):
-        request = self.factory.get('/api/v1/randomArtworks/')
         response = self.client.get('/api/v1/randomArtworks/')
 
         data = response.data
@@ -34,7 +33,7 @@ class TestsAPI(TestCase):
         data = {'username': 'user1@gmail.com', 'password': 'test'}
         response = self.client.post('/api/v1/auth/login/', data, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertIn('key',response.data)
+        self.assertIn('key', response.data)
 
     def test_api_login_fail(self):
         data = {'username': 'user1@gmail.com', 'password': 'testerror'}
@@ -69,8 +68,34 @@ class TestsAPI(TestCase):
         base_url = '/api/v1/create/artwork/'
         response = self.client.post(base_url, data, format='json')
         artwork_created = Artwork.objects.get(title='test')
+        photo_created = Photo.objects.get(artwork=artwork_created)
+
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertIsInstance(artwork_created, Artwork)
+        self.assertIsInstance(photo_created, Photo)
+
+    def test_api_create_artwork_painting(self):
+        data = {
+            'fetchData': {
+                'title': 'test',
+                'description': 'test',
+                'image_url': 'test',
+                'price': 0,
+                'artistId': '00000000-0000-0000-0000-000000000002',
+                'type': 'painting',
+                'style': 'abstract',
+                'width': '999',
+                'height': '999',
+            }
+        }
+        base_url = '/api/v1/create/artwork/'
+        response = self.client.post(base_url, data, format='json')
+        artwork_created = Artwork.objects.get(title='test')
+        painting_created = Painting.objects.get(artwork=artwork_created)
+
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertIsInstance(artwork_created, Artwork)
+        self.assertIsInstance(painting_created, Painting)
 
     def test_api_create_artist(self):
         data = {
