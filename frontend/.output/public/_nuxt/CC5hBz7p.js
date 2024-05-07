@@ -1,2 +1,0 @@
-import{G as t,L as l,aW as r,aX as i,h as e,o as m,i as p,V as u,B as c,a5 as d,j as f}from"./C79j48wv.js";const j=t({__name:"Slideovers.client",setup(v){const o=l(r),{isOpen:s}=i();return(_,a)=>e(o)?(m(),p(d(e(o).component),u({key:0},e(o).props,{modelValue:e(s),"onUpdate:modelValue":a[0]||(a[0]=n=>c(s)?s.value=n:null)}),null,16,["modelValue"])):f("",!0)}});export{j as default};
-//# sourceMappingURL=CC5hBz7p.js.map

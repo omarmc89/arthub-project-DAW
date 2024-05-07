@@ -1,4 +1,4 @@
-import { useAuthStore } from '~/store/auth'
+import { useAuthStore } from '~/stores/auth'
 
 export const useUpdateArtwork = async (fetchData) => {
     const { sessionToken} = useAuthStore();

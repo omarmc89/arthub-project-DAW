@@ -1,1 +1,0 @@
-{"version":3,"file":"DuuK6_dK.js","sources":["../../../../pages/listartworks/index.vue"],"sourcesContent":["<template>\n    <h1>Artworks</h1>\n\n    <ArtworksGrid />\n</template>\n\n<script setup>\n</script>"],"names":["_openBlock","_createElementBlock","_Fragment","_hoisted_1"],"mappings":"4NACqBA,EAAA,EAAAC,EAAAC,EAAA,KAAA,CAEjBC"}

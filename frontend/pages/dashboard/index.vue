@@ -1,5 +1,6 @@
 <template>
-  <UContainer class="w-6/12 my-8">
+  <ClientDashboard v-if="userType=='client'" :clientId="clientId"/>
+  <UContainer v-if="userType=='artist'" class="w-6/12 my-8">
     <UButton @click="handleFormVisibility" label="Click if you want upload an artowork!" icon="i-heroicons-pencil-square" color="black" block></UButton>
     <section class="form-wrapper mt-8" v-if="!hiddenForm">
       <form class="artwork-form space-y-4 text-slate-900" @submit.prevent="createArtwork">
@@ -79,12 +80,12 @@ definePageMeta({
 })
 import { useUserLoggedData } from '@/composables/useUserLoggedData'
 import { useCreateArtwork } from '@/composables/useCreateArtwork';
-import { useAuthStore } from '~/store/auth';
+import { useAuthStore } from '~/stores/auth';
 import UserArtworksList from '~/components/UserArtworksList.vue';
 
 const authStore = useAuthStore();
 const toast = useToast();
-const { userLogged, artistId } = storeToRefs(useAuthStore());
+const { userLogged, userType, artistId, clientId } = storeToRefs(useAuthStore());
 const type = ref('Painting')
 const dataFetch = ref('')
 const errorFetch = ref('')
@@ -140,10 +141,14 @@ function handleFormVisibility(){
 
 async function chargeAllData() {
   try {
+
     loadingArtistData.value = true
-    userArtworksLoading.value = true
-    fetchArtworks(id)
-    loadingArtistData.value = false
+    if (userType.value === 'artist') {
+
+      userArtworksLoading.value = true
+        fetchArtworks(id)
+      loadingArtistData.value = false
+    }
   } catch (error) {
     console.error('Error fetching user artworks:', error);
   }
@@ -288,4 +293,4 @@ function resetForm() {
     color: #232c33;
   }
 
-</style>
+</style>~/stores/auth

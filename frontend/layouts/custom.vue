@@ -16,8 +16,5 @@
 
 <style scoped>
 
-footer{
-
-}
 </style>
 

@@ -40,8 +40,8 @@
         <input v-model="nickname" type="text" id="nickname" name="nickname" placeholder="Nickname" class="form-control rounded-full bg-white">
       </div>
       <div class="form-label" v-if="selectedUserType === 'Client'">
-        <label for="clientField1">Client Field 1:</label> 
-        <input type="text" id="clientField1" name="clientField1" class="form-control rounded-full bg-white">
+        <label for="birth_date">Birth Date</label> 
+        <input type="date" id="birth_date" name="birth_date" class="form-control rounded-full bg-white">
       </div>
       <button  type="submit" :disabled="pendingFetch" class="btn">
         <span v-if="pendingFetch">Submitting...</span>
@@ -77,40 +77,69 @@ const options = [{
     name: 'Artist',
     value: 'Artist'
     },
-    // {
-    // name: 'Client',
-    // value: 'Client'
-    // }
+    {
+    name: 'Client',
+    value: 'Client'
+    }
 ]
 
 const toggleFields = () => {
   // Implementa la lógica para mostrar u ocultar campos según el valor seleccionado
 };
 const register = async() => {
-  const { data, pending, error } = await useFetch('https://arthub-api.fly.dev/api/v1/artists/', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-      // 'Authorization': 'Token f3b557760eda960a094698122c6eb9489c2487f3'
-    },
-    body: JSON.stringify({
-      username: username.value,
-      email: email.value,
-      first_name: first_name.value,
-      last_name: last_name.value,
-      password: password.value,
-      avatar: avatar.value,
-      nickname: nickname.value,
-    })
-  });
-  if (error) {
-    errorOnFetch.value = error.value;
-  }
-  if (data) {
-    dataFetch.value = data.value;
-    console.log(dataFetch.value);
-    toast.add({ title: 'Artist created! Redirecting to your Dashboard...', timeout: 2000, callback:() => router.push('/dashboard') })
-  }
+
+  if (selectedUserType.value == 'Artist') {
+
+      const { data, pending, error } = await useFetch('https://arthub-api.fly.dev/api/v1/artists/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+          // 'Authorization': 'Token f3b557760eda960a094698122c6eb9489c2487f3'
+        },
+        body: JSON.stringify({
+          username: username.value,
+          email: email.value,
+          first_name: first_name.value,
+          last_name: last_name.value,
+          password: password.value,
+          avatar: avatar.value,
+          nickname: nickname.value,
+        })
+      });
+      if (error) {
+        errorOnFetch.value = error.value;
+      }
+      if (data) {
+        dataFetch.value = data.value;
+        console.log(dataFetch.value);
+        toast.add({ title: 'Artist created! Redirecting to your Dashboard...', timeout: 2000, callback:() => router.push('/dashboard') })
+      }
+    } else {
+      const { data, pending, error } = await useFetch('http://localhost:8000/api/v1/clients/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+          // 'Authorization': 'Token f3b557760eda960a094698122c6eb9489c2487f3'
+        },
+        body: JSON.stringify({
+          username: username.value,
+          email: email.value,
+          first_name: first_name.value,
+          last_name: last_name.value,
+          password: password.value,
+          avatar: avatar.value,
+          birth_date: birth_date.value,
+        })
+      });
+      if (error) {
+        errorOnFetch.value = error.value;
+      }
+      if (data) {
+        dataFetch.value = data.value;
+        console.log(dataFetch.value);
+        toast.add({ title: 'Client created! Redirecting to your Dashboard...', timeout: 2000, callback:() => router.push('/dashboard') })
+      }
+    }
   }
 </script>
   
