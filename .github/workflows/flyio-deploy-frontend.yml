@@ -1,6 +1,7 @@
 name: Fly Deploy Frontend
 on:
   pull_request:
+    branches: [ "main" ]
     types: [closed]
 
 jobs:
