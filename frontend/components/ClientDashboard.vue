@@ -12,7 +12,7 @@
             <tbody class="bg-white divide-y divide-gray-200">
                 <tr v-for="(order, index) in orders" :key="index">
                     <td class="px-6 py-4 whitespace-nowrap">{{ order.id }}</td>
-                    <td class="px-6 py-4 whitespace-nowrap">{{ order.created_at }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">{{ formatDate(order.created_at) }}</td>
                     <td class="px-6 py-4 whitespace-nowrap">{{ order.total }}</td>
                     <td class="px-6 py-4 whitespace-nowrap">
                         <button class="text-indigo-600 hover:text-indigo-900 w-full flex items-center justify-center" @click="toggleModal">
@@ -55,13 +55,14 @@ const noOrders = ref(true)
 const showModal = ref(false)
 console.log(clientId.value)
 
-onMounted(() => {
-    getOrders(clientId.value)
-})
+const formatDate = (dateString) => {
+  const date = new Date(dateString);
+  return date.toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric' }) + ' ' + date.toLocaleTimeString();
+};
 
-onBeforeMount(()=> {
-    getOrders(clientId.value)
-})
+// onMounted(() => {
+//     getOrders(clientId.value)
+// })
 
 function getOrders(clientId){
     const { data, error } = useFetch(`http://localhost:8000/api/v1/clientOrders/?id=${clientId}`, {

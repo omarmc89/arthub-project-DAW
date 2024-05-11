@@ -10,4 +10,7 @@ frontend/.vscode/
 frontend/.output/
 backend/.DS_Store/
 frontend/.DS_Store/
-**/__pycache__/git
+**/__pycache__/
+**/.nuxt/
+**/.output/
+**/.vscode/

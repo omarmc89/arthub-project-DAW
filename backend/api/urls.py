@@ -18,6 +18,7 @@ from .viewsets.ClientViewSet import ClientViewSet
 from .viewsets.AddressViewSet import AddressViewSet
 from .viewsets.OrderViewSet import OrderViewSet
 from .viewsets.OrderLineViewSet import OrderLineViewSet
+from .viewsets.CheckoutViewSet import CreateOrderLineViewSet, CheckoutSessionViewSet
 
 
 router = routers.DefaultRouter()
@@ -44,5 +45,8 @@ urlpatterns = [
     path('artworkDetails/', ShowArtworkDetailsViewSet.as_view(), name='artworkDetails'),
     path('randomArtworks/', ArtworkViewSet.as_view({'get': 'getRandomArtworks'}), name='random-artworks'),
     path('clientOrders/', OrderViewSet.as_view({'get': 'list_orders'}), name='list-client-orders'),
+    path('createOrderAndOrderLines/', CreateOrderLineViewSet.as_view({'post': 'create_order_and_order_line'}), name='create-order-order-lines'),
+    path('stripeCheckout/', CheckoutSessionViewSet.as_view({'post': 'checkout_session'}),
+         name='stripe-checkout'),
 
 ]
