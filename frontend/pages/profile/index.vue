@@ -52,7 +52,6 @@
 
 <script setup>
 import { useUserLoggedData } from '@/composables/useUserLoggedData'
-s
 const route = useRoute()
 const toast = useToast();
 const { userLogged, userType, artistId, clientId } = storeToRefs(useAuthStore());

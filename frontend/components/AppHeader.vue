@@ -67,11 +67,22 @@
             <UButton color="gray" variant="ghost" icon="i-heroicons-x-mark-20-solid" class="-my-1" @click="checkoutModal=false" />
           </div>
         </template>
-        <CheckoutModal v-if="cartStore.totalCounts > 0" :items="cartStore.groupedItems" />
+        <CheckoutModal v-if="cartStore.totalCounts > 0" :items="cartStore.groupedItems" :addresses="addresses"/>
         <p v-if="cartStore.totalCounts == 0" class="text-slate-900 text-xl">Cart is empty</p>
+        <div class="relative">
+            <button @click="toggleDropdown" class="inline-flex justify-center w-full rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100">
+                {{ selectedOption ? selectedOption : 'Seleccione una opción' }}
+                <svg v-if="dropdownOpen" class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M10 12l-6-6H4l6 6 6-6h2l-6 6 6 6h-2l-6-6z" clip-rule="evenodd" />
+                </svg>
+            </button>
+            <div v-if="dropdownOpen" class="absolute z-10 mt-2 w-full bg-white shadow-lg rounded-md">
+                <div v-for="(address, index) in addresses" :key="index" @click="selectOption(address.id, address.city)" class="text-gray-700 block px-4 py-2 text-sm cursor-pointer hover:bg-gray-100">{{ address.street }}</div>
+            </div>
+        </div>
         <template #footer>
             <div class="flex flex-row items-center justify-around gap-10">
-                <button class="bg-slate-800 text-slate-200 text-center rounded-xl h-12 text-xl font-bold hover:text-slate-900 hover:bg-green-400 px-4" @click="navigateTo('/checkout')">Checkout</button>
+                <button class="bg-slate-800 text-slate-200 text-center rounded-xl h-12 text-xl font-bold hover:text-slate-900 hover:bg-green-400 px-4" @click="createCheckoutSession()">Checkout</button>
                 <div clas="flex flex-row gap-2 rounded-xl">
                     <p v-if="cartStore.totalPrice" class="bg-pink-400 rounded-xl px-2 text-xl text-slate-800 flex flex-row gap-2 font-bold flex items-center hover:bg-purple-400">TOTAL:
                         <span class="font-normal text-2xl p-2">
@@ -96,23 +107,111 @@ import { ref } from 'vue';
 const router = useRouter();
 
 const cartStore = useCartStore();
-
+const authStore = useAuthStore()
 const { logout } = useAuthStore();
-const { authenticated, userLogged  } = storeToRefs(useAuthStore()); 
+const { authenticated, userLogged, clientId  } = storeToRefs(useAuthStore()); 
 const checkoutModal = ref(false);
+const addresses = ref([]);
+const address_selected_id = ref('')
+const orderCompleted = ref(false)
+const toast = useToast();
+
+const dropdownOpen = ref(false);
+const selectedOption = ref(null);
+
+const toggleDropdown = () => {
+      dropdownOpen.value = !dropdownOpen.value;
+    };
+
+const selectOption = (optionId, optionValue) => {
+    address_selected_id.value = optionId
+    selectedOption.value = optionValue
+    dropdownOpen.value = false;
+};
+
 
 onMounted(() => {
-  console.log('Componente montado, acceso a localStorage aquí');
+    getAddressees();
 });
 
 const toggleModal = () => {
     checkoutModal.value = !checkoutModal.value;
+    getAddressees();
 };
 const userLogout = () => {
   logout();
   router.push('/login');
 };
 
+function getAddressees(){
+      const { data, error } = useFetch(`http://localhost:8000/api/v1/addresses/?id=${authStore.clientId}`, {
+          method: 'GET',
+          headers: {
+              'Content-Type': 'application/json'
+          }
+      })
+          if (error.value) {
+              toast.add('Error fetching orders')
+          }
+          if(data.value){
+              addresses.value = data.value
+          }
+    }
+
+function createOrderAndOrderLines(){
+    const artworks = cartStore.groupedItems
+    const client_id = authStore.clientId
+    const address_id = address_selected_id.value
+
+    const { data, error } = useFetch(`http://localhost:8000/api/v1/createOrderAndOrderLines/`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body:{
+        'artworks': artworks,
+        'client_id': client_id,
+        'address_id': address_id,
+        'total': cartStore.totalPrice
+        }
+    })
+        if (error.value) {
+            toast.add('Error processing order')
+        }
+        if(data.value){
+            orderCompleted.value = true
+            cartStore.clearCart()
+            toast.add('Order Complete!')
+        }
+}
+
+function createCheckoutSession(){
+    const artworks = cartStore.groupedItems
+
+    const { data, error } = useFetch(`http://localhost:8000/api/v1/stripeCheckout/`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body:{
+        'artworks': artworks,
+        'total': cartStore.totalPrice,
+        'email': authStore.userEmailLogged
+        }
+    })
+        if (error.value) {
+            toast.add('Error processing payment')
+        }
+        if(data.value){
+            createOrderAndOrderLines()
+            navigateTo(data.value, { external: true })
+        }
+}
+
+// async function navigate(url){
+//     await navigateTo(url)
+// }
+    
 </script>
 
 <style scoped>

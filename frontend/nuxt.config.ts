@@ -1,6 +1,12 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   runtimeConfig: {
+    plugins: [
+      { src: '~/plugins/vue-stripe.js', ssr: false },
+    ],
+    env: {
+      STRIPE_PK: process.env.STRIPE_PK,
+    },
     public: {
       baseUrl: 'https://arthub-api-polished-breeze-902.fly.dev/api/v1/'
     }
