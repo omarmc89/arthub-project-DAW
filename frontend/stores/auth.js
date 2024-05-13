@@ -1,8 +1,9 @@
 import { defineStore, acceptHMRUpdate } from "pinia";
 import { useLocalStorage } from "@vueuse/core";
-
+const runtimeConfig = useRuntimeConfig()
 
 export const useAuthStore = defineStore('auth', {
+
     id: 'Auth',
 
     state: () => ({
@@ -18,7 +19,7 @@ export const useAuthStore = defineStore('auth', {
 
     actions: {
         async authenticateUser({ email, password }) {
-            const { data, error, pending } = await useFetch('https://arthub-api-polished-breeze-902.fly.dev/api/v1/auth/login/', {
+            const { data, error, pending } = await useFetch(runtimeConfig.public.baseUrl + 'auth/login/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -45,7 +46,7 @@ export const useAuthStore = defineStore('auth', {
         },
     
         async getUserID() {
-            const { data } = await useFetch ('https://arthub-api-polished-breeze-902.fly.dev/api/v1/auth/user/', {
+            const { data } = await useFetch (runtimeConfig.public.baseUrl + 'auth/user/', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -63,7 +64,7 @@ export const useAuthStore = defineStore('auth', {
         },
         
         async getArtistId() {
-            const { data, error } = await useFetch (`https://arthub-api-polished-breeze-902.fly.dev/api/v1/search/artist/?user_id=${this.userLogged.pk}`, {
+            const { data, error } = await useFetch (`${runtimeConfig.public.baseUrl}search/artist/?user_id=${this.userLogged.pk}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -84,7 +85,7 @@ export const useAuthStore = defineStore('auth', {
         },
 
         async getClientId() {
-            const { data, error } = await useFetch (`http://localhost:8000/api/v1/search/client/?user=${this.userLogged.pk}`, {
+            const { data, error } = await useFetch (`${runtimeConfig.public.baseUrl}search/client/?user=${this.userLogged.pk}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
