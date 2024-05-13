@@ -82,6 +82,6 @@ class Order(models.Model):
 
 class OrderLine(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4)
-    order = models.OneToOneField(Order, on_delete=models.CASCADE)
+    order = models.ForeignKey(Order, on_delete=models.CASCADE)
     artwork = models.ForeignKey(Artwork, on_delete=models.CASCADE, related_name='order_line_artwork')
 

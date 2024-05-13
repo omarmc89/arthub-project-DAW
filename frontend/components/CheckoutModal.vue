@@ -1,5 +1,5 @@
 <template> 
-    <section v-for="(item, index) in items" :key="index" class="flex flex-row rounded-lg items-center justify-center">
+    <section v-if="!orderCompleted" v-for="(item, index) in items" :key="index" class="flex flex-row rounded-lg items-center justify-center">
       <div class="bg-white flex flex-row rounded-lg shadow-md items-center justify-center p-4 w-full">
         <div class="w-full flex items-center justify-center relative">
             <img :src="item.image" :alt="item.title" class="w-48 h-40 object-cover object-center rounded-xl">
@@ -18,8 +18,9 @@
   </template>
   
   <script setup>
-  import { useCartStore } from '~/stores/auth';
-  const cartStore = useCartStore();
+    import { useCartStore, useAuthStore } from '~/stores/auth';
+    const cartStore = useCartStore();
+    const authStore = useAuthStore();
 
     defineProps({
         items : Object,

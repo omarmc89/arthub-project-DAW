@@ -59,6 +59,7 @@
   </template>
   <script setup>
 import { ref } from 'vue';
+const runtimeConfig = useRuntimeConfig()
 
 let username = ref('');
 let first_name = ref('');
@@ -90,7 +91,7 @@ const register = async() => {
 
   if (selectedUserType.value == 'Artist') {
 
-      const { data, pending, error } = await useFetch('https://arthub-api.fly.dev/api/v1/artists/', {
+      const { data, pending, error } = await useFetch(`${runtimeConfig.public.baseUrl}artists/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -115,7 +116,7 @@ const register = async() => {
         toast.add({ title: 'Artist created! Redirecting to your Dashboard...', timeout: 2000, callback:() => router.push('/dashboard') })
       }
     } else {
-      const { data, pending, error } = await useFetch('http://localhost:8000/api/v1/clients/', {
+      const { data, pending, error } = await useFetch(`${runtimeConfig.public.baseUrl}clients/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

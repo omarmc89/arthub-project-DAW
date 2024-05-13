@@ -2,7 +2,7 @@
   <section class="container">
   <article v-for="artist in artists" :key="artist.id" class="card">
       <NuxtLink class="flex flex-col items-center justify-stretch" :href="'/artists/' + artist.id + '/'">
-        <img :src="artist.user.avatar" :alt="artist.user.first_name" class="rounded-xl my-4" />
+        <img :src="artist.user.avatar" :alt="artist.user.first_name" class="rounded-xl my-4 w-96 h-96 object-cover " />
         <p> {{ artist.user.username }}</p>
         <div class="text-card p-1 text-center">
             <h5 class="text-xl font-bold tracking-tight text-gray-900">
