@@ -1,6 +1,6 @@
 
 <template>
-  <UCarousel v-if="!fetching" v-slot="{ item }" :items="imageUrls" :ui="{ item: 'basis-full md:basis-1/2 lg:basis-1/3 snap-start' }" class="rounded-lg overflow-hidden" indicators arrows>
+  <UCarousel v-if="!fetching" v-slot="{ item }" :items="imageUrls" :ui="{ item: 'basis-full md:basis-1/2 lg:basis-1/3 snap-start' }" class="carousel rounded-lg overflow-hidden" indicators arrows>
         <img :src="item" class="object-cover" draggable="false">
   </UCarousel>
 
@@ -10,6 +10,8 @@
 <script setup>
 const fetching = ref(true)
 const imageUrls = ref([])
+const runtimeConfig = useRuntimeConfig()
+
 
 onBeforeMount(() => {
   useListArtworks()
@@ -20,7 +22,7 @@ onMounted(() => {
 })
 
 async function useListArtworks () {
-    const { data, error, pending } = await useFetch('https://arthub-api-polished-breeze-902.fly.dev/api/v1/randomArtworks/', {
+    const { data, error, pending } = await useFetch(runtimeConfig.public.baseUrl +'randomArtworks/', {
       method: 'GET'
     
     })
@@ -34,3 +36,15 @@ async function useListArtworks () {
 }
 
 </script>
+
+
+<style scoped>
+
+@media (width <= 650px) {
+  
+  .carousel {
+    width: 65%;
+  }
+
+}
+</style>

@@ -30,7 +30,6 @@ const params = route.params
 const id = ref(params.id)
 const pendingFetch = ref(true)
 const fetchData = ref({})
-console.log(runtimeConfig.public.baseUrl)
 
 const artist = ref({
     first_name: "",

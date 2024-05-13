@@ -1,7 +1,7 @@
 <template>
     <section class="artworks-deck flex justify-center items-center" :userArtworks="userArtworks">
       <article v-for="userArtwork in userArtworks" :key="userArtwork.id" class="user-artwork-card" >
-        <div class="user-artwork-card-title">
+        <div class="user-artwork-card-title capitalize">
           <h5>{{ userArtwork.title }}</h5>
         </div>
         <div class="user-artwork-card-image-container">
@@ -9,24 +9,9 @@
         </div>
         <div class="user-artwork-card-buttons">
           <UButton @click="artworkRedirect(userArtwork.id)" variant="ghost" size="xl" icon="i-carbon-pending" color="violet" class="button"></UButton>
-          <!-- <NuxtLink :to="'artworks/' + userArtwork.id" class="button" as="button"></NuxtLink> -->
           <UButton @click="$emit('artworkId', userArtwork.id)" variant="outline" size="xl" icon="i-carbon-trash-can" color="red" class="button"></UButton>
         </div>
       </article>
-
-    <!-- <UModal v-model="deleteModal">
-      <UCard class="flex flex-col w-full items-center justify-center" :ui="{ ring: '', divide: 'divide-y divide-gray-100 dark:divide-gray-100'}">
-        <template #header>
-          <h3 class="h-8 text-xl font-bold drop-shadow-lg text-slate-900">Confirmation</h3>
-        </template>
-
-        <p class="h-32 text-slate-800 text-center">Are you sure to delete Artwork?</p>
-        <button class="w-full bg-red-400 text-slate-200 text-center rounded-xl h-12 text-xl font-bold hover:text-slate-900 hover:bg-red-600" @click="deleteArtwork(deleteArtworkId)">Borrar</button>
-        <template #footer>
-          <small class="h-8 text-xl text-red-400">Delete is not reversible</small>
-        </template>
-      </UCard>
-    </UModal> -->
     </section>
 </template>
 
@@ -40,33 +25,6 @@ const params = route.params
 
 const toast = useToast();
 
-// const emit = defineEmits(['deleteArtwork', userArtwork.value.id])
-// function emitArtworkid() {
-//   $emit('deleteArtwork', userArtwork.value.id);
-// }
-
-// const deleteModal = ref(false);
-// const deleteArtworkId = ref('');
-
-// const { emit } = defineEmits();
-
-
-// function setDeleteArtworkId(artworkId) {
-//   deleteArtworkId.value = artworkId;
-//   deleteModal.value = true;
-// }
-
-// async function deleteArtwork(artworkId) {
-//   try {
-//     await useFetch(`http://localhost:8000/api/v1/artworks/${artworkId}/`, {
-//       method: 'DELETE'
-//     } )
-//     deleteModal.value = false
-//     toast.add({ title: 'Artwork deleted', timeout: 1500, color:"red", callback:window.location.reload()})
-//   } catch (error) {
-//     console.error('Error deleting or creating artwork:', error);
-//   }
-// }
 
 function artworkRedirect(artworkId) {
 
@@ -91,12 +49,12 @@ function artworkRedirect(artworkId) {
 
 .artworks-deck {
   display: grid;
-  width: 100%;
-  height: 100%;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  grid-auto-rows: auto;
+  /* width: 100%;
+  height: 100%; */
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Cambiado auto-fill por auto-fit */
+  grid-auto-rows: 1fr;
   align-items: center;
-  place-content: center;
+  justify-content: center; /* Modificado de place-content a justify-content */
   gap: 10px;
   padding: 20px;
 }
@@ -129,7 +87,6 @@ function artworkRedirect(artworkId) {
   }
 
   .user-artwork-card-image-container {
-    width: 100%;
     height: 75%;
     img {
       width: 100%;

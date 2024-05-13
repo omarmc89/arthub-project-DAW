@@ -13,7 +13,7 @@ from api.viewsets.OrderLineViewSet import OrderLineViewSet
 from api.viewsets.OrderViewSet import OrderViewSet
 
 YOUR_DOMAIN_TEST = 'http://localhost:3000/checkout/'
-YOUR_DOMAIN = 'https://arthub.fly.dev'
+YOUR_DOMAIN = 'https://arthub.fly.dev/checkout/'
 
 
 class CreateOrderLineViewSet(viewsets.ModelViewSet):
@@ -74,7 +74,6 @@ class CheckoutSessionViewSet(viewsets.ModelViewSet):
                 customer_email=customer_email,
                 line_items=[
                     {
-                        # Provide the exact Price ID (for example, pr_1234) of the product you want to sell
                         'quantity': len(artwork_ids),
                         'price_data': {
                             'currency': 'EUR',
@@ -87,8 +86,7 @@ class CheckoutSessionViewSet(viewsets.ModelViewSet):
                     },
                 ],
                 mode='payment',
-                # success_url=YOUR_DOMAIN + 'success',
-                success_url='https://www.stripe.com',
+                success_url=YOUR_DOMAIN + 'success',
                 cancel_url=YOUR_DOMAIN + 'canceled',
             )
         except Exception as e:

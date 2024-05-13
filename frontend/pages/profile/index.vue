@@ -4,8 +4,8 @@
     <UButton class="btn" @click="inputBlockedToggle">Change password</UButton>
   </section>
   <section class="main-container flex flex-row">
-      <article class="image-container">
-          <img v-if="skeletonOff" :src="avatar_image" :alt="user.avatar" />
+      <article class="image-container flex items-center justify-center">
+          <img v-if="skeletonOff" :src="avatar_image" :alt="user.avatar" class="rounded-xl"/>
           <USkeleton v-if="!skeletonOff" class="h-[350px] w-[350px]" />
       </article>
       <article class="form-container flex flex-col justify-center items-center">
@@ -77,6 +77,8 @@ const client = ref({
 const dataFetch = ref({})
 const skeletonOff = ref(false)
 const userData = ref({})
+const runtimeConfig = useRuntimeConfig()
+
 
 onBeforeMount(async() => {
   // Llama a tu función aquí
@@ -118,7 +120,7 @@ function checkAvatar () {
 
 const update = async() => {
   if (userType == 'artist') {
-      const { data, pending, error } = await useFetch(`https://arthub-api-polished-breeze-902.fly.dev/api/v1/artists/${artistData.value.id}/`, {
+      const { data, pending, error } = await useFetch(`${runtimeConfig.public.baseUrl}artists/${artistData.value.id}/`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
@@ -143,7 +145,7 @@ const update = async() => {
         toast.add({ title: 'User Updated! Redirecting to Dashboard...', timeout: 2000, callback:() => navigateTo('/dashboard') })
       }
     } else {
-      const { data, pending, error } = await useFetch(`http://localhost:8000/api/v1/clients/${clientId.value}/`, {
+      const { data, pending, error } = await useFetch(`${runtimeConfig.public.baseUrl}clients/${clientId.value}/`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
@@ -250,4 +252,13 @@ const update = async() => {
     background-color: #e1e9ec;
     color: #232c33;
   }
-</style>~/stores/auth
+
+  @media (width <= 650px) {
+  
+  .main-container {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+}
+</style>

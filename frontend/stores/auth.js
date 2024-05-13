@@ -112,6 +112,7 @@ export const useAuthStore = defineStore('auth', {
             this.sessionToken = null
             this.artistId = null
             this.clientId = null
+            this.userType = null
             localStorage.removeItem('token')
             localStorage.removeItem('userId')
         }
@@ -259,7 +260,7 @@ export const useCartStore = defineStore("CartStore", {
         // https://vueschool.io/lessons/using-composables-in-the-pinia-state
   
         localStorage.removeItem("CartStore:items");
-        this.$reset(); // this: refers to the cartStore instance
+        this.items = [];
       },
     },
     persist: true,

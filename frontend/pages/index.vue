@@ -57,5 +57,16 @@
     font-size: 2rem;
 }
 
+@media (width <= 650px) {
+  .main-banner{
+    font-size: 2rem;
+  }
+
+    .description{
+        font-size: 1.5rem;
+    }
+
+}
+
 
 </style>

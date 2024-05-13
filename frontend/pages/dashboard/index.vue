@@ -1,5 +1,41 @@
 <template>
   <ClientDashboard v-if="userType=='client'" :clientId="clientId"/>
+  <UContainer v-if="userType=='client'" class="w-6/12 my-8">
+    <UButton @click="handleFormVisibility" label="Click if you want create and address!" icon="i-heroicons-pencil-square" color="black" block></UButton>
+    <section class="form-wrapper mt-8" v-if="!hiddenForm">
+      <form class="artwork-form space-y-4 text-slate-900" @submit.prevent="createAddress">
+        <section class="form-label my-4 flex flex-row gap-8">
+          <div>
+            <div class="flex flex-col items-center justify-center">
+              <label for="street">Street</label>
+              <input v-model="address.street" id="street" name="street" type="text" class="form-control rounded-full bg-white">
+            </div>
+  
+            <div class="flex flex-col items-center justify-center">
+              <label for="city">City</label>
+              <input v-model="address.city" id="city" name="city" type="text" class="form-control rounded-full bg-white">
+            </div>
+  
+            <div class="flex flex-col items-center justify-center">
+              <label for="postal_code">Postal Code</label>
+              <input v-model="address.postal_code" id="postal_code" name="postal_code" type="text" class="form-control rounded-full bg-white">
+            </div>
+  
+            <div class="flex flex-col items-center justify-center">
+              <label for="country">Country</label>
+              <input v-model="address.country" id="country" name="country" type="text" class="form-control rounded-full bg-white">
+            </div>
+          </div>
+        </section>
+        <button type="submit" :disabled="pendingFetch" class="btn">
+          <span v-if="pendingFetch">Submitting...</span>
+          <span v-else>Submit</span>
+        </button>
+      </form>
+    </section>
+        <p v-if="dataFetch" class="text-lg text-center text-lime-500">Address created!</p>
+        <p v-if="errorFetch" class="text-lg text-center text-red-600">Error creating address</p>
+  </UContainer>
   <UContainer v-if="userType=='artist'" class="w-6/12 my-8">
     <UButton @click="handleFormVisibility" label="Click if you want upload an artowork!" icon="i-heroicons-pencil-square" color="black" block></UButton>
     <section class="form-wrapper mt-8" v-if="!hiddenForm">
@@ -102,6 +138,7 @@ let artistData = {}
 const allFetched = ref(false)
 const test = ref(true)
 const id = artistId.value
+const runtimeConfig = useRuntimeConfig()
 
 
 const route = useRoute()
@@ -125,6 +162,12 @@ const artwork = ref({
     style: '',
     width: '',
     height: '',
+})
+const address = ref({
+    street: '',
+    city: '',
+    postal_code: '',
+    country: '',
 })
 
 onBeforeMount(async() => {
@@ -156,12 +199,35 @@ async function chargeAllData() {
 
 const createArtwork = async () => {
     const fetchingData = {
+        ...address.value,
+        artistId: authStore.clientId
+    }
+        pendingFetch.value = true
+        const { data, error } = await useCreateArtwork(fetchingData)
+
+        if (error) {
+            errorFetch.value = error
+            pendingFetch.value = false
+
+        } else {
+            errorFetch.value = ''
+            dataFetch.value = data
+            pendingFetch.value = false
+            artoworkCreatedOk()
+        }
+}
+
+const createAddress = async () => {
+    const fetchingData = {
         ...artwork.value,
         type: type.value.toLowerCase(),
         artistId: artistId.value
     }
         pendingFetch.value = true
-        const { data, error } = await useCreateArtwork(fetchingData)
+        const { data, error } = await useFetch(`${runtimeConfig.public.baseUrl}addresses/`, {
+            method: 'POST',
+            body: JSON.stringify(fetchingData)
+        })
 
         if (error) {
             errorFetch.value = error
@@ -187,14 +253,13 @@ function artoworkCreatedOk() {
 }
 
 watch(artworkCreated, (newValue, oldValue) => {
-  // Realizar el fetch de datos cuando se crea un nuevo artwork
   if (newValue > oldValue) {
     fetchArtworks(id)
   }
 })
 
 async function fetchArtworks(idArtist) {
-    const { data, error } = await useFetch(`https://arthub-api-polished-breeze-902.fly.dev/api/v1/search/artworkbyuser/?id=${idArtist}`, {
+    const { data, error } = await useFetch(`${runtimeConfig.public.baseUrl}search/artworkbyuser/?id=${idArtist}`, {
         watch: [artworkCreated],
     })
     if (data) {
@@ -205,7 +270,7 @@ async function fetchArtworks(idArtist) {
 
 async function deleteArtwork(artworkId) {
   try {
-    await useFetch(`https://arthub-api-polished-breeze-902.fly.dev/api/v1/artworks/${artworkId}/`, {
+    await useFetch(`${runtimeConfig.public.baseUrl}artworks/${artworkId}/`, {
       method: 'DELETE'
     } )
     artworkCreated.value += 1
