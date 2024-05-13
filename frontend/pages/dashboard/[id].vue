@@ -137,13 +137,6 @@ function artoworkUpdateOk() {
     artworkCreated.value += 1
 }
 
-// watch(() => artwork.value.image_url, (newValue, oldValue) => {
-//   // Verifica si la nueva URL de la imagen no es una cadena vacía y es diferente de la anterior
-//   if (newValue !== '' && newValue !== oldValue && !imageFetched) {
-//     artwork.value.image_url = 'https://cdn-icons-png.flaticon.com/512/3616/3616929.png'
-//   }
-// });
-
 </script>
 
 <style scooped>

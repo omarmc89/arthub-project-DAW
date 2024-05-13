@@ -315,12 +315,12 @@ function resetForm() {
   .artwork-form {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centra horizontalmente los elementos del formulario */
+    align-items: center;
   }
 
   .form-label {
     width: 100%;
-    max-width: 1000px; /* Ancho máximo del formulario */
+    max-width: 1000px;
   }
   .form-label label{
     font-size: 1.5rem;
