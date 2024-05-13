@@ -130,78 +130,44 @@ export const useCartStore = defineStore("CartStore", {
     getters: {
       /**
        * Returns the total number of items in the cart.
-       * @param {Object} state - The current state of the store.
-       * @returns {number} The total number of items in the cart.
+       * @param {Object} state
+       * @returns {number}
        */
       totalCounts: (state) => state.items.length,
   
       /**
        * Returns whether the cart is empty or not.
-       * @param {Object} state - The current state of the store.
-       * @returns {boolean} Whether the cart is empty or not.
+       * @param {Object} state
+       * @returns {boolean}
        */
       isCartEmpty: (state) => state.totalCounts === 0,
   
       /**
        * Returns an object with items grouped by their name.
-       * @param {Object} state - The current state of the store.
-       * @returns {Object} An object with items grouped by their name.
+       * @param {Object} state
+       * @returns {Object}
        */
       groupedItems: (state) => {
         const itemsList = state.items
         
         return itemsList
   
-          // return obj data structure
-          // {
-          //   "Pineapple Gum": [
-          //     {
-          //       "name": "Pineapple Gum",
-          //       "image": "pineapple-gum.jpg",
-          //       "price": 3
-          //     }
-          //   ],
-          //   "Dried Pineapple": [
-          //     {
-          //       "name": "Dried Pineapple",
-          //       "image": "pineapple-dried.jpg",
-          //       "price": 5
-          //     }, {
-          //       "name": "Dried Pineapple",
-          //       "image": "pineapple-dried.jpg",
-          //       "price": 5
-          //     }
-          //   ]
-          // }
         },
   
       /**
-       * @returns {Function} A function that takes an item name and returns the count of items with that name in the cart.
+       * @returns {Function}
        */
       grouppedItemsWithCount: (state) => {
-        // dynamic getter with return function
-        // https://pinia.vuejs.org/core-concepts/getters.html#Passing-arguments-to-getters
         return (name) => state.groupedItems[name].length;
       },
   
       totalPrice: (state) => {
         return state.items.reduce((total, item) => total + item.price, 0);
       },
-  
-      /*
-      // demo with regular function **
-  
-      totalCounts() {
-        return this.items.length;
-      },
-      isCartEmpty() {
-        return this.totalCounts === 0;
-      },
-      */
+
     },
     actions: {
-      // actions 不能用 arrow function
-  
+
       /**
        * Adds items to the cart.
        * @param {number} count - The number of items to add.
@@ -216,9 +182,6 @@ export const useCartStore = defineStore("CartStore", {
         } else {
             localStorage.setItem("CartStore:items", JSON.stringify(this.items));
         }
-  
-        // uncomment the following line to see the error message
-        // check 'App.vue' onError handler on line 38
 
       },
       addArtwork(id, title, price, image) {
@@ -257,8 +220,6 @@ export const useCartStore = defineStore("CartStore", {
         this.addItem(count, item);
       },
       clearCart() {
-        // fix the issue of not clearing the cart after using the useLocalStorage composable
-        // https://vueschool.io/lessons/using-composables-in-the-pinia-state
   
         localStorage.removeItem("CartStore:items");
         this.items = [];
@@ -267,8 +228,6 @@ export const useCartStore = defineStore("CartStore", {
     persist: true,
   });
   
-  // enable HMR (Hot Module Replacement) for this store
-  // https://pinia.vuejs.org/cookbook/hot-module-replacement.html
   if (import.meta.hot) {
     import.meta.hot.accept(acceptHMRUpdate(useCartStore, import.meta.hot));
   }

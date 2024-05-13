@@ -8,8 +8,8 @@ export default defineNuxtConfig({
       STRIPE_PK: process.env.STRIPE_PK,
     },
     public: {
-      baseUrl: 'https://arthub-api-polished-breeze-902.fly.dev/api/v1/'
-      // baseUrl: 'http://localhost:8000/api/v1/'
+      baseUrl: 'https://arthub-api-polished-breeze-902.fly.dev/api/v1/',
+      baseTestUrl: 'http://localhost:8000/api/v1/'
     }
   },
     modules: [
