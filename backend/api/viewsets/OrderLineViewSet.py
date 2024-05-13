@@ -24,3 +24,9 @@ class OrderLineViewSet(viewsets.ModelViewSet):
             return Response(e, status=status.HTTP_400_BAD_REQUEST)
 
         return Response(order_lines, status=status.HTTP_201_CREATED)
+
+    def get_by_order(self, request, *args, **kwargs):
+        params = request.query_params.get('order_id')
+        order_lines = OrderLine.objects.filter(order_id=params)
+        order_lines_serializer = OrderLineSerializer(order_lines, many=True)
+        return Response(order_lines_serializer.data, status.HTTP_200_OK)

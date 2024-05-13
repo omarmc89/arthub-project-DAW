@@ -11,10 +11,10 @@ class AddressViewSet(viewsets.ModelViewSet):
     serializer_class = AddressSerializer
 
     def create(self, request, *args, **kwargs):
-        client_id = request.data.pop('client_id')
-        client = Client.objects.get(id=client_id)
-        address = Address.objects.get(id=client_id)
-        address_serializer = AddressSerializer(address)
+        # client_id = request.data.pop('client_id')
+        data = request.data
+        address_serializer = AddressSerializer(data)
+        Address.objects.create(**data)
         return Response(address_serializer.data, status=status.HTTP_201_CREATED)
 
     def get_by_client(self, request, *args, **kwargs):
