@@ -1,40 +1,40 @@
 <template>
-    <section class="flex flex-row">
+    <section class="flex flex-row main-container">
         <article class="image-container">
-            <img v-if="artwork.image_url !== ''" :src="artwork.image_url" :alt="artwork.title"/>
+            <img v-if="artwork.image_url !== ''" :src="artwork.image_url" :alt="artwork.title" class="rounded-xl"/>
             <USkeleton v-if="artwork.image_url===''" class="h-[600px] w-[500px] mr-32" :ui="{ rounded: 'rounded-xl' }" />
         </article>
         <article class="form-container flex items-center justify-center">
             <form class="artwork-form space-y-4 text-slate-900" @submit.prevent="updateArtwork">
-                    <div>
+                    <div class="flex flex-col items-center justify-center w-full gap-8 ">
                         <div class="form-label">
                             <label for="title">Title</label>
-                            <input v-model="artwork.title" id="title" name="title" type="text" class="form-control rounded-full bg-white">
+                            <input v-model="artwork.title" id="title" name="title" type="text" class="form-control rounded-full bg-white capitalize">
                         </div>
                         <div class="form-label">
                             <label for="description">Description</label>
-                            <input v-model="artwork.description" id="description" name="description" type="text" class="form-control rounded-full bg-white">
+                            <input v-model="artwork.description" id="description" name="description" type="text" class="form-control rounded-full bg-white capitalize">
                         </div>
                         <div class="form-label">
                             <label for="image_url">Image URL</label>
-                            <input v-model="artwork.image_url" id="image_url" name="image_url" type="text" class="form-control rounded-full bg-white">
+                            <input v-model="artwork.image_url" id="image_url" name="image_url" type="text" class="form-control rounded-full bg-white capitalize">
                         </div>
                         <div class="form-label">
                             <label for="price">Price</label>
-                            <input v-model="artwork.price" id="price" name="price" type="text" class="form-control rounded-full bg-white">
+                            <input v-model="artwork.price" id="price" name="price" type="text" class="form-control rounded-full bg-white capitalize">
                         </div>
 
                         <div v-if="isPhoto && artworkDetails" class="form-label">
                             <label for="style">Style</label>
-                            <input v-model="artwork.style" id="style" name="style" type="text" class="form-control rounded-full bg-white">
+                            <input v-model="artwork.style" id="style" name="style" type="text" class="form-control rounded-full bg-white capitalize">
                         </div>
                         <div v-if="!isPhoto && artworkDetails" class="form-label">
                             <label for="width">Width</label>
-                            <input v-model="artwork.width" id="width" name="width" type="text" class="form-control rounded-full bg-white">
+                            <input v-model="artwork.width" id="width" name="width" type="text" class="form-control rounded-full bg-white capitalize">
                         </div>
                         <div v-if="!isPhoto && artworkDetails" class="form-label">
                             <label for="height">Height</label>
-                            <input v-model="artwork.height" id="height" name="height" type="text" class="form-control rounded-full bg-white">
+                            <input v-model="artwork.height" id="height" name="height" type="text" class="form-control rounded-full bg-white capitalize">
                         </div>
                     </div>
                 <button type="submit" :disabled="pendingFetch" class="btn btn-primary">
@@ -50,6 +50,7 @@
 <script setup>
     import { useUserLoggedData } from '@/composables/useUserLoggedData'
     import { useUpdateArtwork } from '@/composables/useUpdateArtwork';
+    const runtimeConfig = useRuntimeConfig()
     
     const toast = useToast();
     const route = useRoute()
@@ -85,7 +86,7 @@ onMounted(() => {
     fetchArtwork(id.value)
 })
     async function fetchArtwork(artworkId) {
-    const { data, error } = await useFetch(`https://arthub-api-polished-breeze-902.fly.dev/api/v1/artworkDetails/?id=${artworkId}`, {
+    const { data, error } = await useFetch(`${runtimeConfig.public.baseUrl}artworkDetails/?id=${artworkId}`, {
         // watch: [artworkCreated],
     })
     if (data) {
@@ -173,9 +174,14 @@ function artoworkUpdateOk() {
   .form-label {
     width: 100%;
     max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: stretch;
   }
 
   .form-control {
+    min-width: 300px;
     width: 100%;
     padding: 8px;
     border: 1px solid #ccc;
@@ -197,4 +203,18 @@ function artoworkUpdateOk() {
     background-color: #e1e9ec;
     color: #232c33;
   }
+
+  .form-label label{
+    font-size: 1.5rem;
+    font-family: 'Sour Gummy'
+  }
+
+  @media (width <= 650px) {
+  .main-container{
+    display: flex;
+    flex-direction: column;
+    gap:2rem;
+  }
+}
+
 </style>

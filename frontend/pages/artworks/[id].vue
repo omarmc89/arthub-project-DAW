@@ -1,29 +1,29 @@
 <template>
-        <ArtworkShowSkeleton v-if="pendingFetch" />
-        <div class="flex flex-col h-100" v-if="!pendingFetch">
-            <section class="flex flex-row gap-8 text-center items-center justify-center h-2/6">
-                <h1 class="title drop-shadow-xl">{{ artwork.title }}</h1>              
-            </section>
-            <section class="flex flex-row gap-8 h-4/6">
-                <article class="w-1/2">     
-                    <div class="image-container h-full flex items-center justify-center">
-                        <img :src="artwork.image_url" :alt="artwork.title" class="max-w-full max-h-full"> 
-                    </div>
-                </article>
-                <article class="w-1/2">
-                        <div class="details-container flex flex-col items-center justify-around h-full space-y-4 text-slate-900">
-                            <h1 class="title drop-shadow-xl"> 🧑🏽‍💻 {{ user.username }}</h1>
-                            <p class="info border-2 bg-slate-800 bg-opacity-30 rounded-xl">{{ artwork.description }}</p>
-                            <p class="info uppercase">{{ artworkDetails.style }}</p>
-                            <p class="info">{{ artwork.price }} € </p>
-                            <div v-if="!isPhoto">
-                                <p class="info">Width: {{ artworkDetails.width }}</p>
-                                <p class="info">Height: {{ artworkDetails.height }}</p>
-                            </div>
+    <ArtworkShowSkeleton v-if="pendingFetch" />
+    <div class="flex flex-col h-100" v-if="!pendingFetch">
+        <section class="flex flex-row gap-8 text-center items-center justify-center h-2/6">
+            <h1 class="title drop-shadow-xl">{{ artwork.title }}</h1>              
+        </section>
+        <section class="main-container flex flex-row gap-8 h-4/6">
+            <article class="position1 w-1/2">     
+                <div class="image-container h-full flex items-center justify-center">
+                    <img :src="artwork.image_url" :alt="artwork.title" class="max-w-full max-h-full rounded-xl"> 
+                </div>
+            </article>
+            <article class="position2 w-1/2">
+                    <div class="details-container flex flex-col items-center justify-around h-full space-y-4 text-slate-900">
+                        <h1 class="title drop-shadow-xl"> 🧑🏽‍💻 {{ user.username }}</h1>
+                        <p class="info border-2 bg-slate-800 bg-opacity-30 rounded-xl">{{ artwork.description }}</p>
+                        <p class="info uppercase">{{ artworkDetails.style }}</p>
+                        <p class="info">{{ artwork.price }} € </p>
+                        <div v-if="!isPhoto">
+                            <p class="info">Width: {{ artworkDetails.width }}</p>
+                            <p class="info">Height: {{ artworkDetails.height }}</p>
                         </div>
-                </article>
-            </section>
-        </div>
+                    </div>
+            </article>
+        </section>
+    </div>
 </template>
 
 <script setup>
@@ -56,7 +56,7 @@ const user = ref({
     username: ''
 })
 
-
+const runtimeConfig = useRuntimeConfig()
 const artist = ref({})
 
 onMounted( async () => {
@@ -66,7 +66,7 @@ onMounted( async () => {
     }, 1000)
 })
     async function fetchArtwork(artworkId) {
-    const { data, error } = await useFetch(`https://arthub-api-polished-breeze-902.fly.dev/api/v1/artworkDetails/?id=${artworkId}`, {
+    const { data, error } = await useFetch(`${runtimeConfig.public.baseUrl}artworkDetails/?id=${artworkId}`, {
     })
     if (data) {
         fetchData.value = data.value
@@ -102,8 +102,31 @@ onMounted( async () => {
     font-weight: 500;
     text-align: center;
 }
-/* 
-.image-container {
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
-} */
+
+@media (width <= 650px) {
+  .main-container{
+    display: flex;
+    flex-direction: column;
+    gap:2rem;
+    align-items: center;
+    justify-content: center;
+    margin:0;
+    padding:0;
+  }
+
+  .details-container .title{
+    font-size: 1.5rem;
+  }
+  .details-container .info{
+    font-size: 1.2rem;
+  }
+
+  .position1{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  }
+}
 </style>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="512"
+   height="512"
+   viewBox="0 0 512 512"
+   version="1.1"
+   id="svg1"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1">
+    <linearGradient
+       id="linearGradient5">
+      <stop
+         style="stop-color:#9c2eea;stop-opacity:1;"
+         offset="0.1122449"
+         id="stop5" />
+      <stop
+         style="stop-color:#6670da;stop-opacity:1;"
+         offset="0.58673471"
+         id="stop7" />
+      <stop
+         style="stop-color:#5bcefc;stop-opacity:0.92916667;"
+         offset="1"
+         id="stop6" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient2">
+      <stop
+         style="stop-color:#4e1274;stop-opacity:1;"
+         offset="0"
+         id="stop2" />
+      <stop
+         style="stop-color:#a941d6;stop-opacity:1;"
+         offset="0.5"
+         id="stop4" />
+      <stop
+         style="stop-color:#e375f9;stop-opacity:1;"
+         offset="1"
+         id="stop3" />
+    </linearGradient>
+    <linearGradient
+       xlink:href="#linearGradient2"
+       id="linearGradient3"
+       x1="68.009867"
+       y1="225.6032"
+       x2="458.02192"
+       y2="225.6032"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.8615875,0,0,0.86158762,32.48742,-11.850419)" />
+    <linearGradient
+       xlink:href="#linearGradient5"
+       id="linearGradient7"
+       x1="-46.110504"
+       y1="228.27081"
+       x2="579.8537"
+       y2="380.22308"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <g
+     id="layer1">
+    <g
+       id="layer2">
+      <rect
+         style="fill:url(#linearGradient7);fill-opacity:1;stroke:#f8e8d8;stroke-width:0;stroke-linecap:square;stroke-linejoin:round;paint-order:markers fill stroke;fill-rule:nonzero;stroke-dasharray:none"
+         id="rect5"
+         width="511.70071"
+         height="511.70071"
+         x="0.60516566"
+         y="0.60516244"
+         ry="1.092963" />
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:461.341px;line-height:0px;font-family:'orange juice';-inkscape-font-specification:'orange juice';letter-spacing:4.90174px;fill:#ffffff;stroke:none;stroke-width:0;stroke-linecap:square;stroke-linejoin:round;paint-order:markers fill stroke;fill-opacity:1;stroke-dasharray:none"
+       x="89.901688"
+       y="342.38129"
+       id="text2"
+       transform="scale(0.96487175,1.0364072)"><tspan
+         id="tspan2"
+         x="89.901688"
+         y="342.38129"
+         style="fill:#ffffff;fill-opacity:1;stroke-width:0;stroke-dasharray:none;stroke:none">A</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:160px;line-height:0px;font-family:'Simple Handmade';-inkscape-font-specification:'Simple Handmade';letter-spacing:1.7px;fill:#fdfbff;fill-opacity:1;stroke:#f8e8d8;stroke-width:0;stroke-linecap:square;stroke-linejoin:round;paint-order:markers fill stroke;stroke-dasharray:none"
+       x="101.12456"
+       y="458.24911"
+       id="text5"><tspan
+         id="tspan5"
+         x="101.12456"
+         y="458.24911">arthub</tspan></text>
+  </g>
+</svg>

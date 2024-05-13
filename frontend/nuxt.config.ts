@@ -9,6 +9,7 @@ export default defineNuxtConfig({
     },
     public: {
       baseUrl: 'https://arthub-api-polished-breeze-902.fly.dev/api/v1/'
+      // baseUrl: 'http://localhost:8000/api/v1/'
     }
   },
     modules: [
