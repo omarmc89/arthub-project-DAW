@@ -1,9 +1,9 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   runtimeConfig: {
-    plugins: [
-      { src: '~/plugins/vue-stripe.js', ssr: false },
-    ],
+    // plugins: [
+    //   { src: '~/plugins/vue-stripe.js', ssr: false },
+    // ],
     env: {
       STRIPE_PK: process.env.STRIPE_PK,
     },
