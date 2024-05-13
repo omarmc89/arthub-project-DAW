@@ -21,7 +21,7 @@ export const useUserLoggedData = async () => {
             return error
     } else if (userLogged && userType.value === 'client') {
         // const { data, error } = await useFetch(`${runtimeConfig.public.baseUrl}search/artist/?user_id=${userLogged.pk}`, {
-            const { data, error } = await useFetch(`http://localhost:8000/api/v1/search/client/?user=${userLogged.pk}`, {
+            const { data, error } = await useFetch(`${runtimeConfig.public.baseUrl}search/client/?user=${userLogged.pk}`, {
             method: 'GET',
             headers:{
                 'Content-Type': 'application/json',
