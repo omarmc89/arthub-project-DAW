@@ -12,7 +12,9 @@ import os
 from api.viewsets.OrderLineViewSet import OrderLineViewSet
 from api.viewsets.OrderViewSet import OrderViewSet
 
-YOUR_DOMAIN = 'http://localhost:3000/checkout/'
+YOUR_DOMAIN_TEST = 'http://localhost:3000/checkout/'
+YOUR_DOMAIN = 'https://arthub.fly.dev'
+
 
 class CreateOrderLineViewSet(viewsets.ModelViewSet):
 
@@ -26,28 +28,23 @@ class CreateOrderLineViewSet(viewsets.ModelViewSet):
             "address_id": address_id,
             "total": total,
             "client_id": client_id,
-
         }
         address = Address.objects.get(id=address_id)
         client = Client.objects.get(id=client_id)
-        # order = Order(client=client, address=address, total=total)
         order_serializer = OrderSerializer(data=order_data)
         if order_serializer.is_valid(raise_exception=True):
             order = Order.objects.create(**order_data)
-            # order = order_serializer.save()
         else:
             raise ValidationError(order_serializer.errors)
         for artwork in artworks_ordered:
             artwork_id = artwork.get('id')
             artwork = Artwork.objects.get(id=artwork_id)
-            # order_line = OrderLine(artwork_id=artwork.id, order=order)
             order_line_data = {
                 "artwork_id": artwork_id,
                 "order": order.id
             }
             order_line_serializer = OrderLineSerializer(data=order_line_data)
             if order_line_serializer.is_valid(raise_exception=True):
-                # order_line.save()
                 order_line_data.update({"order": order})
                 OrderLine.objects.create(**order_line_data)
                 order_lines_counter += 1
