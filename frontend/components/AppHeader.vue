@@ -2,7 +2,7 @@
     <img src="~/public/logo.svg" alt="hero" class="top-logo absolute w-32 h-32 object-cover object-center rounded-xl top-4 left-4" />
     <nav class="flex flex-col items-center justify-between w-full px-4 z-10 mt-2">
         <section class="flex flex-col w-full h-auto items-center">
-            <article class="top-nav flex justify-end w-full px-12" >
+            <article class="top-nav flex justify-end w-full px-8" >
                 <ul class="top-nav flex flex-row gap-x-4 items-center justify-end">
                     <li v-if="!authenticated" class="app-link-top  p-1 hover:bg-green-300 hover:rounded-lg">
                         <NuxtLink to="/register">Register</NuxtLink>
@@ -18,9 +18,9 @@
                     </li>
                     <li v-if="authStore.userType === 'client'" class="app-link-top p-1 hover:bg-sky-300 hover:rounded-lg hover:cursor-pointer">
                         <div class="flex gap-3 items-center justify-center">
-                            <UChip :text="cartStore.totalCounts === 0 ? '' : cartStore.totalCounts" :show="true" color="fuchsia" size="xl">
+                            <UChip :text="cartStore.totalCounts === 0 ? '' : cartStore.totalCounts" :show="cartStore.totalCounts === 0 ? false : true" color="cyan" size="xl">
                                     <button class="flex items-center justify-center" @click="toggleModal">
-                                        <Icon class="icon" name="mage:basket"/>
+                                        <Icon class="icon h-8 w-8" name="emojione:shopping-cart"/>
                                      </button>
                             </UChip>
                         </div>
@@ -29,13 +29,13 @@
             </article>
             <article class="flex text-slate-900 items-center justify-center w-full h-auto py-8">
                 <a class="no-underline" href="#">
-                    <p class="title flex flex-row gap-0 items-center text-center text-2xl py-2">
-                        <span class="letter hover:-translate-y-2 hover:scale-125 hover:text-purple-400 hover:lowercase">A</span>
-                        <span class="letter hover:-translate-y-2 hover:scale-125 hover:text-pink-400 hover:lowercase">r</span>
-                        <span class="letter hover:-translate-y-2 hover:scale-125 hover:text-green-400 hover:lowercase">t</span>
-                        <span class="letter hover:-translate-y-2 hover:scale-125 hover:text-shark-400 hover:lowercase">H</span>
-                        <span class="letter hover:-translate-y-2 hover:scale-125 hover:text-cyan-400 hover:lowercase">U</span>
-                        <span class="letter hover:-translate-y-2 hover:scale-125 hover:text-orange-400 hover:lowercase">B</span>
+                    <p class="title flex flex-row gap-0 items-center text-center justify-center text-2xl py-2">
+                        <span class="letter text-center hover:-translate-y-2 hover:scale-125 hover:text-purple-400 hover:lowercase">A</span>
+                        <span class="letter text-center hover:-translate-y-2 hover:scale-125 hover:text-pink-400 hover:lowercase">r</span>
+                        <span class="letter text-center hover:-translate-y-2 hover:scale-125 hover:text-green-400 hover:lowercase">t</span>
+                        <span class="letter text-center hover:-translate-y-2 hover:scale-125 hover:text-shark-400 hover:lowercase">H</span>
+                        <span class="letter text-center hover:-translate-y-2 hover:scale-125 hover:text-cyan-400 hover:lowercase">U</span>
+                        <span class="letter text-center hover:-translate-y-2 hover:scale-125 hover:text-orange-400 hover:lowercase">B</span>
                     </p>
                 </a>
             </article>
@@ -72,10 +72,13 @@
           </div>
         </template>
         <CheckoutModal v-if="cartStore.totalCounts > 0" :items="cartStore.groupedItems" :addresses="addresses"/>
-        <p v-if="cartStore.totalCounts == 0" class="text-slate-900 text-xl">Cart is empty</p>
+            <div class="flex flex-col items-center gap-4">
+                <p v-if="cartStore.totalCounts == 0" class="text-slate-900 text-xl text-center uppercase">Cart is empty</p>
+                <Icon v-if="cartStore.totalCounts == 0" class="text-center w-24 h-24" name="streamline-emojis:cactus-2"/>
+            </div>
         <div class="relative">
-            <h2 class="text-center text-xl font-bold">Addresses:</h2>
-            <Icon v-if="pendingAdresses" class="icon" name="svg-spinners:bars-scale"/>
+            <h2 class="text-center text-xl font-bold mt-10">Order Address:</h2>
+            <Icon v-if="pendingAdresses" class="icon text-center w-full" name="svg-spinners:bars-scale"/>
             <button v-if="!pendingAdresses" @click="toggleDropdown" class="inline-flex justify-center w-full rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100">
                 {{ selectedOption ? selectedOption : 'Select an address' }}
                 <svg v-if="dropdownOpen" class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -172,15 +175,19 @@ const items = [
   }]
 ]
 
+onBeforeMount(() => {
+    getAddressees();
+});
+
 onMounted(() => {
-    // getAddressees();
+    getAddressees();
 });
 
 const toggleModal = () => {
     pendingAdresses.value = true
     checkoutModal.value = !checkoutModal.value;
-
     getAddressees();
+    pendingAdresses.value = false
 };
 const userLogout = () => {
   logout();
@@ -203,12 +210,12 @@ function getAddressees(){
           }
     }
 
-function createOrderAndOrderLines(){
+async function createOrderAndOrderLines(){
     const artworks = cartStore.groupedItems
     const client_id = authStore.clientId
     const address_id = address_selected_id.value
 
-    const { data, error } = useFetch(`${runtimeConfig.public.baseUrl}createOrderAndOrderLines/`, {
+    const { data, error } = await useFetch(`${runtimeConfig.public.baseUrl}createOrderAndOrderLines/`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -283,6 +290,7 @@ function createCheckoutSession(){
 
 .app-link-top{
     transition: all ease-in-out 0.2s;
+    font-size: 1.2rem;
 }
 
 .app-link:hover{
@@ -321,6 +329,10 @@ function createCheckoutSession(){
     display: none;
   }
 
+  .title{
+    margin-left: 1rem;
+    font-size: 5rem;
+  }
 }
 
 

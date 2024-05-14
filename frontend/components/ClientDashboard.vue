@@ -1,14 +1,16 @@
 <template>
     <OrdersSkeleton v-if="pendingFetch" />
     <section v-if="!pendingFetch" class="flex flex-col items-center w-full">
-        <h2 class="text-2xl uppercase font-bold bg-gray-700 text-gray-100 text-center py-4 w-full rounded-t-xl">Orders</h2>
-        <table class="min-w-full text-center">
-            <thead class="w-full">
+        <h2 class="text-2xl uppercase font-bold bg-gray-700 text-slate-400 text-center py-4 w-full rounded-t-xl flex flex-col items-center justify-center">
+          Orders
+        </h2>
+        <table class="w-full text-center">
+            <thead>
                 <tr class="bg-gray-700 text-gray-100 w-full">
-                    <th class="px-4 py-3 text-center text-lg font-bold uppercase tracking-wider">Num.</th>
-                    <th class="px-4 py-3 text-center text-lg font-bold uppercase tracking-wider">Date</th>
-                    <th class="px-4 py-3 text-center text-lg font-bold uppercase tracking-wider">Total</th>
-                    <th class="px-4 py-3 text-center text-lg font-bold uppercase tracking-wider text-center">Actions</th>
+                    <th class=" py-3 text-center text-lg font-bold uppercase tracking-wider">Num.</th>
+                    <th class=" py-3 text-center text-lg font-bold uppercase tracking-wider">Date</th>
+                    <th class=" py-3 text-center text-lg font-bold uppercase tracking-wider">Total</th>
+                    <th class=" py-3 text-center text-lg font-bold uppercase tracking-wider text-center">Actions</th>
                 </tr>
             </thead>
             <tbody class="bg-gray-700 text-gray-100 w-full">
@@ -80,6 +82,10 @@ const formatDate = (dateString) => {
 onMounted(() => {
     getOrders(authStore.clientId)
 })
+
+onBeforeMount(() => {
+  getOrders(authStore.clientId)
+});
 
 async function getOrders(clientId){
     const { data, error } = await useFetch(`${runtimeConfig.public.baseUrl}clientOrders/?id=${clientId}`, {
