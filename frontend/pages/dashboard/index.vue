@@ -226,8 +226,7 @@ const createAddress = async () => {
         client_id: authStore.clientId
     }
         pendingFetch.value = true
-        // const { data, error } = await useFetch(`${runtimeConfig.public.baseUrl}addresses/`, {
-        const { data, error } = await useFetch(`http://localhost:8000/api/v1/addresses/`, {
+        const { data, error } = await useFetch(`${runtimeConfig.public.baseUrl}addresses/`, {
             method: 'POST',
             body: JSON.stringify(fetchingData)
         })

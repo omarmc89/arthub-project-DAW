@@ -1,24 +1,24 @@
 <template>
     <OrderLinesSkeleton v-if="pendingFetch" />
-    <section v-if="!pendingFetch" class="flex flex-col w-full p-4 items-center">
+    <section v-if="!pendingFetch" class="section flex flex-col w-full p-4 items-center p-none">
         <h2 class="text-2xl uppercase font-bold text-slate-800 text-center mb-8 flex flex-col items-center">
             Order ID: 
             <span class="text-lg">{{ orderId }}</span>
         </h2>
-        <table class="table w-full whitespace-nowrap">
+        <table class="table w-full">
             <thead>
                 <tr class="bg-transparent">
-                    <th class="column px-6 py-3 text-center text-md font-medium text-gray-500 uppercase tracking-wider w-1/2 "></th>
+                    <th class="column px-6 py-3 text-center text-md font-medium text-gray-500 uppercase tracking-wider w-1/4 "></th>
                     <th class="column px-6 py-3 text-center text-md font-medium text-gray-500 uppercase tracking-wider w-1/4 "></th>
                     <th class="column px-6 py-3 text-center text-md font-medium text-gray-500 uppercase tracking-wider w-1/4"></th>
                 </tr>
             </thead>
-            <tbody class="bg-white divide-y divide-gray-200">
+            <tbody class="bg-white divide-y divide-gray-500 w-full">
                 <tr v-for="(orderLine, index) in orderLines" :key="index">
                     <td class="py-4 whitespace-nowrap text-center flex items-center justify-center">
                         <img class="image rounded-xl object-cover object-center w-32 h-32" :src="orderLine.artwork.image_url" alt="Artwork orderline image"/>
                     </td>
-                    <td class="py-4 whitespace-nowrap text-center">{{ orderLine.artwork.title }}</td>
+                    <td class="py-4 text-wrap text-center">{{ orderLine.artwork.title }}</td>
                     <td class="py-4 whitespace-nowrap text-center">{{ orderLine.artwork.price }} €</td>
                 </tr>
             </tbody>
@@ -75,6 +75,10 @@ async function getOrdersLines(orderId){
 
   .column {
     padding: 0.2rem;
+  }
+
+  .section {
+    padding: 0;
   }
 
 }
