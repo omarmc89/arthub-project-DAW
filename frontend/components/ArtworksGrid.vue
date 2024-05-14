@@ -47,27 +47,33 @@ async function artworksFiltered () {
 </script>
 
 <template>
-    <section class="text-xl uppercase font-bold flex flex-col items-center w-full gap-2 mb-8">
+    <section class="text-xl uppercase font-bold flex flex-row items-center justify-center w-full gap-2 mb-8">
       <label for="search">
-        <Icon name="i-heroicons-magnifying-glass"/>
-        Search
+        <Icon class="w-10 h-10" name="twemoji:magnifying-glass-tilted-left"/>
       </label>
       <input v-model="searchInput" id="search" type="text" placeholder="Search by title, description or artist" class="form-control rounded-full font-normal bg-white">
     </section>
     <section class="container relative ">
-    <article v-for="artwork in artworks" :key="artwork.id" class="card">
+    <article v-for="artwork in artworks" :key="artwork.id" class="card flex flex-col">
         <NuxtLink class="image-container" :href="'/artworks/' + artwork.id">
             <img :src="artwork.image_url" :alt="artwork.title" class="hover:brightness-110 hover:contrast-100	hover:outline outline-4 outline-yellow-300"/>
             <p class="artist"> {{ artwork.artist.user.username }}</p>
             <p class="price"> {{ artwork.price }}€</p>
         </NuxtLink>
+        <div class="mobile-info flex flex-row relative hidden mt-2">
+          <h5 class="text uppercase text-xl font-bold tracking-tight bg-purple-200 p-1 px-2 rounded-xl text-gray-900">{{ artwork.artist.user.username }}</h5>
+          <h5 class="text text-xl font-bold tracking-tight text-gray-900 bg-green-200 p-1 px-2 rounded-xl flex gap-1 items-center justify-center">{{ artwork.price }} <Icon class="h-4 w-4" name="ic:baseline-euro"/></h5>
+          <button class="cart-button-mobile" @click="addToCart(artwork.id, artwork.title, artwork.price, artwork.image_url)">
+              <Icon class="icon w-8 h-8" name="fluent-emoji-flat:shopping-cart"/>
+          </button>           
+        </div>
         <div class="info flex flex-col relative">
           <div class="text-card p-1 text-center w-full">
               <h5 class="text text-xl font-bold tracking-tight text-gray-900">{{ artwork.title }}</h5>
               <p class="text2 font-normal text-gray-700">{{ artwork.description }}</p>      
           </div>
           <button class="cart-button" @click="addToCart(artwork.id, artwork.title, artwork.price, artwork.image_url)">
-              <Icon class="icon" name="carbon:shopping-cart-arrow-down"/>
+              <Icon class="icon" name="fluent-emoji-flat:shopping-cart"/>
           </button>
         </div>
     </article>
@@ -148,10 +154,11 @@ async function artworksFiltered () {
 }
 
 .cart-button:hover {
-  color: #9334E9;
-  background-color: #f473b5;
+  border: 1px solid #232124;
   border-radius:10px;
   padding: 0.5rem;
+  transform: scale(1.2);
+  box-shadow: 0 0 8px #262428;
 }
 
 
@@ -174,6 +181,29 @@ async function artworksFiltered () {
   }
   .cart-button{
     width:auto;
+  }
+
+  .artist,
+  .price,
+  .cart-button {
+    display: none;
+  }
+
+  .image-container img {
+    margin: 0;
+    padding: 0;
+  }
+
+  .mobile-info {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+  }
+
+  .info{
+    order:-1;
+    margin-bottom: 1rem;
   }
 }
 

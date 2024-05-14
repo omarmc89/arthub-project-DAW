@@ -1,9 +1,9 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   runtimeConfig: {
-    plugins: [
-      { src: '~/plugins/vue-stripe.js', ssr: false },
-    ],
+    // plugins: [
+    //   { src: '~/plugins/vue-stripe.js', ssr: false },
+    // ],
     env: {
       STRIPE_PK: process.env.STRIPE_PK,
     },
@@ -12,13 +12,8 @@ export default defineNuxtConfig({
       baseTestUrl: 'http://localhost:8000/api/v1/'
     }
   },
-    modules: [
-        // '@nuxtjs/tailwindcss',
-        '@pinia/nuxt',
-        '@nuxt/ui',
-        '@pinia-plugin-persistedstate/nuxt',
-        'nuxt-icon',
-    ],
+    modules: [// '@nuxtjs/tailwindcss',
+    '@pinia/nuxt', '@nuxt/ui', '@pinia-plugin-persistedstate/nuxt', 'nuxt-icon', "@nuxt/image"],
     ui: {
       global: true,
       icons: ['heroicons', 'carbon']
@@ -50,8 +45,8 @@ export default defineNuxtConfig({
     app: {
       head: {
         link: [
-          { rel: "icon", type: "image/png", href: "/favicon.ico" }
-        ]
+          { rel: "icon", type: "image/png", href: "/favicon.ico" },
+        ],
     }
   },
 })
