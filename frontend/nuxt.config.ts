@@ -12,13 +12,8 @@ export default defineNuxtConfig({
       baseTestUrl: 'http://localhost:8000/api/v1/'
     }
   },
-    modules: [
-        // '@nuxtjs/tailwindcss',
-        '@pinia/nuxt',
-        '@nuxt/ui',
-        '@pinia-plugin-persistedstate/nuxt',
-        'nuxt-icon',
-    ],
+    modules: [// '@nuxtjs/tailwindcss',
+    '@pinia/nuxt', '@nuxt/ui', '@pinia-plugin-persistedstate/nuxt', 'nuxt-icon', "@nuxt/image"],
     ui: {
       global: true,
       icons: ['heroicons', 'carbon']
@@ -50,8 +45,8 @@ export default defineNuxtConfig({
     app: {
       head: {
         link: [
-          { rel: "icon", type: "image/png", href: "/favicon.ico" }
-        ]
+          { rel: "icon", type: "image/png", href: "/favicon.ico" },
+        ],
     }
   },
 })

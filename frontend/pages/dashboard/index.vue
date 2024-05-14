@@ -33,8 +33,8 @@
         </button>
       </form>
     </section>
-        <p v-if="dataFetch" class="text-lg text-center text-lime-500">Address created!</p>
-        <p v-if="errorFetch" class="text-lg text-center text-red-600">Error creating address</p>
+        <p v-if="dataFetchAddress" class="text-lg text-center text-lime-500">Address created!</p>
+        <p v-if="errorFetchAddress" class="text-lg text-center text-red-600">Error creating address</p>
   </UContainer>
   <UContainer v-if="userType=='artist'" class="w-6/12 my-8">
     <UButton @click="handleFormVisibility" label="Click if you want upload an artowork!" icon="i-heroicons-pencil-square" color="black" block></UButton>
@@ -125,6 +125,8 @@ const { userLogged, userType, artistId, clientId } = storeToRefs(useAuthStore())
 const type = ref('Painting')
 const dataFetch = ref('')
 const errorFetch = ref('')
+const dataFetchAddress = ref('')
+const errorFetchAddress = ref('')
 const pendingFetch = ref(false)
 const artistDataLoaded = ref(false)
 const userArtworks = ref({})
@@ -199,17 +201,18 @@ async function chargeAllData() {
 
 const createArtwork = async () => {
     const fetchingData = {
-        ...address.value,
-        artistId: authStore.clientId
+        ...artwork.value,
+        type: type.value.toLowerCase(),
+        artistId: artistId.value
     }
         pendingFetch.value = true
         const { data, error } = await useCreateArtwork(fetchingData)
 
-        if (error) {
+        if (error.value) {
             errorFetch.value = error
             pendingFetch.value = false
-
-        } else {
+        }
+        if(data.value){
             errorFetch.value = ''
             dataFetch.value = data
             pendingFetch.value = false
@@ -218,26 +221,26 @@ const createArtwork = async () => {
 }
 
 const createAddress = async () => {
-    const fetchingData = {
-        ...artwork.value,
-        type: type.value.toLowerCase(),
-        artistId: artistId.value
+   const fetchingData = {
+        ...address.value,
+        client_id: authStore.clientId
     }
         pendingFetch.value = true
-        const { data, error } = await useFetch(`${runtimeConfig.public.baseUrl}addresses/`, {
+        // const { data, error } = await useFetch(`${runtimeConfig.public.baseUrl}addresses/`, {
+        const { data, error } = await useFetch(`http://localhost:8000/api/v1/addresses/`, {
             method: 'POST',
             body: JSON.stringify(fetchingData)
         })
 
-        if (error) {
-            errorFetch.value = error
+        if (error.value) {
+          errorFetchAddress.value = error
             pendingFetch.value = false
-
-        } else {
-            errorFetch.value = ''
-            dataFetch.value = data
+        } 
+        if(data.value) {
+            errorFetchAddress.value = ''
+            dataFetchAddress.value = data
             pendingFetch.value = false
-            artoworkCreatedOk()
+            addressCreatedOk()
         }
 }
 
@@ -249,6 +252,15 @@ function artoworkCreatedOk() {
     errorFetch.value = false
     hiddenForm.value = true
     artworkCreated.value += 1
+    useScrollToTop() 
+}
+function addressCreatedOk() {
+    toast.add({ title: 'Congratulations! Address created!',
+            timeout: 1500})
+    resetAddressForm()
+    dataFetchAddress.value = false
+    errorFetchAddress.value = false
+    hiddenForm.value = true
     useScrollToTop() 
 }
 
@@ -299,6 +311,14 @@ function resetForm() {
   artwork.value.width= ''
   artwork.value.height= ''
 }
+
+function resetAddressForm() {
+  address.value.street= ''
+  address.value.city= ''
+  address.value.postal_code= ''
+  address.value.country= ''
+}
+
 </script>
 
 <style scoped>
