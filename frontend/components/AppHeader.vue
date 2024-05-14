@@ -75,7 +75,8 @@
         <p v-if="cartStore.totalCounts == 0" class="text-slate-900 text-xl">Cart is empty</p>
         <div class="relative">
             <h2 class="text-center text-xl font-bold">Addresses:</h2>
-            <button @click="toggleDropdown" class="inline-flex justify-center w-full rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100">
+            <Icon v-if="pendingAdresses" class="icon" name="svg-spinners:bars-scale"/>
+            <button v-if="!pendingAdresses" @click="toggleDropdown" class="inline-flex justify-center w-full rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100">
                 {{ selectedOption ? selectedOption : 'Select an address' }}
                 <svg v-if="dropdownOpen" class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                     <path fill-rule="evenodd" d="M10 12l-6-6H4l6 6 6-6h2l-6 6 6 6h-2l-6-6z" clip-rule="evenodd" />
@@ -128,6 +129,7 @@ const toast = useToast();
 
 const dropdownOpen = ref(false);
 const selectedOption = ref(null);
+const pendingAdresses = ref(true);
 
 const toggleDropdown = () => {
       dropdownOpen.value = !dropdownOpen.value;
@@ -171,11 +173,13 @@ const items = [
 ]
 
 onMounted(() => {
-    getAddressees();
+    // getAddressees();
 });
 
 const toggleModal = () => {
+    pendingAdresses.value = true
     checkoutModal.value = !checkoutModal.value;
+
     getAddressees();
 };
 const userLogout = () => {
@@ -195,6 +199,7 @@ function getAddressees(){
           }
           if(data.value){
               addresses.value = data.value
+              pendingAdresses.value = false
           }
     }
 

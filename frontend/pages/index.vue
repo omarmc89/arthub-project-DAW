@@ -68,5 +68,50 @@
 
 }
 
+.letter-a {
+  animation: charA 2s infinite linear;
+}
+
+.letter-r {
+  animation: charR 2s infinite linear;
+}
+.letter-t {
+  animation: charT 2s infinite linear;
+}
+
+
+@keyframes charA {
+  0%, 100% {
+    transform: translateY(-2px) scale(1.25);
+    color: #a855f7;
+  }
+  50% {
+    transform: translateY(0) scale(1);
+    color: #e9d5ff;
+  }
+}
+
+@keyframes charR {
+  0%, 100% {
+    transform: translateY(-2px) scale(1.25);
+    color: #f472b6;
+  }
+  50% {
+    transform: translateY(0) scale(1);
+    color: #fbcfe8;
+  }
+}
+
+@keyframes charT {
+  0%, 100% {
+    transform: translateY(-2px) scale(1.25);
+    color: #38bdf8;
+  }
+  50% {
+    transform: translateY(0) scale(1);
+    color: #bae6fd;
+  }
+}
+
 
 </style>

@@ -1,28 +1,28 @@
 <template>
     <OrdersSkeleton v-if="pendingFetch" />
-    <section v-if="!pendingFetch" class="overflow-x-auto w-full">
-        <h2 class="text-2xl uppercase font-bold text-slate-800 text-center mb-8">Orders</h2>
-        <table class="w-full whitespace-nowrap">
-            <thead>
-                <tr class="bg-gray-100">
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider ">ID</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider ">Date</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider ">Total</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider text-center">Actions</th>
+    <section v-if="!pendingFetch" class="flex flex-col items-center w-full">
+        <h2 class="text-2xl uppercase font-bold bg-gray-700 text-gray-100 text-center py-4 w-full rounded-t-xl">Orders</h2>
+        <table class="min-w-full text-center">
+            <thead class="w-full">
+                <tr class="bg-gray-700 text-gray-100 w-full">
+                    <th class="px-4 py-3 text-center text-lg font-bold uppercase tracking-wider">Num.</th>
+                    <th class="px-4 py-3 text-center text-lg font-bold uppercase tracking-wider">Date</th>
+                    <th class="px-4 py-3 text-center text-lg font-bold uppercase tracking-wider">Total</th>
+                    <th class="px-4 py-3 text-center text-lg font-bold uppercase tracking-wider text-center">Actions</th>
                 </tr>
             </thead>
-            <tbody class="bg-white divide-y divide-gray-200">
-                <tr v-for="(order, index) in orders" :key="index">
-                    <td class="px-6 py-4 whitespace-nowrap">{{ order.id }}</td>
-                    <td class="px-6 py-4 whitespace-nowrap">{{ formatDate(order.created_at) }}</td>
-                    <td class="px-6 py-4 whitespace-nowrap">{{ order.total }} €</td>
-                    <td class="px-6 py-4 whitespace-nowrap">
-                        <div class="flex flex-row items-center justify-center gap-2">
-                            <button class="text-indigo-600 hover:bg-slate-300 hover:rounded-xl flex items-center justify-center p-2" @click="setOrderLines(order.id)">
-                                <Icon name="heroicons:eye"></Icon>
+            <tbody class="bg-gray-700 text-gray-100 w-full">
+                <tr v-for="(order, index) in orders" :key="index" class="table-rows">
+                    <td class="row py-1 border-gray-200 whitespace-nowrap">{{ index + 1 }}</td>
+                    <td class="row py-1 border-gray-200 whitespace-nowrap">{{ formatDate(order.created_at) }}</td>
+                    <td class="row py-1 border-gray-200 whitespace-nowrap">{{ order.total }} €</td>
+                    <td class="row py-1 border-gray-200 whitespace-nowrap">
+                        <div class="buttons flex flex-row items-center justify-center gap-2">
+                            <button class="text-indigo-300 hover:bg-indigo-300 hover:text-indigo-900 hover:rounded-xl flex items-center justify-center p-2" @click="setOrderLines(order.id)">
+                                <Icon class="w-10 h-10" name="line-md:check-list-3-twotone"></Icon>
                             </button>
-                            <button class="text-red-600 hover:text-red-900 ml-2 flex items-center justify-center hover:bg-red-300 hover:rounded-xl p-2" @click="setDeleteOrder(order.id)">
-                                <Icon name="heroicons:trash-16-solid"/>
+                            <button class="text-red-600 hover:text-red-900 flex items-center justify-center hover:bg-red-300 hover:rounded-xl p-2" @click="setDeleteOrder(order.id)">
+                                <Icon class="w-10 h-10" name="line-md:remove"/>
                             </button>
                         </div>
                     </td>
@@ -74,7 +74,7 @@ const orderErased = ref(0)
 
 const formatDate = (dateString) => {
   const date = new Date(dateString);
-  return date.toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric' }) + ' ' + date.toLocaleTimeString();
+  return date.toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: '2-digit' });
 };
 
 onMounted(() => {
@@ -140,4 +140,48 @@ function toggleModalOrderlines(){
     orderLinesModal.value = !orderLinesModal.value
 }
 
+function parseId(id){
+    return id.split('-')[4]
+}
+
+function parseDate(date){
+    return date.split(' ')[0]
+}
+
 </script>
+
+<style scoped>
+
+.table-rows:last-child {
+
+  .row:first-child {
+      border-bottom-left-radius: 10px;
+  }
+  .row:last-child {
+      border-bottom-right-radius: 10px;
+  }
+}
+
+
+@media (width <= 650px) {
+  .id{
+    display: none;
+  }
+
+  .image {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .buttons {
+
+    gap: 0.2rem;
+    button {
+      padding: 0.2rem;
+    }
+  }
+
+}
+</style>
