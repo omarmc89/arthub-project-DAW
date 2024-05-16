@@ -191,7 +191,7 @@ const toggleModal = () => {
 };
 const userLogout = () => {
   logout();
-  router.push('/login');
+  toast.add({ title: 'Logout successful. Redirecting to Home', timeout: 1500, color:"red", callback:() => navigateTo('/') })
 };
 
 function getAddressees(){

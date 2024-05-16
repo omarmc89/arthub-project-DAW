@@ -138,7 +138,7 @@ const register = async() => {
       if (data) {
         dataFetch.value = data.value;
         console.log(dataFetch.value);
-        toast.add({ title: 'Client created! Redirecting to your Dashboard...', timeout: 2000, callback:() => router.push('/dashboard') })
+        toast.add({ title: 'Client created! Redirecting to your Dashboard...', timeout: 2000, callback:() => router.push('/login') })
       }
     }
   }

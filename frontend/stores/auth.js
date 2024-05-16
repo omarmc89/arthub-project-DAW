@@ -1,4 +1,5 @@
 import { defineStore, acceptHMRUpdate } from "pinia";
+import { set } from "zod";
 
 
 export const useAuthStore = defineStore('auth', {
@@ -55,15 +56,31 @@ export const useAuthStore = defineStore('auth', {
                 const userLogin = {...data.value}
                 this.userLogged = userLogin
                 localStorage.setItem('userId', data.value.pk)
-                if (this.userType==='artist')
-                  {this.getArtistId()
-
-                  }else{
-                    this.getClientId()
-
-                  }
+                this.getUserType()
             }
         },
+
+        async getUserType() {
+          const { data, error } = await useFetch (`http://localhost:8000/api/v1/search/userType/?user_id=${this.userLogged.pk}`, {
+              method: 'GET',
+              headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': `Token ${localStorage.getItem('token')}`
+          }
+      })
+          if(error){
+              this.userType = ''
+          }
+
+          if (data.value) {
+              this.userType = data.value
+              if(this.userType === 'artist'){
+                this.getArtistId()
+              }else{
+                this.getClientId() 
+              }
+          }
+      },
         
         async getArtistId() {
             const { data, error } = await useFetch (`https://arthub-api-polished-breeze-902.fly.dev/api/v1/search/artist/?user_id=${this.userLogged.pk}`, {
@@ -108,16 +125,18 @@ export const useAuthStore = defineStore('auth', {
 
         logout() {
             const token = useCookie('token')
-            this.authenticated = false
-            token.value = null
-            this.userEmailLogged = null
-            this.userLogged = null
-            this.sessionToken = null
-            this.artistId = null
-            this.clientId = null
-            this.userType = null
-            localStorage.removeItem('token')
-            localStorage.removeItem('userId')
+            setTimeout(() => {
+              this.authenticated = false
+              token.value = null
+              this.userEmailLogged = null
+              this.userLogged = null
+              this.sessionToken = null
+              this.artistId = null
+              this.clientId = null
+              this.userType = null
+              localStorage.removeItem('token')
+              localStorage.removeItem('userId')
+            }, 1500)
         }
     },
     persist: true,

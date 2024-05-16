@@ -60,7 +60,7 @@
         // }
         if (data) {
             toast.add({ title: 'Login correct! Redirecting to your Dashboard...',
-            timeout: 2000, callback:() => redirectToDashboard() })
+            timeout: 3000, callback:() => redirectToDashboard()})
         }
 
         if (error) {
