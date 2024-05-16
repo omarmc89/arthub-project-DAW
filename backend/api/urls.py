@@ -39,6 +39,7 @@ urlpatterns = [
     path('search/user/', SearchUserViewSet.as_view(), name='search-user'),
     path('search/artist/', SearchArtistViewSet.as_view(), name='search-artist'),
     path('search/client/', SearchClientViewSet.as_view(), name='search-client'),
+    path('search/userType/', CustomUserViewSet.as_view({'get': 'get_user_type'}), name='user-type'),
     path('search/artworkbyuser/', ArtworksByUserViewSet.as_view(), name='create-artwork'),
     path('search/artworkskbyfilter/', searchArtworkByInput.as_view(), name='filter-artworks'),
     path('create/artwork/', CreateArtworkViewSet.as_view(), name='user-artworks'),

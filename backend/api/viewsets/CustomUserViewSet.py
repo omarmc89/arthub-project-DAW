@@ -30,3 +30,12 @@ class CustomUserViewSet(viewsets.ModelViewSet):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def get_user_type(self, request, *args, **kwargs):
+        user_id  = request.query_params.get('user_id')
+        user = CustomUser.objects.get(id=user_id)
+        if user.artists.first():
+            return Response(data='artist', status=status.HTTP_200_OK)
+
+        if user.client:
+            return Response(data='client', status=status.HTTP_200_OK)
