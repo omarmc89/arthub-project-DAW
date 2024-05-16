@@ -61,7 +61,7 @@ export const useAuthStore = defineStore('auth', {
         },
 
         async getUserType() {
-          const { data, error } = await useFetch (`http://localhost:8000/api/v1/search/userType/?user_id=${this.userLogged.pk}`, {
+          const { data, error } = await useFetch (`https://arthub-api-polished-breeze-902.fly.dev/api/v1/search/userType/?user_id=${this.userLogged.pk}`, {
               method: 'GET',
               headers: {
                   'Content-Type': 'application/json',
